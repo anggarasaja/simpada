@@ -1,5 +1,4 @@
 <?php $__env->startSection('content'); ?>
-        <div class="right_col" role="main">
           <!-- top tiles -->
           <!-- <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -133,6 +132,13 @@
             </a>
             
           </div>
-        </div>
-        <?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('scripts'); ?>
+  <script>
+    $(document).ready(function() {
+
+    });
+  </script>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

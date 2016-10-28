@@ -23,23 +23,12 @@
     <!-- <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/> -->
     <!-- Datepicker -->
     <link href="css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
 
-        <!-- bootstrap-daterangepicker -->
-    <script src="js/moment/moment.min.js"></script>
-    <script src="js/datepicker/bootstrap-datepicker.min.js"></script>
-    <!-- <script src="js/datepicker/daterangepicker.js"></script> -->
-     <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
     <!-- <script src="../vendors/Chart.js/dist/Chart.min.js"></script> -->
     <!-- gauge.js -->
@@ -433,8 +422,9 @@
         <!-- /top navigation -->
 
         <!-- page content -->
+         <div class="right_col" role="main">
         <?php echo $__env->yieldContent('content'); ?>
-
+        </div>
         <!-- /page content -->
 
         <!-- footer content -->
@@ -451,10 +441,23 @@
       </div>
     </div>
 
-   
+        <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
 
+        <!-- bootstrap-daterangepicker -->
+    <script src="js/moment/moment.min.js"></script>
+    <script src="js/datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- <script src="js/datepicker/daterangepicker.js"></script> -->
+     <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    
+    
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
+    <?php echo $__env->yieldPushContent('scripts'); ?>
   </body>
 </html>

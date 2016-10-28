@@ -18,3 +18,10 @@ Route::get('/', function () {
 
 Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
 Route::get('tes', 'tes@index'	);
+
+
+//demo
+Route::get('demo-datatables', 'DatatablesController@index');
+Route::get('demo-datatables/api', 'DatatablesController@anyData');
+Route::get('demo-opentbs', 'opentbsController@index');
+Route::post('demo-opentbs/download', 'opentbsController@getFile');

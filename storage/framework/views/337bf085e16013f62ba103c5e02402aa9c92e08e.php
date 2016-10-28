@@ -4,7 +4,7 @@
   <!-- iCheck -->
   <script src="../vendors/iCheck/icheck.min.js"></script>
 <!-- load js -->
- <div class="right_col" role="main">
+
           <div class="row">
             
               <form class="form-horizontal form-label-left" novalidate>
@@ -225,13 +225,13 @@
               
             </div>
           </div>
-        </div>
-        <!-- bootstrap-daterangepicker -->
+        <?php $__env->stopSection(); ?>
+
+ <?php $__env->startPush('scripts'); ?>
     <script>
       $(document).ready(function() {
         
       });
     </script>
-    <!-- /bootstrap-daterangepicker -->
-        <?php $__env->stopSection(); ?>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

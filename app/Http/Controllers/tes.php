@@ -23,6 +23,11 @@ class tes extends Controller
         // echo 
     }
 
+    public function getData(){
+        $tesTable = badan_usaha::where("bu_id","=","1")->get()->toArray(array('bu_id'));
+        dd($tesTable);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
