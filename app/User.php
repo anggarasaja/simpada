@@ -6,13 +6,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table = "operator";
+    protected $primaryKey  = 'opr_id';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'opr_user', 'opr_passwd', 'opr_status',
     ];
 
     /**
@@ -21,6 +24,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'opr_passwd',
     ];
+
+    public function getAuthPassword(){
+        return $this->opr_passwd;
+    }
 }

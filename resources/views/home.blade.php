@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.layout')
+
 @section('content')
           <!-- top tiles -->
           <!-- <div class="row tile_count">
@@ -46,7 +47,7 @@
                     <div class="icon"><i class="fa fa-user"></i></div>
                     <div class="count">179</div>
                     <h3>Pendaftaran<br>WP/WR Pribadi</h3>
-                    <p>tes aja.</p>
+                    <p></p>
                   </div>
                 </div>
               </a>
@@ -58,7 +59,7 @@
                   <div class="icon"><i class="fa fa-building"></i></div>
                   <div class="count">179</div>
                   <h3>Pendaftaran<br>WP/WR Badan Usaha</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -69,7 +70,7 @@
                   <div class="icon"><i class="fa fa-file-text"></i></div>
                   <div class="count">179</div>
                   <h3>Penetapan Pajak/Retribusi</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -80,7 +81,7 @@
                   <div class="icon"><i class="fa fa-file-text-o"></i></div>
                   <div class="count">179</div>
                   <h3>Penatapan<br>STPD/STRP</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -94,7 +95,7 @@
                   <div class="icon"><i class="fa fa-list-alt"></i></div>
                   <div class="count">179</div>
                   <h3>Pendataan SPT</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -105,7 +106,7 @@
                   <div class="icon"><i class="fa fa-check-square"></i></div>
                   <div class="count">179</div>
                   <h3>LHP</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -115,8 +116,8 @@
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-money"></i></div>
                   <div class="count">179</div>
-                  <h3>Penerimaan(Setoran)</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <h3>Penerimaan (Setoran)</h3>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -127,13 +128,13 @@
                   <div class="icon"><i class="fa fa-bank"></i></div>
                   <div class="count">179</div>
                   <h3>Setoran Ke Bank</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
             
           </div>
-@stop
+@endsection
 
 @push('scripts')
   <script>
