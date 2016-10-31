@@ -13,7 +13,7 @@
               <hr>
               <li><a href="#level2_1">Daftar WP/WR Pribadi</a>
               </li>
-              <li><a href="#level2_1">Daftar WP/WR Badan Usaha</a>
+              <li><a href="{{ URL::to('daftar-pribadi/create') }}">Daftar WP/WR Badan Usaha</a>
               </li>
               <li><a href="#level2_1">Cetak Kartu NPWPD</a>
               </li>
@@ -186,14 +186,7 @@
               </li>
             </ul>
           </li>
-          <li><a>Rekam Objek Pajak Multi<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Level Two</a>
-              </li>
-              <li><a href="#level2_1">Level Two</a>
-              </li>
-            </ul>
-          </li>
+          <li><a>Rekam Objek Pajak Multi</a></li>
           <li><a href="#">Import WP/WR Data</a></li>
           <li><a href="#">Import Kecamatan & Kelurahan Data</a></li>
         </ul>

@@ -11,16 +11,12 @@
 |
 */
 use App\User;
-Route::get('/home', function () {
-    // return view('welcome');
-    $a = App\User::where('opr_id','=',28)->get();
-    dd($a);die;
-    return View::make('home');
-});
+use App\bank;
 
+Route::get('/', 'HomeController@index');
+	
 Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
 Route::get('tes', 'tes@index');
-
 
 //demo
 Route::get('demo-datatables', 'DatatablesController@index');
@@ -30,4 +26,15 @@ Route::post('demo-opentbs/download', 'opentbsController@getFile');
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
+//tes
+Route::get('/home', function () {
+    // return view('welcome');
+    $a = App\bank::all();
+    dd($a);die;
+    return View::make('home');
+});
+
+Route::get('daftar-pribadi/create','Pendaftaran@wpwrpribadi');
+Route::post('daftar-pribadi/store','Pendaftaran@store_wpwrpribadi');
+
+

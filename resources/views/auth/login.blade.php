@@ -11,7 +11,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('opr_user') ? ' has-error' : '' }}">
-                            <label for="opr_user" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="opr_user" class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
                                 <input id="opr_user" type="text" class="form-control" name="opr_user" value="{{ old('opr_user') }}">
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('opr_passwd') ? ' has-error' : '' }}">
-                            <label for="opr_passwd" class="col-md-4 control-label">opr_passwd</label>
+                            <label for="opr_passwd" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
                                 <input id="opr_passwd" type="password" class="form-control" name="opr_passwd">
