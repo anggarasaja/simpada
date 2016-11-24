@@ -314,6 +314,7 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
         'Canvas' => __DIR__ . '/..' . '/dompdf/dompdf/include/canvas.cls.php',
         'Canvas_Factory' => __DIR__ . '/..' . '/dompdf/dompdf/include/canvas_factory.cls.php',
         'Cellmap' => __DIR__ . '/..' . '/dompdf/dompdf/include/cellmap.cls.php',
+        'CreateJobsTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_08_052326_create_jobs_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DOMPDF' => __DIR__ . '/..' . '/dompdf/dompdf/include/dompdf.cls.php',

@@ -10,18 +10,18 @@
     <title>Simpatda </title>
 
     <!-- Bootstrap -->
-    <link href="{{ URL::asset('public/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ URL::asset('public/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ URL::asset('public/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- iCheck -->
-    <link href="{{ URL::asset('public/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
     <!-- Datepicker -->
-    <link href="{{ URL::asset('public/css/datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"/>
-    <link href="{{ URL::asset('public/vendors/datatables.net/css/jquery.dataTables.min.css') }}" rel="stylesheet"/>
+    <link href="{{ URL::asset('css/datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"/>
+    <link href="{{ URL::asset('vendors/datatables.net/css/jquery.dataTables.min.css') }}" rel="stylesheet"/>
     <!-- Custom Theme Style -->
-    <link href="{{ URL::asset('public/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('build/css/custom.min.css') }}" rel="stylesheet">
 
   </head>
 
@@ -39,7 +39,7 @@
             <!-- menu profile quick info -->
             <div class="profile">
               <div class="profile_pic">
-                <img src="{{ URL::asset('public/images/img.jpg') }}" alt="profile" class="img-circle profile_img">
+                <img src="{{ URL::asset('images/img.jpg') }}" alt="profile" class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Admin</span>
@@ -66,7 +66,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ URL::asset('public/images/img.jpg') }}" alt="">BPK
+                    <img src="{{ URL::asset('images/img.jpg') }}" alt="">BPK
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -172,22 +172,22 @@
     </div>
 
         <!-- jQuery -->
-    <script src="{{ URL::asset('public/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
 
         <!-- bootstrap-daterangepicker -->
-    <script src="{{ URL::asset('public/js/moment/moment.min.js') }}"></script>
-    <script src="{{ URL::asset('public/js/datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ URL::asset('js/moment/moment.min.js') }}"></script>
+    <script src="{{ URL::asset('js/datepicker/bootstrap-datepicker.min.js') }}"></script>
     <!-- <script src="js/datepicker/daterangepicker.js"></script> -->
      <!-- Bootstrap -->
-    <script src="{{ URL::asset('public/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="{{ URL::asset('public/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <script src="{{ URL::asset('vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
-    <script src="{{ URL::asset('public/vendors/nprogress/nprogress.js') }}"></script>
+    <script src="{{ URL::asset('vendors/nprogress/nprogress.js') }}"></script>
     
     
     <!-- Custom Theme Scripts -->
-    <script src="{{ URL::asset('public/build/js/custom.min.js') }}"></script>
+    <script src="{{ URL::asset('build/js/custom.min.js') }}"></script>
     @stack('scripts')
   </body>
 </html>

@@ -20,6 +20,7 @@ return array(
     'Canvas' => $vendorDir . '/dompdf/dompdf/include/canvas.cls.php',
     'Canvas_Factory' => $vendorDir . '/dompdf/dompdf/include/canvas_factory.cls.php',
     'Cellmap' => $vendorDir . '/dompdf/dompdf/include/cellmap.cls.php',
+    'CreateJobsTable' => $baseDir . '/database/migrations/2016_11_08_052326_create_jobs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DOMPDF' => $vendorDir . '/dompdf/dompdf/include/dompdf.cls.php',
