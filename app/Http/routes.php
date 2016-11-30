@@ -18,6 +18,12 @@ Route::get('/', 'HomeController@index');
 Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
 Route::get('tes', 'tes@index');
 
+Route::get('getpass',function(){
+	$p = Hash::make('admin');
+	echo "Pass: ".$p;
+	// copy hasilnya ke field opr_passwd di tabel operator.
+});
+
 //demo
 Route::get('demo-datatables', 'DatatablesController@index');
 Route::get('demo-datatables/api', 'DatatablesController@anyData');
