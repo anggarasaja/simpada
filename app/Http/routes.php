@@ -34,7 +34,13 @@ Route::get('/home', function () {
     return View::make('home');
 });
 
+Route::get('daftar-pribadi/','Pendaftaran@show_wpwrpribadi');
 Route::get('daftar-pribadi/create','Pendaftaran@wpwrpribadi');
 Route::post('daftar-pribadi/store','Pendaftaran@store_wpwrpribadi');
 
+Route::get('daftar-badan','Pendaftaran@show_wpwrbadan');
+Route::get('daftar-badan/create','Pendaftaran@wpwrbadan');
+Route::post('daftar-badan/store','Pendaftaran@store_wpwrbadan');
+
+Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
 

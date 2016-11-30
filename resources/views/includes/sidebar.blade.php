@@ -6,16 +6,16 @@
         <ul class="nav child_menu">
           <li><a>Pendaftaran<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Rekam Master WP/WR Pribadi</a>
+              <li class="sub_menu"><a href="{{ URL::to('daftar-pribadi') }}">Rekam Master WP/WR Pribadi</a>
               </li>
-              <li><a href="#level2_1">Rekam Master WP/WR Badan Usaha</a>
+              <li><a href="{{ URL::to('daftar-badan') }}">Rekam Master WP/WR Badan Usaha</a>
               </li>
               <hr>
-              <li><a href="#level2_1">Daftar WP/WR Pribadi</a>
+              <li><a href="{{ URL::to('daftar-pribadi/create') }}">Daftar WP/WR Pribadi</a>
               </li>
-              <li><a href="{{ URL::to('daftar-pribadi/create') }}">Daftar WP/WR Badan Usaha</a>
+              <li><a href="{{ URL::to('daftar-badan/create') }}">Daftar WP/WR Badan Usaha</a>
               </li>
-              <li><a href="#level2_1">Cetak Kartu NPWPD</a>
+              <li><a href="{{ URL::to('cetak_kartu') }}">Cetak Kartu NPWPD</a>
               </li>
             </ul>
           </li>
