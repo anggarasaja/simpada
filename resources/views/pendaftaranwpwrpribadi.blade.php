@@ -195,14 +195,14 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="occupation">Tgl Batas Kirim 
             </label>
             <div class="col-md-8 col-sm-6 col-xs-12">
-              <input id="tgl-bts-kirim" name="tgl-bts-kirim" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text">
+              <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="tgl-bts-kirim" name="tgl-bts-kirim" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text">
             </div>
           </div>
            <div class="item form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Tgl Pendaftaran 
             </label>
             <div class="col-md-8 col-sm-6 col-xs-12">
-             <input id="tgl-daftar" name="tgl-daftar" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text">
+             <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="tgl-daftar" name="tgl-daftar" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text">
             </div>
           </div>
          

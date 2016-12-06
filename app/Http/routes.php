@@ -18,11 +18,11 @@ Route::get('/', 'HomeController@index');
 Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
 Route::get('tes', 'tes@index');
 
-Route::get('getpass',function(){
-	$p = Hash::make('admin');
-	echo "Pass: ".$p;
-	// copy hasilnya ke field opr_passwd di tabel operator.
-});
+// Route::get('getpass',function(){
+// 	$p = Hash::make('admin');
+// 	echo "Pass: ".$p;
+// 	// copy hasilnya ke field opr_passwd di tabel operator.
+// });
 
 //demo
 Route::get('demo-datatables', 'DatatablesController@index');
@@ -49,4 +49,7 @@ Route::get('daftar-badan/create','Pendaftaran@wpwrbadan');
 Route::post('daftar-badan/store','Pendaftaran@store_wpwrbadan');
 
 Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
+
+Route::get('sptpd_hotel','Pendataan@sptpd_hotel');
+Route::get('sptpd_restoran','Pendataan@sptpd_restoran');
 
