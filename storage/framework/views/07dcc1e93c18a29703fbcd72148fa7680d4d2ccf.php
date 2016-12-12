@@ -38,14 +38,13 @@
 
           
            <div class="row">
-            
-              <a href="pendaftaran-wpwr-pribadi">
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                  <div class="tile-stats">
+              <a href="<?php echo e(URL::to('/daftar-pribadi/create')); ?>" >
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12 " >
+                  <div class="tile-stats hvr-underline-reveal">
                     <div class="icon"><i class="fa fa-user"></i></div>
-                    <div class="count">179</div>
+                    <div class="count"><?php echo e(isset($pribadi) ? $pribadi : ''); ?></div>
                     <h3>Pendaftaran<br>WP/WR Pribadi</h3>
-                    <p>tes aja.</p>
+                    <p></p>
                   </div>
                 </div>
               </a>
@@ -53,33 +52,33 @@
             
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-building"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?php echo e(isset($bu) ? $bu : ''); ?></div>
                   <h3>Pendaftaran<br>WP/WR Badan Usaha</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
             
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-file-text"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?php echo e(isset($spt) ? $spt : ''); ?></div>
                   <h3>Penetapan Pajak/Retribusi</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
             
              <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-file-text-o"></i></div>
-                  <div class="count">179</div>
-                  <h3>Penatapan<br>STPD/STRP</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <div class="count">0</div>
+                  <h3>Penetapan<br>STPD/STRP</h3>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -89,44 +88,44 @@
           <div class="row">
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-list-alt"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">0</div>
                   <h3>Pendataan SPT</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
            
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-check-square"></i></div>
-                  <div class="count">179</div>
+                  <div class="count"><?php echo e(isset($lhp) ? $lhp : ''); ?></div>
                   <h3>LHP</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
             
             <a href="#">
                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-money"></i></div>
-                  <div class="count">179</div>
-                  <h3>Penerimaan(Setoran)</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <div class="count">0</div>
+                  <h3>Penerimaan (Setoran)</h3>
+                  <p></p>
                 </div>
               </div>
             </a>
            
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-bank"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">0</div>
                   <h3>Setoran Ke Bank</h3>
-                  <p>Lorem ipsum psdea itgum rixt.</p>
+                  <p></p>
                 </div>
               </div>
             </a>
@@ -141,4 +140,4 @@
     });
   </script>
 <?php $__env->stopPush(); ?>
-<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

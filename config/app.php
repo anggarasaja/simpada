@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,6 +161,13 @@ return [
         //datatables
         Yajra\Datatables\DatatablesServiceProvider::class,
 
+        //html
+        Collective\Html\HtmlServiceProvider::class,
+
+        
+        //ANLUTRO SETTING
+        anlutro\LaravelSettings\ServiceProvider::class,
+
     ],
 
     /*
@@ -206,6 +213,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        //laravel collective
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+
+        //anlutro setting
+        'Setting' => anlutro\LaravelSettings\Facade::class,
 
     ],
 

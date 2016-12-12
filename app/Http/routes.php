@@ -12,10 +12,9 @@
 */
 use App\User;
 use App\bank;
-
 Route::get('/', 'HomeController@index');
 	
-Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
+// Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
 Route::get('tes', 'tes@index');
 
 //demo
@@ -34,7 +33,36 @@ Route::get('/home', function () {
     return View::make('home');
 });
 
-Route::get('daftar-pribadi/create','Pendaftaran@wpwrpribadi');
-Route::post('daftar-pribadi/store','Pendaftaran@store_wpwrpribadi');
+Route::get('/pss', function () {
+    // return view('welcome');
+   	// echo Hash::make('bepeka');
+   	// Setting::set('harrisanggara', 'bar');
+   	// Setting::set('harrisanggarasdf', 'bar');
+   	// Setting::save();
+   	echo Setting::get('status_strd');
+});
+
+Route::post('getKelurahan','pendaftaranPribadiController@getKelurahan');
+Route::get('getNomorUrut','pendaftaranPribadiController@getNomorUrut');
+Route::get('daftar-pribadi/create/{status?}','Pendaftaran@wpwrpribadi')->name('createPribadi');
+Route::get('daftar-pribadi/edit/{edit}/{status?}','Pendaftaran@editPribadi')->name('editPribadi');
+
+Route::get('daftar-pribadi/table','Pendaftaran@tableWpPribadi');
+Route::get('daftar-bu/table','Pendaftaran@tableWpBu');
+
+Route::get('penetapan/table','Penetapan@daftarSPT');
+
+Route::post('daftar-pribadi/store','Pendaftaran@savePribadi');
+
+Route::get('datatables/wp-pribadi','Pendaftaran@wpPribadiDt');
+Route::get('datatables/wp-bu','Pendaftaran@wpBuDt');
+
+Route::get('datatables/spt','Penetapan@sptDt');
+
+Route::get('datatables/self','BKP@setoranSelfDt');
+Route::get('bkp/daftar-self','BKP@daftarSetoranSelf');
+Route::get('datatables/official','BKP@setoranOfficialDt');
+Route::get('bkp/daftar-official','BKP@daftarSetoranOfficial');
+
 
 
