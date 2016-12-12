@@ -15,9 +15,34 @@ class Pendaftaran extends Controller
     public function __construct(){
     	$this->middleware('auth');
     }
+    ### PRIBADI ###
+
+    public function show_wpwrpribadi(){
+        return view('show_wpwrpribadi');
+    }
+
+    public function store_wpwrpribadi(){
+
+    }
+
+    ### BADAN USAHA  ####
 
     public function wpwrbadan(){
-        return view('pendaftaranwpwrbadan');
+        return view('wpwrbadan');
+    }
+
+    public function show_wpwrbadan(){
+        return view('show_wpwrbadan');
+    }
+
+    public function store_wpwrbadan(){
+
+    }
+
+    ### CETAK KARTU ####
+
+    public function cetak_kartu(){
+        return view('cetak_kartu');
     }
     /**
      * Display a listing of the resource.

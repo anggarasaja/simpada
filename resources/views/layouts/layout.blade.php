@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Simpada </title>
+    <title>Simpatda </title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('faviconSIMPADA.ico') }}">
 
     {!! Html::style('vendors/bootstrap/dist/css/bootstrap.min.css'); !!}
     {!! Html::style('vendors/font-awesome/css/font-awesome.min.css'); !!}
@@ -23,6 +24,13 @@
     {!! Html::style('vendors/Hover-master/css/hover-min.css'); !!}
     @stack('styles')
     {!! Html::style('build/css/custom.css'); !!}
+
+    <!-- Datatables -->
+    <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
 
   </head>
 
@@ -185,7 +193,30 @@
     <script src="{{ URL::asset('vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
     <script src="{{ URL::asset('vendors/nprogress/nprogress.js') }}"></script>
+<<<<<<< HEAD
     <script src="{{ URL::asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+=======
+    <!-- iCheck -->
+    <script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
+
+    <!-- Datatables -->
+    <script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-scroller/js/datatables.scroller.min.js') }}"></script>
+    <script src="{{ asset('vendors/jszip/dist/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script>
+    
+>>>>>>> 6ec6ee61e942687e18887813e5d87b28c81a14c5
     
     <!-- Custom Theme Scripts -->
     <script src="{{ URL::asset('build/js/custom.js') }}"></script>

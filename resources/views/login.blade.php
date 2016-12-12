@@ -10,16 +10,16 @@
     <title>Gentellela Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="{{ URL::asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ URL::asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ URL::asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <!-- <link href="../vendors/animate.css/animate.min.css" rel="stylesheet"> -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{ URL::asset('build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="login">
@@ -34,7 +34,7 @@
               {{ csrf_field() }}
               <h1>Login Form</h1>
               <div class="form-group{{ $errors->has('opr_user') ? ' has-error' : '' }}">
-                <input id="opr_user" type="text" class="form-control" name="opr_user" value="{{ old('opr_user') }}" placeholder="Username">
+                <input id="opr_user" type="text" class="form-control" name="opr_user" value="{{ old('opr_user') }}">
 
                 @if ($errors->has('opr_user'))
                     <span class="help-block">
@@ -43,7 +43,7 @@
                 @endif
               </div>
               <div class="form-group{{ $errors->has('opr_passwd') ? ' has-error' : '' }}">
-                <input id="opr_passwd" type="password" class="form-control" name="opr_passwd" placeholder="Password">
+                <input id="opr_passwd" type="password" class="form-control" name="opr_passwd">
 
                 @if ($errors->has('opr_passwd'))
                     <span class="help-block">
@@ -78,7 +78,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-plus-circle"></i> SIMPATDA - PLUS</h1>
+                  <h1><i class="fa fa-paw"></i> SIMPADA!</h1>
                   <p>©2016 All Rights Reserved</p>
                 </div>
               </div>

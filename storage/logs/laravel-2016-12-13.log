@@ -1236,3 +1236,15 @@ Stack trace:
 #69 /home/blackhole/Documents/project/simpatda/simpatda/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #70 /home/blackhole/Documents/project/simpatda/simpatda/server.php(21): require_once('/home/blackhole...')
 #71 {main}  
+[2016-12-13 02:02:35] development.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION)' in /home/blackhole/Documents/project/simpatda/simpatda/app/Http/Controllers/Pendaftaran.php:19
+Stack trace:
+#0 {main}  
+[2016-12-13 02:02:35] development.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION)' in /home/blackhole/Documents/project/simpatda/simpatda/app/Http/Controllers/Pendaftaran.php:19
+Stack trace:
+#0 {main}  
+[2016-12-13 02:06:45] development.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot redeclare App\Http\Controllers\Pendaftaran::wpwrpribadi()' in /home/blackhole/Documents/project/simpatda/simpatda/app/Http/Controllers/Pendaftaran.php:56
+Stack trace:
+#0 {main}  
+[2016-12-13 02:06:46] development.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Cannot redeclare App\Http\Controllers\Pendaftaran::wpwrpribadi()' in /home/blackhole/Documents/project/simpatda/simpatda/app/Http/Controllers/Pendaftaran.php:56
+Stack trace:
+#0 {main}  

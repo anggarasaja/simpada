@@ -17,6 +17,12 @@ Route::get('/', 'HomeController@index');
 // Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
 Route::get('tes', 'tes@index');
 
+// Route::get('getpass',function(){
+// 	$p = Hash::make('admin');
+// 	echo "Pass: ".$p;
+// 	// copy hasilnya ke field opr_passwd di tabel operator.
+// });
+
 //demo
 Route::get('demo-datatables', 'DatatablesController@index');
 Route::get('demo-datatables/api', 'DatatablesController@anyData');
@@ -64,5 +70,16 @@ Route::get('bkp/daftar-self','BKP@daftarSetoranSelf');
 Route::get('datatables/official','BKP@setoranOfficialDt');
 Route::get('bkp/daftar-official','BKP@daftarSetoranOfficial');
 
+// Route::get('daftar-pribadi/','Pendaftaran@show_wpwrpribadi');
+// Route::get('daftar-pribadi/create','Pendaftaran@wpwrpribadi');
+// Route::post('daftar-pribadi/store','Pendaftaran@store_wpwrpribadi');
 
+Route::get('daftar-badan','Pendaftaran@show_wpwrbadan');
+Route::get('daftar-badan/create','Pendaftaran@wpwrbadan');
+Route::post('daftar-badan/store','Pendaftaran@store_wpwrbadan');
+
+Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
+
+Route::get('sptpd_hotel','Pendataan@sptpd_hotel');
+Route::get('sptpd_restoran','Pendataan@sptpd_restoran');
 

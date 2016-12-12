@@ -8,7 +8,7 @@
   $wp_wr_pekerjaan = (isset($wp_wr_pekerjaan))?$wp_wr_pekerjaan:'';
 ?>
   <div class="row">
-      <form class="form-horizontal form-label-left" method="POST" action="{{url('/daftar-pribadi/store')}}">
+      <form class="form-horizontal form-label-left" method="POST" action="{{ URL::to('daftar-pribadi/store') }}">
         <span class="section">Form Pendaftaran WP/WR Pribadi: <label>{{$jenis or ''}}</label>  
         <?php if(isset($wp_wr_id)){ ?>
         <span class="label label-success" style="padding: .3em">{{strtoupper($wp_wr_jenis)}}.{{$wp_wr_gol or ''}}.{{$wp_wr_no_urut or ''}}.{{$camat_kode or ''}}.{{$lurah_kode or ''}}</span>
