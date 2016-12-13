@@ -1,6 +1,5 @@
  @extends('layout')
 @section('content')
-<div class="right_col" role="main">
     <table class="table table-bordered" id="users-table">
         <thead>
             <tr>
@@ -12,7 +11,6 @@
             </tr>
         </thead>
     </table>
-    </div>
 @stop
 @push('scripts')
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>

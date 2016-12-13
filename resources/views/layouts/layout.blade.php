@@ -6,25 +6,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Simpatda </title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('faviconSIMPADA.ico') }}">
 
-    <!-- Bootstrap -->
-    <link href="{{ URL::asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="{{ URL::asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="{{ URL::asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="{{ URL::asset('vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    {!! Html::style('vendors/bootstrap/dist/css/bootstrap.min.css'); !!}
+    {!! Html::style('vendors/font-awesome/css/font-awesome.min.css'); !!}
+    {!! Html::style('vendors/nprogress/nprogress.css'); !!}
+    {!! Html::style('vendors/iCheck/skins/flat/green.css'); !!}
+    {!! Html::style('css/datepicker/bootstrap-datepicker.min.css'); !!}
+    {!! Html::style('vendor/datatables/DataTables-1.10.12/css/jquery.dataTables.min.css'); !!}
+    {!! Html::style('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css'); !!}
+    {!! Html::style('vendors/pnotify/dist/pnotify.css'); !!}
+    {!! Html::style('vendors/pnotify/dist/pnotify.buttons.css'); !!}
+    {!! Html::style('vendors/pnotify/dist/pnotify.nonblock.css'); !!}
+    {!! Html::style('vendors/Hover-master/css/hover-min.css'); !!}
     <!-- ColorBox -->
     <link rel="stylesheet" href="{{asset('/css/colorbox/colorbox.css')}}">
-    <!-- Datepicker -->
-    <link href="{{ URL::asset('css/datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"/>
-    <link href="{{ URL::asset('vendors/datatables.net/css/jquery.dataTables.min.css') }}" rel="stylesheet"/>
-    <!-- Custom Theme Style -->
-    <link href="{{ URL::asset('build/css/custom.min.css') }}" rel="stylesheet">
+    @stack('styles')
+    {!! Html::style('build/css/custom.css'); !!}
 
     <!-- Datatables -->
     <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
@@ -38,10 +39,10 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
+        <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{ URL::to('/') }}" class="site_title"><i class="fa fa-plus-circle"></i> <span>SIMPATDA-PLUS</span></a>
+              <a href="{{ URL::to('/') }}" class="site_title"><i class="fa fa-plus-circle"></i> <span>SIMPADA-PLUS</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -196,6 +197,7 @@
     <script src="{{ URL::asset('vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
     <script src="{{ URL::asset('vendors/nprogress/nprogress.js') }}"></script>
+
     <!-- iCheck -->
     <script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
     <!-- ColorBox -->
@@ -218,9 +220,20 @@
     <script src="{{ asset('vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script>
     
+    <script src="{{ URL::asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     
     <!-- Custom Theme Scripts -->
-    <script src="{{ URL::asset('build/js/custom.min.js') }}"></script>
+    <script src="{{ URL::asset('build/js/custom.js') }}"></script>
+    <script type="text/javascript">
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+    </script>
+    {!! Html::script('vendors/pnotify/dist/pnotify.js'); !!}
+    {!! Html::script('vendors/pnotify/dist/pnotify.buttons.js'); !!}
+    {!! Html::script('vendors/pnotify/dist/pnotify.nonblock.js'); !!}
     @stack('scripts')
   </body>
 </html>

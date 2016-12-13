@@ -40,12 +40,11 @@
 
           
            <div class="row">
-            
-              <a href="pendaftaran-wpwr-pribadi">
-                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                  <div class="tile-stats">
+              <a href="{{ URL::to('/daftar-pribadi/create')}}" >
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12 " >
+                  <div class="tile-stats hvr-underline-reveal">
                     <div class="icon"><i class="fa fa-user"></i></div>
-                    <div class="count">179</div>
+                    <div class="count">{{$pribadi or ''}}</div>
                     <h3>Pendaftaran<br>WP/WR Pribadi</h3>
                     <p></p>
                   </div>
@@ -55,9 +54,9 @@
             
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-building"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">{{$bu or ''}}</div>
                   <h3>Pendaftaran<br>WP/WR Badan Usaha</h3>
                   <p></p>
                 </div>
@@ -66,9 +65,9 @@
             
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-file-text"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">{{$spt or ''}}</div>
                   <h3>Penetapan Pajak/Retribusi</h3>
                   <p></p>
                 </div>
@@ -77,10 +76,10 @@
             
              <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-file-text-o"></i></div>
-                  <div class="count">179</div>
-                  <h3>Penatapan<br>STPD/STRP</h3>
+                  <div class="count">0</div>
+                  <h3>Penetapan<br>STPD/STRP</h3>
                   <p></p>
                 </div>
               </div>
@@ -91,9 +90,9 @@
           <div class="row">
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-list-alt"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">0</div>
                   <h3>Pendataan SPT</h3>
                   <p></p>
                 </div>
@@ -102,9 +101,9 @@
            
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-check-square"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">{{$lhp or ''}}</div>
                   <h3>LHP</h3>
                   <p></p>
                 </div>
@@ -113,9 +112,9 @@
             
             <a href="#">
                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-money"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">0</div>
                   <h3>Penerimaan (Setoran)</h3>
                   <p></p>
                 </div>
@@ -124,9 +123,9 @@
            
             <a href="#">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="tile-stats">
+                <div class="tile-stats hvr-underline-reveal">
                   <div class="icon"><i class="fa fa-bank"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">0</div>
                   <h3>Setoran Ke Bank</h3>
                   <p></p>
                 </div>

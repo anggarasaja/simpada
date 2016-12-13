@@ -24,7 +24,9 @@
   padding: 10px 20px;
   margin-left: 70px;
   z-index: 2; }
-
+.right_col{
+  background-image: url("../../images/seigaiha.png") !important;
+}
 .nav-sm .navbar.nav_title {
   width: 70px; }
 
@@ -77,7 +79,7 @@
   left: 100%;
   position: absolute;
   top: 0;
-  width: 210px;
+  width: 220px;
   z-index: 4000;
   background: #3E5367;
   display: none; }
@@ -218,11 +220,19 @@ body .container.body .right_col {
   .nav-md .container.body .right_col, .nav-md .container.body .top_nav {
     width: 100%;
     margin: 0; }
+  /*.nav-sm .container.body .right_col, .nav-sm .container.body .top_nav {
+    width: 100%;
+    margin: 0; }*/
 
   .nav-md .container.body .col-md-3.left_col {
     display: none; }
+  /*.nav-sm .container.body .col-md-3.left_col {
+    display: none; }*/
 
   .nav-md .container.body .right_col {
+    width: 100%;
+    padding-right: 0; }
+  .nav-sm .container.body .right_col {
     width: 100%;
     padding-right: 0; }
 
@@ -328,7 +338,7 @@ body .container.body .right_col {
   background: #D9DEE4; }
 
 body {
-  color: #73879C;
+  /*color: #73879C;*/
   background: #2A3F54;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
@@ -1629,7 +1639,7 @@ h4.graph_title {
 .tile-stats .icon {
   width: 20px;
   height: 20px;
-  color: #BAB8B8;
+  color: #1ABB9C;
   position: absolute;
   right: 53px;
   top: 22px;
@@ -1797,6 +1807,9 @@ button,
   background: #BAB7B7; }
 
 @media (max-width: 767px) {
+span.section {
+text-align:center;
+}
   .mail_list {
     margin-bottom: 5px;
     display: inline-block; } }

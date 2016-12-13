@@ -6,15 +6,17 @@
         <ul class="nav child_menu">
           <li><a>Pendaftaran<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="{{ URL::to('daftar-pribadi') }}">Rekam Master WP/WR Pribadi</a>
+              <li class="sub_menu"><a href="{{ URL::to('daftar-pribadi/create') }}">Rekam Master WP/WR Pribadi</a>
+
               </li>
               <li><a href="{{ URL::to('daftar-badan') }}">Rekam Master WP/WR Badan Usaha</a>
               </li>
               <hr>
-              <li><a href="{{ URL::to('daftar-pribadi/create') }}">Daftar WP/WR Pribadi</a>
+              <li><a href="{{ URL::to('daftar-pribadi/table') }}">Daftar WP/WR Pribadi</a>
               </li>
-              <li><a href="{{ URL::to('daftar-badan/create') }}">Daftar WP/WR Badan Usaha</a>
+              <li><a href="{{ URL::to('daftar-bu/table') }}">Daftar WP/WR Badan Usaha</a>
               </li>
+
               <li><a href="{{ URL::to('cetak_kartu') }}">Cetak Kartu NPWPD</a>
               </li>
             </ul>
@@ -53,7 +55,7 @@
       <li><a><i class="fa fa-check-square-o"></i> Penetapan <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="index.html">Cetak Surat Ketetapan</a></li>
-          <li><a href="index2.html">Daftar Penetapan Pajak</a></li>
+          <li><a href="{{ URL::to('penetapan/table') }}">Daftar Penetapan Pajak</a></li>
           <li><a href="index3.html">Cetak Daftar Surat Ketetapan</a></li>
         </ul>
       </li>
@@ -66,7 +68,7 @@
               <hr>
               <li><a href="#">Daftar Setoran Official Assesment</a>
               </li>
-              <li><a href="#">Daftar Setoran Self Assesment</a>
+              <li><a href="{{ URL::to('bkp/daftar-self') }}">Daftar Setoran Self Assesment</a>
               </li>
               <hr>
               <li><a href="#">Cetak Buku Pembantu Penerimaan Sejenis (BPPS) via</a>
