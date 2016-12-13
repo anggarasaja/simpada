@@ -18,6 +18,8 @@
     <link href="{{ URL::asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{{ URL::asset('vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <!-- ColorBox -->
+    <link rel="stylesheet" href="{{asset('/css/colorbox/colorbox.css')}}">
     <!-- Datepicker -->
     <link href="{{ URL::asset('css/datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet"/>
     <link href="{{ URL::asset('vendors/datatables.net/css/jquery.dataTables.min.css') }}" rel="stylesheet"/>
@@ -181,6 +183,8 @@
 
         <!-- jQuery -->
     <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
+    <!-- jquery.inputmask -->
+    <script src="{{ asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
 
         <!-- bootstrap-daterangepicker -->
     <script src="{{ URL::asset('js/moment/moment.min.js') }}"></script>
@@ -194,6 +198,8 @@
     <script src="{{ URL::asset('vendors/nprogress/nprogress.js') }}"></script>
     <!-- iCheck -->
     <script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
+    <!-- ColorBox -->
+    <script src="{{asset('js/colorbox/jquery.colorbox.js')}}"></script>
 
     <!-- Datatables -->
     <script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>

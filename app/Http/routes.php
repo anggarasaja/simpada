@@ -53,3 +53,16 @@ Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
 Route::get('sptpd_hotel','Pendataan@sptpd_hotel');
 Route::get('sptpd_restoran','Pendataan@sptpd_restoran');
 
+Route::get('penyetoran','bkpController@penyetoran');
+Route::get('penyetoran/menu1','bkpController@menu1');
+Route::post('penyetoran/store_menu1','bkpController@store_menu1');
+Route::get('penyetoran/menu2','bkpController@menu2');
+Route::get('penyetoran/menu3','bkpController@menu3');
+Route::get('penyetoran/menu4','bkpController@menu4');
+Route::get('penyetoran/menu5','bkpController@menu5');
+Route::get('penyetoran/menu6','bkpController@menu6');
+Route::get('penyetoran/menu7','bkpController@menu7');
+
+Route::get('getkohir','bkpController@getkohir');
+
+
