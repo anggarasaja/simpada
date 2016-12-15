@@ -30,7 +30,7 @@
                     <div class="input-group">
                       <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="" required="required" type="text">
                       <span class="input-group-btn">
-                        <button class="btn btn-info" type="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                        <button class="btn btn-info" type="button" onclick="noreg()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                       </span>
                     </div>
                   </div>
@@ -39,14 +39,19 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Tanggal Entry 
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                   <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="tgl-daftar" name="tgl-daftar" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text">
+                   <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="tgl-daftar" name="tgl-daftar" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text" value="{{ date('d/m/Y') }}">
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">NPWPD
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                    <div class="input-group">
+                      <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                      <span class="input-group-btn">
+                        <button id="modal" class="btn btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">...</button>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <div class="item form-group">
@@ -196,11 +201,51 @@
         </div>
       </div>
     </div>
+
+
+
+      <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Pilihan Nomor Kohir</h4>
+            </div>
+            <div class="modal-body" style="overflow-x: auto;white-space: nowrap;">
+              <input type="hidden" id="a" onload="gettable()">
+            <table id="datatable-checkbox" class="table table-striped table-bordered" >
+              <thead>
+                <tr>
+                  <!-- <th>No</th> -->
+                  <th>No. Pendaftaran</th>
+                  <th>NPWP</th>
+                  <th>No. Kartu WP/WR</th>
+                  <th>Nama WP/WR</th>
+                  <th>Alamat</th>
+                  <th>Kelurahan</th>
+                  <th>Kecamatan</th>
+                  <th>Kabupaten</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+              </table>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
 @stop
 
 @push('scripts')
     <script>
       $(document).ready(function() {
+        noreg();
         var $datatable = $('#datatable');
 
         $datatable.dataTable({
@@ -210,5 +255,48 @@
           ]
         });
       });
+
+      function noreg(){
+        var tgl = $('#tgl-daftar').val();
+        $.ajax({
+          url : '{{ url("getnoreg/sptpd_hotel") }}',
+          type: 'GET',
+          data: { 'tgl' : tgl },
+        }).success(function(e){
+          $('#name').val(e);
+        });
+      }
+
+      $(document).on("click", "#modal", function () {
+        oTable = $('#datatable-checkbox').DataTable();
+           gettable();
+      });
+
+      function gettable(){
+        oTable.destroy();
+        var tgl = $('#tgl').val();
+         oTable = $('#datatable-checkbox').DataTable({
+          processing: true,
+          serverSide: true,    
+          ajax: {
+            url: "",
+            type: "GET",
+            data: { 'period_spt':period_spt,
+                    'objek_pajak': objek_pajak },
+          },
+          columns: [
+              // { data: '_id', name: '_id' },
+              { data: 'periode', name: 'periode' },
+              { data: 'netapajrek_kohir', name: 'netapajrek_kohir'},
+              { data: 'wp_wr_nama', name: 'wp_wr_nama'},
+              { data: 'npwprd2', name: 'npwprd2'},
+              { data: 'ketspt_singkat', name: 'ketspt_singkat'},
+              { data: 'netapajrek_tgl', name: 'netapajrek_tgl'},
+              { data: 'netapajrek_tgl_jatuh_tempo', name: 'netapajrek_tgl_jatuh_tempo'},
+              { data: 'masa_pajak', name: 'masa_pajak'},
+          ],
+          order: [[ 1, "asc" ]]
+        });
+      }
     </script>
 @endpush

@@ -6,33 +6,35 @@
         <ul class="nav child_menu">
           <li><a>Pendaftaran<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="{{ URL::to('daftar-pribadi') }}">Rekam Master WP/WR Pribadi</a>
+              <li class="sub_menu"><a href="{{ URL::to('daftar-pribadi/create') }}">Rekam Master WP/WR Pribadi</a>
+
               </li>
               <li><a href="{{ URL::to('daftar-badan') }}">Rekam Master WP/WR Badan Usaha</a>
               </li>
               <hr>
-              <li><a href="{{ URL::to('daftar-pribadi/create') }}">Daftar WP/WR Pribadi</a>
+              <li><a href="{{ URL::to('daftar-pribadi/table') }}">Daftar WP/WR Pribadi</a>
               </li>
-              <li><a href="{{ URL::to('daftar-badan/create') }}">Daftar WP/WR Badan Usaha</a>
+              <li><a href="{{ URL::to('daftar-bu/table') }}">Daftar WP/WR Badan Usaha</a>
               </li>
+
               <li><a href="{{ URL::to('cetak_kartu') }}">Cetak Kartu NPWPD</a>
               </li>
             </ul>
           </li>
           <li><a>Pendataan<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Rekam Data Objek Pajak dan Retribusi</a>
+              <li class="sub_menu"><a href="{{ url('pendataan/rekam_data') }}">Rekam Data Objek Pajak dan Retribusi</a>
               </li>
-              <li><a href="#level2_1">Rekam Laporan Hasil Pemeriksaan (LHP) -- Self Assessment</a>
+              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Self Assessment</a>
               </li>
-              <li><a href="#level2_1">Rekam Laporan Hasil Pemeriksaan (LHP) -- Retribusi</a>
+              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Retribusi</a>
               </li>
-              <li><a href="#level2_1">Rekam Laporan Hasil Pemeriksaan (LHP) -- Reklame</a>
+              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Reklame</a>
               </li>
               <hr>
-              <li><a href="#level2_1">Cetak Kartu Data</a>
+              <li><a href="#">Cetak Kartu Data</a>
               </li>
-              <li><a href="#level2_1">Cetak Daftar Kartu Data</a>
+              <li><a href="#">Cetak Daftar Kartu Data</a>
               </li>
             </ul>
           </li>
@@ -53,7 +55,7 @@
       <li><a><i class="fa fa-check-square-o"></i> Penetapan <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="index.html">Cetak Surat Ketetapan</a></li>
-          <li><a href="index2.html">Daftar Penetapan Pajak</a></li>
+          <li><a href="{{ URL::to('penetapan/table') }}">Daftar Penetapan Pajak</a></li>
           <li><a href="index3.html">Cetak Daftar Surat Ketetapan</a></li>
         </ul>
       </li>
@@ -61,40 +63,40 @@
         <ul class="nav child_menu">
           <li><a>Petugas Loket / Kasir Penerima<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Rekam Penerimaan Pajak/Retribusi</a>
+              <li class="sub_menu"><a href="{{ url('penyetoran')}}">Rekam Penerimaan Pajak/Retribusi</a>
               </li>
               <hr>
-              <li><a href="#level2_1">Daftar Setoran Official Assesment</a>
+              <li><a href="{{ URL::to('bkp/daftar-official') }}">Daftar Setoran Official Assesment</a>
               </li>
-              <li><a href="#level2_1">Daftar Setoran Self Assesment</a>
+              <li><a href="{{ URL::to('bkp/daftar-self') }}">Daftar Setoran Self Assesment</a>
               </li>
               <hr>
-              <li><a href="#level2_1">Cetak Buku Pembantu Penerimaan Sejenis (BPPS) via</a>
+              <li><a href="#">Cetak Buku Pembantu Penerimaan Sejenis (BPPS) via</a>
               </li>
-              <li><a href="#level2_1">Cetak Rekapitulasi Daftar Ketetapan dan Setoran</a>
+              <li><a href="#">Cetak Rekapitulasi Daftar Ketetapan dan Setoran</a>
               </li>
             </ul>
           </li>
           <li><a>Bendahara Penerima<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Rekam Penyetoran ke Bank</a>
+              <li class="sub_menu"><a href="#">Rekam Penyetoran ke Bank</a>
               </li>
-              <li><a href="#level2_1">Cetak STS (Surat Setoran ke Bank)</a>
+              <li><a href="#">Cetak STS (Surat Setoran ke Bank)</a>
               </li>
-              <li><a href="#level2_1">Cetak Laporan Pertanggungjawaban Penerimaan & Penyetoran Uang</a>
+              <li><a href="#">Cetak Laporan Pertanggungjawaban Penerimaan & Penyetoran Uang</a>
               </li>
-              <li><a href="#level2_1">Cetak Buku Kas Umum</a>
+              <li><a href="#">Cetak Buku Kas Umum</a>
               </li>
-              <li><a href="#level2_1">Cetak Buku Jurnal Keluar Kas</a>
+              <li><a href="#">Cetak Buku Jurnal Keluar Kas</a>
               </li>
-              <li><a href="#level2_1">Cetak Laporan Realisasi Penerimaan Pajak Daerah</a>
+              <li><a href="#">Cetak Laporan Realisasi Penerimaan Pajak Daerah</a>
               </li>
-              <li><a href="#level2_1">++ Realisasi Penerimaan Setoran Harian Pajak Daerah</a>
+              <li><a href="#">++ Realisasi Penerimaan Setoran Harian Pajak Daerah</a>
               </li>
               <hr>
-              <li><a href="#level2_1">Cetak Laporan Realisasi Penerimaan Pajak Daerah Bedasar tgl setor</a>
+              <li><a href="#">Cetak Laporan Realisasi Penerimaan Pajak Daerah Bedasar tgl setor</a>
               </li>
-              <li><a href="#level2_1">Cetak Laporan Pendapatan Diterima Dimuka</a>
+              <li><a href="#">Cetak Laporan Pendapatan Diterima Dimuka</a>
               </li>
             </ul>
           </li>
@@ -104,17 +106,17 @@
         <ul class="nav child_menu">
           <li><a>Pembukuan Penerimaan<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Cetak Buku Wajib Pajak / Retribusi ???</a>
+              <li class="sub_menu"><a href="#">Cetak Buku Wajib Pajak / Retribusi ???</a>
               </li>
             </ul>
           </li>
           <li><a>Pembukuan Pelaporan<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">* Cetak Laporan Realisasi Penerimaan Pendapatan Daerah</a>
+              <li class="sub_menu"><a href="#">* Cetak Laporan Realisasi Penerimaan Pendapatan Daerah</a>
               </li>
-              <li><a href="#level2_1">** Cetak REKAP Realisasi Penerimaan Pendapatan Daerah</a>
+              <li><a href="#">** Cetak REKAP Realisasi Penerimaan Pendapatan Daerah</a>
               </li>
-              <li><a href="#level2_1">Cetak Laporan Realisasi Penerimaan Pajak Daerah</a>
+              <li><a href="#">Cetak Laporan Realisasi Penerimaan Pajak Daerah</a>
               </li>
             </ul>
           </li>
@@ -134,55 +136,55 @@
         <ul class="nav child_menu">
           <li><a>Menu Master<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Tabel Pemda</a>
+              <li class="sub_menu"><a href="#">Tabel Pemda</a>
               </li>
-              <li><a href="#level2_1">Tabel Bidang Satuan Kerja Kab / Kota</a>
+              <li><a href="#">Tabel Bidang Satuan Kerja Kab / Kota</a>
               </li>
-              <li><a href="#level2_1">Tabel Satuan Kerja Kab / Kota</a>
+              <li><a href="#">Tabel Satuan Kerja Kab / Kota</a>
               </li>
-              <li><a href="#level2_1">Tabel Kecamatan</a>
+              <li><a href="#">Tabel Kecamatan</a>
               </li>
-              <li><a href="#level2_1">Tabel Kelurahan</a>
+              <li><a href="#">Tabel Kelurahan</a>
               </li>
-              <li><a href="#level2_1">Tabel Anggaran</a>
+              <li><a href="#">Tabel Anggaran</a>
               </li>
-              <li><a href="#level2_1">Tabel Rekening</a>
+              <li><a href="#">Tabel Rekening</a>
               </li>
-              <li><a href="#level2_1">Tabel Pos Anggaran</a>
+              <li><a href="#">Tabel Pos Anggaran</a>
               </li>
-              <li><a href="#level2_1">Tabel Pejabat</a>
+              <li><a href="#">Tabel Pejabat</a>
               </li>
-              <li><a href="#level2_1">Tabel Operator</a>
+              <li><a href="#">Tabel Operator</a>
               </li>
-              <li><a href="#level2_1">Tabel Keterangan SPT</a>
+              <li><a href="#">Tabel Keterangan SPT</a>
               </li>
-              <li><a href="#level2_1">Tabel Printer</a>
+              <li><a href="#">Tabel Printer</a>
               </li>
-              <li><a href="#level2_1">Tabel Kode Usaha</a>
+              <li><a href="#">Tabel Kode Usaha</a>
               </li>
-              <li><a href="#level2_1">Jatuh Tempo </a>
+              <li><a href="#">Jatuh Tempo </a>
               </li>
-              <li><a href="#level2_1">Tabel Password</a>
+              <li><a href="#">Tabel Password</a>
               </li>
-              <li><a href="#level2_1">History Log </a>
+              <li><a href="#">History Log </a>
               </li>
-              <li><a href="#level2_1">Tabel Bank</a>
+              <li><a href="#">Tabel Bank</a>
               </li>
             </ul>
           </li>
           <li><a>Menu Reklame<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Tabel NJOP Reklame</a>
+              <li class="sub_menu"><a href="#">Tabel NJOP Reklame</a>
               </li>
-              <li><a href="#level2_1">Tabel Ayat Jenis NJOPR</a>
+              <li><a href="#">Tabel Ayat Jenis NJOPR</a>
               </li>
-              <li><a href="#level2_1">Sudut Pandang</a>
+              <li><a href="#">Sudut Pandang</a>
               </li>
-              <li><a href="#level2_1">Kelas Jalan</a>
+              <li><a href="#">Kelas Jalan</a>
               </li>
-              <li><a href="#level2_1">Sudut Pandang dan Kelas Jalan</a>
+              <li><a href="#">Sudut Pandang dan Kelas Jalan</a>
               </li>
-              <li><a href="#level2_1">Reklame - Lokasi Reklame</a>
+              <li><a href="#">Reklame - Lokasi Reklame</a>
               </li>
             </ul>
           </li>

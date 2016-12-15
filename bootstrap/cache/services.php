@@ -28,6 +28,8 @@
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'App\\Providers\\CustomAuthProvider',
     26 => 'Yajra\\Datatables\\DatatablesServiceProvider',
+    27 => 'Collective\\Html\\HtmlServiceProvider',
+    28 => 'anlutro\\LaravelSettings\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -132,6 +134,12 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'anlutro\\LaravelSettings\\SettingsManager' => 'anlutro\\LaravelSettings\\ServiceProvider',
+    'anlutro\\LaravelSettings\\SettingStore' => 'anlutro\\LaravelSettings\\ServiceProvider',
   ),
   'when' => 
   array (
@@ -169,6 +177,12 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
+    array (
+    ),
+    'anlutro\\LaravelSettings\\ServiceProvider' => 
     array (
     ),
   ),
