@@ -21,7 +21,7 @@
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
-                  <a href="#" class="btn btn-md btn-success"><i class="fa fa-print"></i>&nbsp; Cetak</a>
+                  <a href="{{ URL::to('cetak_npwpd') }}"  class="btn btn-md btn-success"><i class="fa fa-print"></i>&nbsp; Cetak</a>
                     <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
                       <thead>
                         <tr>

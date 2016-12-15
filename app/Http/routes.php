@@ -49,6 +49,7 @@ Route::get('daftar-badan/create','Pendaftaran@wpwrbadan');
 Route::post('daftar-badan/store','Pendaftaran@store_wpwrbadan');
 
 Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
+Route::get('cetak_npwpd','Pendaftaran@cetak_npwpd');
 
 Route::get('sptpd_hotel','Pendataan@sptpd_hotel');
 Route::get('sptpd_restoran','Pendataan@sptpd_restoran');
