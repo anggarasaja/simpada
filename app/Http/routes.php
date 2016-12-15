@@ -65,11 +65,6 @@ Route::get('datatables/wp-bu','Pendaftaran@wpBuDt');
 
 Route::get('datatables/spt','Penetapan@sptDt');
 
-Route::get('datatables/self','BKP@setoranSelfDt');
-Route::get('bkp/daftar-self','BKP@daftarSetoranSelf');
-Route::get('datatables/official','BKP@setoranOfficialDt');
-Route::get('bkp/daftar-official','BKP@daftarSetoranOfficial');
-
 // Route::get('daftar-pribadi/','Pendaftaran@show_wpwrpribadi');
 // Route::get('daftar-pribadi/create','Pendaftaran@wpwrpribadi');
 // Route::post('daftar-pribadi/store','Pendaftaran@store_wpwrpribadi');
@@ -80,8 +75,16 @@ Route::post('daftar-badan/store','Pendaftaran@store_wpwrbadan');
 
 Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
 
-Route::get('sptpd_hotel','Pendataan@sptpd_hotel');
-Route::get('sptpd_restoran','Pendataan@sptpd_restoran');
+//Pendataan
+Route::get('pendataan/rekam_data','Pendataan@rekam_data');
+Route::get('pendataan/{id_pajak}/sptpd','Pendataan@sptpd');
+Route::get('getnoreg/sptpd_hotel','Pendataan@getnoreg');
+
+//BKP
+Route::get('datatables/self','bkpController@setoranSelfDt');
+Route::get('bkp/daftar-self','bkpController@daftarSetoranSelf');
+Route::get('datatables/official','bkpController@setoranOfficialDt');
+Route::get('bkp/daftar-official','bkpController@daftarSetoranOfficial');
 
 Route::get('penyetoran','bkpController@penyetoran');
 Route::get('penyetoran/menu1','bkpController@menu1');

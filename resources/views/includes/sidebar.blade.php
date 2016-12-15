@@ -23,18 +23,18 @@
           </li>
           <li><a>Pendataan<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Rekam Data Objek Pajak dan Retribusi</a>
+              <li class="sub_menu"><a href="{{ url('pendataan/rekam_data') }}">Rekam Data Objek Pajak dan Retribusi</a>
               </li>
-              <li><a href="#level2_1">Rekam Laporan Hasil Pemeriksaan (LHP) -- Self Assessment</a>
+              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Self Assessment</a>
               </li>
-              <li><a href="#level2_1">Rekam Laporan Hasil Pemeriksaan (LHP) -- Retribusi</a>
+              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Retribusi</a>
               </li>
-              <li><a href="#level2_1">Rekam Laporan Hasil Pemeriksaan (LHP) -- Reklame</a>
+              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Reklame</a>
               </li>
               <hr>
-              <li><a href="#level2_1">Cetak Kartu Data</a>
+              <li><a href="#">Cetak Kartu Data</a>
               </li>
-              <li><a href="#level2_1">Cetak Daftar Kartu Data</a>
+              <li><a href="#">Cetak Daftar Kartu Data</a>
               </li>
             </ul>
           </li>
@@ -66,7 +66,7 @@
               <li class="sub_menu"><a href="{{ url('penyetoran')}}">Rekam Penerimaan Pajak/Retribusi</a>
               </li>
               <hr>
-              <li><a href="#">Daftar Setoran Official Assesment</a>
+              <li><a href="{{ URL::to('bkp/daftar-official') }}">Daftar Setoran Official Assesment</a>
               </li>
               <li><a href="{{ URL::to('bkp/daftar-self') }}">Daftar Setoran Self Assesment</a>
               </li>
