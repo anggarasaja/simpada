@@ -89,7 +89,10 @@ Route::get('bkp/daftar-official','bkpController@daftarSetoranOfficial');
 
 Route::get('penyetoran','bkpController@penyetoran');
 Route::get('penyetoran/menu1','bkpController@menu1');
+Route::get('penyetoran/editmenu1','bkpController@editmenu1');
 Route::post('penyetoran/store_menu1','bkpController@store_menu1');
+Route::post('penyetoran/update_menu1','bkpController@update_menu1');
+
 Route::get('penyetoran/menu2','bkpController@menu2');
 Route::get('penyetoran/menu3','bkpController@menu3');
 Route::get('penyetoran/menu4','bkpController@menu4');

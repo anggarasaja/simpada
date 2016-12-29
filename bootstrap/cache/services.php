@@ -30,6 +30,7 @@
     26 => 'Yajra\\Datatables\\DatatablesServiceProvider',
     27 => 'Collective\\Html\\HtmlServiceProvider',
     28 => 'anlutro\\LaravelSettings\\ServiceProvider',
+    29 => 'Laracasts\\Flash\\FlashServiceProvider',
   ),
   'eager' => 
   array (
@@ -48,6 +49,7 @@
     12 => 'App\\Providers\\RouteServiceProvider',
     13 => 'App\\Providers\\CustomAuthProvider',
     14 => 'Yajra\\Datatables\\DatatablesServiceProvider',
+    15 => 'Laracasts\\Flash\\FlashServiceProvider',
   ),
   'deferred' => 
   array (

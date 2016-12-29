@@ -168,6 +168,9 @@ return [
         //ANLUTRO SETTING
         anlutro\LaravelSettings\ServiceProvider::class,
 
+        //flash
+        Laracasts\Flash\FlashServiceProvider::class,
+
     ],
 
     /*

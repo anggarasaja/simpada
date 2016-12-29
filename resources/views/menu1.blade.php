@@ -14,7 +14,11 @@
     </div>
     <div class="clearfix"></div>
 
+    @if(!isset($post))
     <form action="{{url('penyetoran/store_menu1')}}" class="form-horizontal form-label-left" method="POST">
+    @else
+    <form action="{{url('penyetoran/update_menu1')}}" class="form-horizontal form-label-left" method="POST">
+    @endif
     <div class="row">
       <div class=" col-md-6 col-xs-12">
         <!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
@@ -31,45 +35,74 @@
             <div class="x_content">
               <br>
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                  <div class="item form-group">
+              <input type="hidden" id="setorpajret_id_penetapan" name="setorpajret_id_penetapan" >
+              @if (session()->has('flash_notification.message'))
+                  <div class="alert alert-{{ session('flash_notification.level') }}">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                      {!! session('flash_notification.message') !!}
+                  </div>
+              @endif
+                  <div class="item form-group{{ $errors->has('period_spt') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="period_spt">Period SPT
                     </label>
                     <div class="col-md-8 col-sm-6 col-xs-12">
-                      <input id="period_spt" data-inputmask="'mask': '9999'"  class="form-control col-md-7 col-xs-12" type="text" name="period_spt">
+                      <input id="period_spt" data-inputmask="'mask': '9999'"  class="form-control col-md-7 col-xs-12" type="text" name="period_spt" value="{{ (isset($post)) ? date('Y',strtotime($post->setorpajret_tgl_bayar)) : date('Y')}}">
+                     @if ($errors->has('period_spt'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('period_spt') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
-                  <div class="item form-group">
+                  <div class="item form-group{{ $errors->has('objek_pajak') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="objek_pajak">Objek Pajak
                     </label>
                     <div class="col-md-8 col-sm-6 col-xs-12">
-                      <select id="objek_pajak" name="objek_pajak" required="required" class="form-control col-md-7 col-xs-12">
+                      <select id="objek_pajak" name="objek_pajak" class="form-control col-md-7 col-xs-12">
                             <option value="">-- Pilih Objek Pajak --</option>
                             <option value="4">Pajak Reklame</option>
                             <option value="8">Pajak Air Tanah</option>
                             <option value="10">Retribusi Kekayaan Daerah</option>
                       </select>
+                      @if ($errors->has('objek_pajak'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('objek_pajak') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group{{ $errors->has('no_kohir') ? ' has-error' : '' }}">
                         <label class="col-sm-3 control-label">Nomor Kohir</label>
 
                         <div class="col-sm-9">
                           <div class="input-group">
-                        <input id="no_kohir" class="form-control" type="text" name="no_kohir">
+                            <input id="no_kohir" class="form-control" type="text" name="no_kohir">
                             <span class="input-group-btn">
                                 <button id="modal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" >...</button>
                             </span>
                           </div>
+                      @if ($errors->has('no_kohir'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('no_kohir') }}</strong>
+                          </span>
+                      @endif
                         </div>
                       </div>
-                  <div class="item form-group">
+                  <div class="item form-group{{ $errors->has('tgl_setor') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tgl_setor">Tanggal Penyetoran 
                     </label>
                     <div class="col-md-8 col-sm-6 col-xs-12">
                      <input data-provide="datepicker" data-inputmask="'mask': '99/99/9999'" data-date-format="dd/mm/yyyy" id="tgl_setor" name="tgl_setor" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text" value="{{date('d/m/Y')}}">
+                      
+                      @if ($errors->has('tgl_setor'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('tgl_setor') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
-                  <div class="item form-group">
+                  <div class="item form-group{{ $errors->has('bendahara') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="bendahara">Bendahara 
                     </label>
                     <div class="col-md-8 col-sm-6 col-xs-12">
@@ -79,9 +112,15 @@
                         <option value="{{ $key}}">{{ $value }}</option>
                         @endforeach
                       </select>
+                      
+                      @if ($errors->has('bendahara'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('bendahara') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
-                  <div class="item form-group">
+                  <div class="item form-group{{ $errors->has('via_bayar') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="via_bayar">Via Bayar 
                     </label>
                     <div class="col-md-8 col-sm-6 col-xs-12">
@@ -91,6 +130,12 @@
                         <option value="{{ $key}}">{{ $value }}</option>
                         @endforeach
                       </select>
+                    
+                      @if ($errors->has('via_bayar'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('via_bayar') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
                   <div class="ln_solid"></div>
@@ -103,7 +148,7 @@
           </div>
         <!-- </div> -->
       </div>
-    </form>
+    <!-- </form> -->
 
       <div class=" col-md-6 col-xs-12">
         <!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
@@ -118,7 +163,7 @@
             </div>
             
             <div class="x_content">
-              <form novalidate>
+              <!-- <form novalidate> -->
                 <div class=" form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama_wp">Nama WP
                   </label>
@@ -146,16 +191,22 @@
                    <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="tgl_tetap" name="tgl_tetap" class="date-picker form-control col-md-7 col-xs-12 active" readonly type="text">
                   </div>
                 </div>
-                <div class="item form-group">
+                <div class="item form-group{{ $errors->has('kd_tetap') ? ' has-error' : '' }}">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kd_tetap">Kode Ketetapan 
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                    <select id="kd_tetap" name="kd_tetap" class="form-control col-md-7 col-xs-12" readonly>
+                    <select id="kd_tetap" name="kd_tetap" class="form-control col-md-7 col-xs-12">
                       <option value="">--</option>
                       @foreach($ket as $key => $value)
                       <option value="{{ $key}}">{{ $value }}</option>
                       @endforeach
                     </select>
+                  
+                      @if ($errors->has('kd_tetap'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('kd_tetap') }}</strong>
+                          </span>
+                      @endif
                   </div>
                 </div>
                 <div class=" form-group">
@@ -189,7 +240,7 @@
             </div>
             <div class="modal-body" style="overflow-x: auto;white-space: nowrap;">
               <input type="hidden" id="a" onload="gettable()">
-            <table id="datatable-checkbox" class="table table-striped table-bordered" >
+            <table id="table-kohir" class="table table-striped table-bordered" >
               <thead>
                 <tr>
                   <!-- <th>No</th> -->
@@ -202,9 +253,10 @@
                   <th>Tgl. Jatuh Tempo</th>
                   <th>Jml. Penetapan</th>
                   <th>Masa Pajak</th>
+                  <th></th>
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody data-dismiss="modal"></tbody>
               </table>
             </div>
             <!-- <div class="modal-footer">
@@ -228,13 +280,14 @@
       });
 
       $(document).on("click", "#modal", function () {
-        oTable = $('#datatable-checkbox').DataTable();
+        oTable = $('#table-kohir').DataTable();
            gettable();
       });
-      $(document).on("click", "tr td .kohir", function (e) {
-          var no_kohir = $(this).html();
-          $('#no_kohir').val(no_kohir);
+      $('#table-kohir tbody').on("click", "tr td", function () {
+          var sData = oTable.row( this ).data();
+          // console.log(sData );
 
+          var no_kohir = $(this).closest("tr").children("td").eq(1).html();
           var nama_wp = $(this).closest("tr").children("td").eq(2).html();
           var npwp = $(this).closest("tr").children("td").eq(3).html();
           var masa_pajak = $(this).closest("tr").children("td").eq(8).html();
@@ -243,6 +296,9 @@
           var tgl_tempo = $(this).closest("tr").children("td").eq(6).html();
           var pajak = $(this).closest("tr").children("td").eq(7).html();
 
+          var setorpajret_id_penetapan = sData.netapajrek_id;
+
+          $('#no_kohir').val(no_kohir);
           $('#nama_wp').val(nama_wp);
           $('#npwp').val(npwp);
           $('#masa_pajak').val(masa_pajak);
@@ -250,15 +306,15 @@
           $('#kd_tetap').val(kd_tetap);
           $('#tgl_tempo').val(tgl_tempo);
           $('#pajak').val(pajak);
-
-          return false; 
+          $('#setorpajret_id_penetapan').val(setorpajret_id_penetapan);
+          // return false; 
         } );
 
       function gettable(){
         oTable.destroy();
         var period_spt = $('#period_spt').val();
         var objek_pajak = $('#objek_pajak').val();
-         oTable = $('#datatable-checkbox').DataTable({
+         oTable = $('#table-kohir').DataTable({
           processing: true,
           serverSide: true,    
           ajax: {
@@ -278,6 +334,7 @@
               { data: 'netapajrek_tgl_jatuh_tempo', name: 'netapajrek_tgl_jatuh_tempo'},
               { data: 'netapajrek_besaran', name: 'netapajrek_besaran'},
               { data: 'masa_pajak', name: 'masa_pajak'},
+              { data: 'netapajrek_id_spt', visible: false,name: 'netapajrek_id_spt'},
           ],
           order: [[ 1, "asc" ]]
         });

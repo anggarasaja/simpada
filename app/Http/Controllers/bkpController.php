@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\ref_jenis_pajak_retribusi;
 use App\v_penyetoran_sspd;
 use App\penetapan_pajak_retribusi;
+use App\setoran_pajak_retribusi;
+use App\kohir;
 use Datatables;
 use DB;
 
@@ -37,7 +39,7 @@ class bkpController extends Controller
     	return view('penyetoran')->with(compact('array','link','data_pajak'));
     }
 
-    //rekam pajak retribusi
+    //rekam setoran pajak retribusi
     public function menu1(){
         $getket = DB::select('select * from keterangan_spt');
         foreach ($getket as $key) {
@@ -54,12 +56,54 @@ class bkpController extends Controller
         return view('menu1')->with(compact('ket','pejda','viabayar'));
     }
 
+    public function editmenu1($id){
+        $getket = DB::select('select * from keterangan_spt');
+        foreach ($getket as $key) {
+            $ket[$key->ketspt_singkat] = '['.$key->ketspt_kode.'] '.$key->ketspt_ket;
+        }
+        $getpejda = DB::select('select * from v_pejabat_daerah');
+        foreach ($getpejda as $key) {
+            $pejda[$key->pejda_id] = $key->ref_japeda_nama.' - '.$key->pejda_nama;
+        }
+        $getbayar = DB::select('select * from ref_via_bayar_pajak_retribusi');
+        foreach ($getbayar as $key) {
+            $viabayar[$key->ref_viabaypajret_id] = $key->ref_viabaypajret_ket;
+        }
+
+        $post = setoran_pajak_retribusi::find($id);
+        return view('menu1')->with(compact('post','ket','pejda','viabayar'));
+    }
+
     public function store_menu1(Request $request){
         // dd($request);
-        dd($request->input());
-        $insert = new penetapan_pajak_retribusi;
-        $insert->netapajrek_id_spt;
+        // dd($request->input());die;
+        $this->validate($request, [
+            'period_spt' => 'required|max:4',
+            'objek_pajak' => 'required',
+            'no_kohir' => 'required',
+            'tgl_setor' => 'required',
+            'bendahara' => 'required',
+            'via_bayar' => 'required',
+            'kd_tetap' => 'required',
+        ]);
+        $getnobukti = kohir::where('kohir_thn','=',date('Y'))->get();
+        // dd($getnobukti);die;
+        $nobukti = $getnobukti[0]->kohir_no_bukti;
+        $nobukti++;
+        // print_r($nobukti);
+        $get_kdtetap = DB::select('select ketspt_id from keterangan_spt where ketspt_singkat = ?',[$request->input('kd_tetap')]);
+        $insert = new setoran_pajak_retribusi;
+        // $insert->setorpajret_id = $id+1;
+        $insert->setorpajret_id_penetapan = $request->input('setorpajret_id_penetapan');
+        $insert->setorpajret_no_bukti = $nobukti;
+        $insert->setorpajret_tgl_bayar = date("Y-m-d",strtotime($request->input('tgl_setor')));
+        $insert->setorpajret_jlh_bayar = $request->input('pajak');
+        $insert->setorpajret_via_bayar = $request->input('via_bayar');
+        $insert->setorpajret_jenis_ketetapan = $get_kdtetap[0]->ketspt_id;
+        $insert->save();
 
+        flash('Data Berhasil Ditambahkan !', 'success');
+        return redirect('penyetoran/editmenu1');
     }
 
     public function menu2(){
@@ -94,7 +138,7 @@ class bkpController extends Controller
                                 ->get();
 
         return Datatables::of($get)
-        ->edit_column('netapajrek_kohir','<center><a id="kohirid[]" class="kohir" href="#" data-dismiss="modal">{{$netapajrek_kohir}}</a></center>')
+        // ->edit_column('netapajrek_kohir','{{$netapajrek_kohir}}')
         ->edit_column('netapajrek_besaran','@if($netapajrek_besaran == "") 0
                                             @else {{ $netapajrek_besaran }}
                                             @endif
