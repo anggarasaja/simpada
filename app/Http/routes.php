@@ -79,7 +79,10 @@ Route::get('cetak_npwpd','Pendaftaran@cetak_npwpd');
 //Pendataan
 Route::get('pendataan/rekam_data','Pendataan@rekam_data');
 Route::get('pendataan/{id_pajak}/sptpd','Pendataan@sptpd');
-Route::get('getnoreg/sptpd_hotel','Pendataan@getnoreg');
+Route::get('pendataan/getnoreg','Pendataan@getnoreg');
+Route::get('pendataan/getnpwpd','Pendataan@getnpwpd');
+
+Route::post('pendataan/store_data_reklame','Pendataan@store_data_reklame');
 
 //BKP
 Route::get('datatables/self','bkpController@setoranSelfDt');
@@ -89,7 +92,7 @@ Route::get('bkp/daftar-official','bkpController@daftarSetoranOfficial');
 
 Route::get('penyetoran','bkpController@penyetoran');
 Route::get('penyetoran/menu1','bkpController@menu1');
-Route::get('penyetoran/editmenu1','bkpController@editmenu1');
+Route::get('penyetoran/editmenu1/{id}','bkpController@editmenu1');
 Route::post('penyetoran/store_menu1','bkpController@store_menu1');
 Route::post('penyetoran/update_menu1','bkpController@update_menu1');
 

@@ -69,14 +69,11 @@ class bkpController extends Controller
         foreach ($getbayar as $key) {
             $viabayar[$key->ref_viabaypajret_id] = $key->ref_viabaypajret_ket;
         }
-
         $post = setoran_pajak_retribusi::find($id);
         return view('menu1')->with(compact('post','ket','pejda','viabayar'));
     }
 
     public function store_menu1(Request $request){
-        // dd($request);
-        // dd($request->input());die;
         $this->validate($request, [
             'period_spt' => 'required|max:4',
             'objek_pajak' => 'required',
@@ -87,23 +84,25 @@ class bkpController extends Controller
             'kd_tetap' => 'required',
         ]);
         $getnobukti = kohir::where('kohir_thn','=',date('Y'))->get();
-        // dd($getnobukti);die;
+
         $nobukti = $getnobukti[0]->kohir_no_bukti;
         $nobukti++;
-        // print_r($nobukti);
+        DB::table('kohir')->where('kohir_thn',date("Y"))->update(['kohir_no_bukti'=>$nobukti]);
+        $tgl_setor = explode("/", $request->input('tgl_setor'));
+
         $get_kdtetap = DB::select('select ketspt_id from keterangan_spt where ketspt_singkat = ?',[$request->input('kd_tetap')]);
+
         $insert = new setoran_pajak_retribusi;
-        // $insert->setorpajret_id = $id+1;
         $insert->setorpajret_id_penetapan = $request->input('setorpajret_id_penetapan');
         $insert->setorpajret_no_bukti = $nobukti;
-        $insert->setorpajret_tgl_bayar = date("Y-m-d",strtotime($request->input('tgl_setor')));
+        $insert->setorpajret_tgl_bayar = $tgl_setor[2].'-'.$tgl_setor[1].'-'.$tgl_setor[0];
         $insert->setorpajret_jlh_bayar = $request->input('pajak');
         $insert->setorpajret_via_bayar = $request->input('via_bayar');
         $insert->setorpajret_jenis_ketetapan = $get_kdtetap[0]->ketspt_id;
         $insert->save();
 
         flash('Data Berhasil Ditambahkan !', 'success');
-        return redirect('penyetoran/editmenu1');
+        return redirect('penyetoran/editmenu1/'.$insert->setorpajret_id);
     }
 
     public function menu2(){
