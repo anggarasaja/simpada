@@ -607,7 +607,7 @@ abstract class BaseEngine implements DataTableEngineContract
     public function make($mDataSupport = false, $orderFirst = false)
     {
         $this->totalRecords = $this->totalCount();
-
+        // echo "jumlah:".$this->totalRecords;
         if ($this->totalRecords) {
             $this->orderRecords(! $orderFirst);
             $this->filterRecords();

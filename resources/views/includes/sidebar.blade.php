@@ -9,7 +9,7 @@
               <li class="sub_menu"><a href="{{ URL::to('daftar-pribadi/create') }}">Rekam Master WP/WR Pribadi</a>
 
               </li>
-              <li><a href="{{ URL::to('daftar-badan') }}">Rekam Master WP/WR Badan Usaha</a>
+              <li><a href="{{ URL::to('daftar-bu/create') }}">Rekam Master WP/WR Badan Usaha</a>
               </li>
               <hr>
               <li><a href="{{ URL::to('daftar-pribadi/table') }}">Daftar WP/WR Pribadi</a>

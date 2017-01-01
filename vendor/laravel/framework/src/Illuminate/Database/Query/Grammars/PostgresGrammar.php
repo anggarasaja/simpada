@@ -226,6 +226,7 @@ class PostgresGrammar extends Grammar
         }
 
         return '"'.str_replace('"', '""', $value).'"';
+        // return ''.str_replace('"', '""', $value).'';
     }
 
     /**

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "75c48789b10f23d5bb2e9c40c398d1ee",
-    "content-hash": "472fbcba8032b6c1243ed563692cc673",
+    "hash": "27b32063d119052b4c1766326c7dd898",
+    "content-hash": "bc0d185b662d06b451520f342c97aca8",
     "packages": [
         {
             "name": "anlutro/l4-settings",
@@ -106,6 +106,53 @@
                 "preload"
             ],
             "time": "2016-09-16 12:50:15"
+        },
+        {
+            "name": "codedge/laravel-fpdf",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codedge/laravel-fpdf.git",
+                "reference": "0ee16238e9a2c04eb641f82abc7bbf7f078c64be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codedge/laravel-fpdf/zipball/0ee16238e9a2c04eb641f82abc7bbf7f078c64be",
+                "reference": "0ee16238e9a2c04eb641f82abc7bbf7f078c64be",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codedge\\Fpdf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Holger Lösken",
+                    "email": "holger.loesken@codedge.de"
+                }
+            ],
+            "description": "Laravel 5 package for use with Fpdf. It ships with Fpdf 1.81.",
+            "keywords": [
+                "fpdf",
+                "laravel",
+                "pdf"
+            ],
+            "time": "2016-06-21 08:26:10"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1371,6 +1418,71 @@
                 "shell"
             ],
             "time": "2016-03-09 05:03:14"
+        },
+        {
+            "name": "setasign/fpdf",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Setasign/FPDF.git",
+                "reference": "2c68c9e6c034ac3187d25968790139a73184cdb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Setasign/FPDF/zipball/2c68c9e6c034ac3187d25968790139a73184cdb1",
+                "reference": "2c68c9e6c034ac3187d25968790139a73184cdb1",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "fpdf.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "no usage restriction"
+            ],
+            "authors": [
+                {
+                    "name": "Olivier Plathey",
+                    "email": "oliver@fpdf.org",
+                    "homepage": "http://fpdf.org/"
+                }
+            ],
+            "description": "FPDF is a PHP class which allows to generate PDF files with pure PHP. F from FPDF stands for Free: you may use it for any kind of usage and modify it to suit your needs.",
+            "homepage": "http://www.fpdf.org",
+            "keywords": [
+                "fpdf",
+                "pdf"
+            ],
+            "time": "2016-01-01 17:47:15"
+        },
+        {
+            "name": "smichaelsen/fpdf-tables",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smichaelsen/fpdf-tables.git",
+                "reference": "5605f556a1dce83e32004888b7b5f013c52cd72e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smichaelsen/fpdf-tables/zipball/5605f556a1dce83e32004888b7b5f013c52cd72e",
+                "reference": "5605f556a1dce83e32004888b7b5f013c52cd72e",
+                "shasum": ""
+            },
+            "require": {
+                "setasign/fpdf": "1.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Smichaelsen\\FpdfTables\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2016-08-02 13:21:49"
         },
         {
             "name": "swiftmailer/swiftmailer",

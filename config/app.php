@@ -168,6 +168,9 @@ return [
         //ANLUTRO SETTING
         anlutro\LaravelSettings\ServiceProvider::class,
 
+        //fpdf
+        Codedge\Fpdf\FpdfServiceProvider::class,
+
     ],
 
     /*
@@ -221,6 +224,8 @@ return [
         //anlutro setting
         'Setting' => anlutro\LaravelSettings\Facade::class,
 
+        //fpdf
+        'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
     ],
 
 ];

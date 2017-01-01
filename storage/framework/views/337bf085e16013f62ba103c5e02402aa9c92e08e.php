@@ -8,7 +8,8 @@
   $wp_wr_pekerjaan = (isset($wp_wr_pekerjaan))?$wp_wr_pekerjaan:'';
 ?>
   <div class="row">
-      <form class="form-horizontal form-label-left" method="POST" action="<?php echo e(URL::to('daftar-pribadi/store')); ?>">
+    <div class="x_panel">
+       <form class="form-horizontal form-label-left" method="POST" action="<?php echo e(URL::to('daftar-pribadi/store')); ?>">
         <span class="section">Form Pendaftaran WP/WR Pribadi: <label><?php echo e(isset($jenis) ? $jenis : ''); ?></label>  
         <?php if(isset($wp_wr_id)){ ?>
         <span class="label label-success" style="padding: .3em"><?php echo e(strtoupper($wp_wr_jenis)); ?>.<?php echo e(isset($wp_wr_gol) ? $wp_wr_gol : ''); ?>.<?php echo e(isset($wp_wr_no_urut) ? $wp_wr_no_urut : ''); ?>.<?php echo e(isset($camat_kode) ? $camat_kode : ''); ?>.<?php echo e(isset($lurah_kode) ? $lurah_kode : ''); ?></span>
@@ -269,6 +270,8 @@
         </div>
         </div>
       </form>
+    </div>
+     
   
   </div>
 <?php $__env->stopSection(); ?>

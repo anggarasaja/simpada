@@ -48,10 +48,16 @@ abstract class Grammar
      */
     public function wrap($value, $prefixAlias = false)
     {
+        // print_r($value."<br>");
         if ($this->isExpression($value)) {
             return $this->getValue($value);
         }
-
+        // if ()
+        preg_match('#\((.*?)\)#', $value, $match);
+        if (!empty($match)) {
+            // print_r($match[1]);
+            $value = $match[1];
+        }
         // If the value being wrapped has a column alias we will need to separate out
         // the pieces so we can wrap each of the segments of the expression on it
         // own, and then joins them both back together with the "as" connector.
@@ -61,8 +67,10 @@ abstract class Grammar
             if ($prefixAlias) {
                 $segments[2] = $this->tablePrefix.$segments[2];
             }
-
-            return $this->wrap($segments[0]).' as '.$this->wrapValue($segments[2]);
+            if($segments[2] != "TEXT"){
+                $segments[2] = $this->wrapValue($segments[2]);
+            }
+            return $this->wrap($segments[0]).' as '.$segments[2];
         }
 
         $wrapped = [];

@@ -30,6 +30,7 @@
     26 => 'Yajra\\Datatables\\DatatablesServiceProvider',
     27 => 'Collective\\Html\\HtmlServiceProvider',
     28 => 'anlutro\\LaravelSettings\\ServiceProvider',
+    29 => 'Codedge\\Fpdf\\FpdfServiceProvider',
   ),
   'eager' => 
   array (
@@ -140,6 +141,7 @@
     'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'anlutro\\LaravelSettings\\SettingsManager' => 'anlutro\\LaravelSettings\\ServiceProvider',
     'anlutro\\LaravelSettings\\SettingStore' => 'anlutro\\LaravelSettings\\ServiceProvider',
+    'fpdf' => 'Codedge\\Fpdf\\FpdfServiceProvider',
   ),
   'when' => 
   array (
@@ -183,6 +185,9 @@
     array (
     ),
     'anlutro\\LaravelSettings\\ServiceProvider' => 
+    array (
+    ),
+    'Codedge\\Fpdf\\FpdfServiceProvider' => 
     array (
     ),
   ),

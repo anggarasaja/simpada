@@ -59,7 +59,8 @@ class Datatables
         } else {
             $ins = $builder instanceof Collection ? $datatables->usingCollection($builder) : $datatables->usingEloquent($builder);
         }
-
+        // print_r($ins);
+        // echo "tes";
         return $ins;
     }
 

@@ -204,6 +204,7 @@ class Helper
             case 'pgsql':
             case 'sqlite':
                 $column .= '"' . str_replace('"', '""', $key) . '"' . '.';
+                // $column .=  $key . '"' . '.';
                 break;
 
             default:
