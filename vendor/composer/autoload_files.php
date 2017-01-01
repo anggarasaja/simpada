@@ -17,4 +17,5 @@ return array(
     'f0906e6318348a765ffb6eb24e0d0938' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
     '9b28c31e739bc1dcc86b075bfe21d616' => $vendorDir . '/efriandika/laravel-settings/src/helpers.php',
+    'e23faeee409e941dc9b4c80386209c39' => $vendorDir . '/laracasts/flash/src/Laracasts/Flash/functions.php',
 );

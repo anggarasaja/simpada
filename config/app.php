@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -170,6 +170,8 @@ return [
 
         //fpdf
         Codedge\Fpdf\FpdfServiceProvider::class,
+        //flash
+        Laracasts\Flash\FlashServiceProvider::class,
 
     ],
 

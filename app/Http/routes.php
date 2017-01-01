@@ -71,11 +71,6 @@ Route::get('datatables/cetak-npwpd','Pendaftaran@cetakNpwpdDt');
 
 Route::get('datatables/spt','Penetapan@sptDt');
 
-Route::get('datatables/self','BKP@setoranSelfDt');
-Route::get('bkp/daftar-self','BKP@daftarSetoranSelf');
-Route::get('datatables/official','BKP@setoranOfficialDt');
-Route::get('bkp/daftar-official','BKP@daftarSetoranOfficial');
-
 // Route::get('daftar-pribadi/','Pendaftaran@show_wpwrpribadi');
 // Route::get('daftar-pribadi/create','Pendaftaran@wpwrpribadi');
 // Route::post('daftar-pribadi/store','Pendaftaran@store_wpwrpribadi');
@@ -87,7 +82,35 @@ Route::post('daftar-badan/store','Pendaftaran@store_wpwrbadan');
 Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
 Route::get('cetak-npwpd-pdf/{wpwrid}','Pendaftaran@cetakNpwpd');
 
+// Route::get('cetak_npwpd','Pendaftaran@cetak_npwpd');
 
-Route::get('sptpd_hotel','Pendataan@sptpd_hotel');
-Route::get('sptpd_restoran','Pendataan@sptpd_restoran');
+//Pendataan
+Route::get('pendataan/rekam_data','Pendataan@rekam_data');
+Route::get('pendataan/{id_pajak}/sptpd','Pendataan@sptpd');
+Route::get('pendataan/getnoreg','Pendataan@getnoreg');
+Route::get('pendataan/getnpwpd','Pendataan@getnpwpd');
+
+Route::post('pendataan/store_data_reklame','Pendataan@store_data_reklame');
+
+//BKP
+Route::get('datatables/self','bkpController@setoranSelfDt');
+Route::get('bkp/daftar-self','bkpController@daftarSetoranSelf');
+Route::get('datatables/official','bkpController@setoranOfficialDt');
+Route::get('bkp/daftar-official','bkpController@daftarSetoranOfficial');
+
+Route::get('penyetoran','bkpController@penyetoran');
+Route::get('penyetoran/menu1','bkpController@menu1');
+Route::get('penyetoran/editmenu1/{id}','bkpController@editmenu1');
+Route::post('penyetoran/store_menu1','bkpController@store_menu1');
+Route::post('penyetoran/update_menu1','bkpController@update_menu1');
+
+Route::get('penyetoran/menu2','bkpController@menu2');
+Route::get('penyetoran/menu3','bkpController@menu3');
+Route::get('penyetoran/menu4','bkpController@menu4');
+Route::get('penyetoran/menu5','bkpController@menu5');
+Route::get('penyetoran/menu6','bkpController@menu6');
+Route::get('penyetoran/menu7','bkpController@menu7');
+
+Route::get('getkohir','bkpController@getkohir');
+
 

@@ -13,7 +13,8 @@
         "efriandika/laravel-settings": "^1.2",
         "codedge/laravel-fpdf": "^1.0",
         "smichaelsen/fpdf-tables": "^1.0",
-        "setasign/fpdf": "1.8.1"
+        "setasign/fpdf": "1.8.1",
+        "laracasts/flash": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
