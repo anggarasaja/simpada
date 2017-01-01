@@ -3866,6 +3866,124 @@
         ]
     },
     {
+        "name": "codedge/laravel-fpdf",
+        "version": "1.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/codedge/laravel-fpdf.git",
+            "reference": "0ee16238e9a2c04eb641f82abc7bbf7f078c64be"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/codedge/laravel-fpdf/zipball/0ee16238e9a2c04eb641f82abc7bbf7f078c64be",
+            "reference": "0ee16238e9a2c04eb641f82abc7bbf7f078c64be",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.*",
+            "php": ">=5.4.0"
+        },
+        "time": "2016-06-21 08:26:10",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Codedge\\Fpdf\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Holger Lösken",
+                "email": "holger.loesken@codedge.de"
+            }
+        ],
+        "description": "Laravel 5 package for use with Fpdf. It ships with Fpdf 1.81.",
+        "keywords": [
+            "fpdf",
+            "laravel",
+            "pdf"
+        ]
+    },
+    {
+        "name": "setasign/fpdf",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Setasign/FPDF.git",
+            "reference": "2c68c9e6c034ac3187d25968790139a73184cdb1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Setasign/FPDF/zipball/2c68c9e6c034ac3187d25968790139a73184cdb1",
+            "reference": "2c68c9e6c034ac3187d25968790139a73184cdb1",
+            "shasum": ""
+        },
+        "time": "2016-01-01 17:47:15",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "fpdf.php"
+                ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "no usage restriction"
+        ],
+        "authors": [
+            {
+                "name": "Olivier Plathey",
+                "email": "oliver@fpdf.org",
+                "homepage": "http://fpdf.org/"
+            }
+        ],
+        "description": "FPDF is a PHP class which allows to generate PDF files with pure PHP. F from FPDF stands for Free: you may use it for any kind of usage and modify it to suit your needs.",
+        "homepage": "http://www.fpdf.org",
+        "keywords": [
+            "fpdf",
+            "pdf"
+        ]
+    },
+    {
+        "name": "smichaelsen/fpdf-tables",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/smichaelsen/fpdf-tables.git",
+            "reference": "5605f556a1dce83e32004888b7b5f013c52cd72e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/smichaelsen/fpdf-tables/zipball/5605f556a1dce83e32004888b7b5f013c52cd72e",
+            "reference": "5605f556a1dce83e32004888b7b5f013c52cd72e",
+            "shasum": ""
+        },
+        "require": {
+            "setasign/fpdf": "1.8.*"
+        },
+        "time": "2016-08-02 13:21:49",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Smichaelsen\\FpdfTables\\": "Classes/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/"
+    },
+    {
         "name": "laracasts/flash",
         "version": "2.0.1",
         "version_normalized": "2.0.1.0",

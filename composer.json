@@ -11,6 +11,9 @@
         "laravelcollective/html": "^5.2",
         "anlutro/l4-settings": "^0.4.9",
         "efriandika/laravel-settings": "^1.2",
+        "codedge/laravel-fpdf": "^1.0",
+        "smichaelsen/fpdf-tables": "^1.0",
+        "setasign/fpdf": "1.8.1",
         "laracasts/flash": "^2.0"
     },
     "require-dev": {

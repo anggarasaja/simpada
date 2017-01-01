@@ -397,7 +397,8 @@ class QueryBuilderEngine extends BaseEngine
             }
 
             // get table from query and add it.
-            $column = $q->from . '.' . $column;
+            $column = $column;
+            // $column = $q->from . '.' . $column;
         }
         // Add wrap cover table and field name.
         $column = $this->wrap($column);
@@ -446,7 +447,7 @@ class QueryBuilderEngine extends BaseEngine
         }
 
         if ($this->isSmartSearch()) {
-            $keyword = "%$keyword%";
+            $keyword = "'%$keyword%'";
         }
 
         return $keyword;
@@ -583,9 +584,11 @@ class QueryBuilderEngine extends BaseEngine
      * @param string $keyword
      */
     protected function compileColumnSearch($i, $column, $keyword)
-    {
+    {   
+
         if ($this->request->isRegex($i)) {
             $column = strstr($column, '(') ? $this->connection->raw($column) : $column;
+
             $this->regexColumnSearch($column, $keyword);
         } else {
             $this->compileQuerySearch($this->query, $column, $keyword, '');

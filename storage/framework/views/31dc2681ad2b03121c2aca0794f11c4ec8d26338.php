@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title>Simpatda </title>
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('faviconSIMPADA.ico')); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('favicon.ico')); ?>">
 
     <?php echo Html::style('vendors/bootstrap/dist/css/bootstrap.min.css');; ?>
 
@@ -33,16 +33,20 @@
 
     <?php echo Html::style('vendors/Hover-master/css/hover-min.css');; ?>
 
+    <?php echo Html::style('vendors/sweetalert-master/dist/sweetalert.css');; ?>
+
+    <!-- ColorBox -->
+    <link rel="stylesheet" href="<?php echo e(asset('/css/colorbox/colorbox.css')); ?>">
     <?php echo $__env->yieldPushContent('styles'); ?>
     <?php echo Html::style('build/css/custom.css');; ?>
 
 
     <!-- Datatables -->
-    <link href="<?php echo e(asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')); ?>" rel="stylesheet">
+    <!-- <link href="<?php echo e(asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')); ?>" rel="stylesheet"> -->
 
   </head>
 
@@ -194,6 +198,8 @@
 
         <!-- jQuery -->
     <script src="<?php echo e(URL::asset('vendors/jquery/dist/jquery.min.js')); ?>"></script>
+    <!-- jquery.inputmask -->
+    <script src="<?php echo e(asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js')); ?>"></script>
 
         <!-- bootstrap-daterangepicker -->
     <script src="<?php echo e(URL::asset('js/moment/moment.min.js')); ?>"></script>
@@ -205,14 +211,15 @@
     <script src="<?php echo e(URL::asset('vendors/fastclick/lib/fastclick.js')); ?>"></script>
     <!-- NProgress -->
     <script src="<?php echo e(URL::asset('vendors/nprogress/nprogress.js')); ?>"></script>
-<<<<<<< HEAD
     <script src="<?php echo e(URL::asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')); ?>"></script>
-=======
+
     <!-- iCheck -->
     <script src="<?php echo e(asset('vendors/iCheck/icheck.min.js')); ?>"></script>
+    <!-- ColorBox -->
+    <script src="<?php echo e(asset('js/colorbox/jquery.colorbox.js')); ?>"></script>
 
     <!-- Datatables -->
-    <script src="<?php echo e(asset('vendors/datatables.net/js/jquery.dataTables.min.js')); ?>"></script>
+    <!-- <script src="<?php echo e(asset('vendors/datatables.net/js/jquery.dataTables.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')); ?>"></script>
@@ -226,9 +233,12 @@
     <script src="<?php echo e(asset('vendors/datatables.net-scroller/js/datatables.scroller.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendors/jszip/dist/jszip.min.js')); ?>"></script>
     <script src="<?php echo e(asset('vendors/pdfmake/build/pdfmake.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('vendors/pdfmake/build/vfs_fonts.js')); ?>"></script> -->
+
     <script src="<?php echo e(asset('vendors/pdfmake/build/vfs_fonts.js')); ?>"></script>
     
->>>>>>> 6ec6ee61e942687e18887813e5d87b28c81a14c5
+    <script src="<?php echo e(URL::asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')); ?>"></script>
+
     
     <!-- Custom Theme Scripts -->
     <script src="<?php echo e(URL::asset('build/js/custom.js')); ?>"></script>
@@ -239,6 +249,8 @@
           }
       });
     </script>
+    <?php echo Html::script('vendors/sweetalert-master/dist/sweetalert.min.js');; ?>
+
     <?php echo Html::script('vendors/pnotify/dist/pnotify.js');; ?>
 
     <?php echo Html::script('vendors/pnotify/dist/pnotify.buttons.js');; ?>

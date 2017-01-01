@@ -1607,6 +1607,8 @@ class Builder
      */
     protected function runSelect()
     {
+        
+        // echo "tes";
         return $this->connection->select($this->toSql(), $this->getBindings(), ! $this->useWritePdo);
     }
 

@@ -50,4 +50,12 @@ class Universal extends Controller
 
 		return $tgl;
 	}
+
+	public function getPEMDA(){
+		return DB::table("data_pemerintah_daerah")->get();
+	}
+
+	public function getPEJABAT(){
+		return DB::table("v_pejabat_daerah")->where("pejda_kode","=","01")->get();
+	}
 }

@@ -168,6 +168,8 @@ return [
         //ANLUTRO SETTING
         anlutro\LaravelSettings\ServiceProvider::class,
 
+        //fpdf
+        Codedge\Fpdf\FpdfServiceProvider::class,
         //flash
         Laracasts\Flash\FlashServiceProvider::class,
 
@@ -224,6 +226,8 @@ return [
         //anlutro setting
         'Setting' => anlutro\LaravelSettings\Facade::class,
 
+        //fpdf
+        'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
     ],
 
 ];

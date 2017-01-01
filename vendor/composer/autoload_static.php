@@ -65,6 +65,7 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'SuperClosure\\' => 13,
+            'Smichaelsen\\FpdfTables\\' => 23,
         ),
         'P' => 
         array (
@@ -102,6 +103,7 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
         'C' => 
         array (
             'Collective\\Html\\' => 16,
+            'Codedge\\Fpdf\\' => 13,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
@@ -206,6 +208,10 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
+        'Smichaelsen\\FpdfTables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/smichaelsen/fpdf-tables/Classes',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
@@ -257,6 +263,10 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
+        'Codedge\\Fpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codedge/laravel-fpdf/src',
         ),
         'ClassPreloader\\' => 
         array (
@@ -408,6 +418,9 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
         'ClassPreloader\\Parser\\FileVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/FileVisitor.php',
         'ClassPreloader\\Parser\\NodeTraverser' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/NodeTraverser.php',
         'ClassPreloader\\Parser\\StrictTypesVisitor' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/Parser/StrictTypesVisitor.php',
+        'Codedge\\Fpdf\\Facades\\Fpdf' => __DIR__ . '/..' . '/codedge/laravel-fpdf/src/Facades/Fpdf.php',
+        'Codedge\\Fpdf\\FpdfServiceProvider' => __DIR__ . '/..' . '/codedge/laravel-fpdf/src/FpdfServiceProvider.php',
+        'Codedge\\Fpdf\\Fpdf\\FPDF' => __DIR__ . '/..' . '/codedge/laravel-fpdf/src/Fpdf/fpdf.php',
         'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
         'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
         'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
@@ -519,6 +532,7 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
         'Efriandika\\LaravelSettings\\Facades\\Settings' => __DIR__ . '/..' . '/efriandika/laravel-settings/src/Facades/Settings.php',
         'Efriandika\\LaravelSettings\\Settings' => __DIR__ . '/..' . '/efriandika/laravel-settings/src/Settings.php',
         'Efriandika\\LaravelSettings\\SettingsServiceProvider' => __DIR__ . '/..' . '/efriandika/laravel-settings/src/SettingsServiceProvider.php',
+        'FPDF' => __DIR__ . '/..' . '/setasign/fpdf/fpdf.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Luhn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Luhn.php',
         'Faker\\DefaultGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/DefaultGenerator.php',
@@ -2880,6 +2894,8 @@ class ComposerStaticInit6220bdd931f58e2e384ee391dca9eb21
         'SebastianBergmann\\RecursionContext\\Exception' => __DIR__ . '/..' . '/sebastian/recursion-context/src/Exception.php',
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Smichaelsen\\FpdfTables\\FpdfTables' => __DIR__ . '/..' . '/smichaelsen/fpdf-tables/Classes/FpdfTables.php',
+        'Smichaelsen\\FpdfTables\\StringTags' => __DIR__ . '/..' . '/smichaelsen/fpdf-tables/Classes/StringTags.php',
         'SuperClosure\\Analyzer\\AstAnalyzer' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/AstAnalyzer.php',
         'SuperClosure\\Analyzer\\ClosureAnalyzer' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/ClosureAnalyzer.php',
         'SuperClosure\\Analyzer\\Token' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Analyzer/Token.php',

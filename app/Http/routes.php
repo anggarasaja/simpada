@@ -50,6 +50,10 @@ Route::get('/pss', function () {
 
 Route::post('getKelurahan','pendaftaranPribadiController@getKelurahan');
 Route::get('getNomorUrut','pendaftaranPribadiController@getNomorUrut');
+//badan usaha
+Route::get('daftar-bu/create/{status?}','Pendaftaran@wpwrbadan')->name('createBU');
+Route::get('daftar-bu/edit/{edit}/{status?}','Pendaftaran@editBU')->name('editBU');
+//pribadi
 Route::get('daftar-pribadi/create/{status?}','Pendaftaran@wpwrpribadi')->name('createPribadi');
 Route::get('daftar-pribadi/edit/{edit}/{status?}','Pendaftaran@editPribadi')->name('editPribadi');
 
@@ -59,9 +63,11 @@ Route::get('daftar-bu/table','Pendaftaran@tableWpBu');
 Route::get('penetapan/table','Penetapan@daftarSPT');
 
 Route::post('daftar-pribadi/store','Pendaftaran@savePribadi');
+Route::post('daftar-bu/store','Pendaftaran@saveBU');
 
 Route::get('datatables/wp-pribadi','Pendaftaran@wpPribadiDt');
 Route::get('datatables/wp-bu','Pendaftaran@wpBuDt');
+Route::get('datatables/cetak-npwpd','Pendaftaran@cetakNpwpdDt');
 
 Route::get('datatables/spt','Penetapan@sptDt');
 
@@ -74,7 +80,9 @@ Route::get('daftar-badan/create','Pendaftaran@wpwrbadan');
 Route::post('daftar-badan/store','Pendaftaran@store_wpwrbadan');
 
 Route::get('cetak_kartu','Pendaftaran@cetak_kartu');
-Route::get('cetak_npwpd','Pendaftaran@cetak_npwpd');
+Route::get('cetak-npwpd-pdf/{wpwrid}','Pendaftaran@cetakNpwpd');
+
+// Route::get('cetak_npwpd','Pendaftaran@cetak_npwpd');
 
 //Pendataan
 Route::get('pendataan/rekam_data','Pendataan@rekam_data');

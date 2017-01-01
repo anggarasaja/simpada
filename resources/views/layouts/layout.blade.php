@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Simpatda </title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('faviconSIMPADA.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     {!! Html::style('vendors/bootstrap/dist/css/bootstrap.min.css'); !!}
     {!! Html::style('vendors/font-awesome/css/font-awesome.min.css'); !!}
@@ -22,17 +22,18 @@
     {!! Html::style('vendors/pnotify/dist/pnotify.buttons.css'); !!}
     {!! Html::style('vendors/pnotify/dist/pnotify.nonblock.css'); !!}
     {!! Html::style('vendors/Hover-master/css/hover-min.css'); !!}
+    {!! Html::style('vendors/sweetalert-master/dist/sweetalert.css'); !!}
     <!-- ColorBox -->
     <link rel="stylesheet" href="{{asset('/css/colorbox/colorbox.css')}}">
     @stack('styles')
     {!! Html::style('build/css/custom.css'); !!}
 
     <!-- Datatables -->
-    <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet"> -->
 
   </head>
 
@@ -197,6 +198,7 @@
     <script src="{{ URL::asset('vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
     <script src="{{ URL::asset('vendors/nprogress/nprogress.js') }}"></script>
+    <script src="{{ URL::asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 
     <!-- iCheck -->
     <script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
@@ -204,7 +206,7 @@
     <script src="{{asset('js/colorbox/jquery.colorbox.js')}}"></script>
 
     <!-- Datatables -->
-    <script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <!-- <script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
@@ -218,9 +220,12 @@
     <script src="{{ asset('vendors/datatables.net-scroller/js/datatables.scroller.min.js') }}"></script>
     <script src="{{ asset('vendors/jszip/dist/jszip.min.js') }}"></script>
     <script src="{{ asset('vendors/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script> -->
+
     <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script>
     
     <script src="{{ URL::asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+
     
     <!-- Custom Theme Scripts -->
     <script src="{{ URL::asset('build/js/custom.js') }}"></script>
@@ -231,6 +236,7 @@
           }
       });
     </script>
+    {!! Html::script('vendors/sweetalert-master/dist/sweetalert.min.js'); !!}
     {!! Html::script('vendors/pnotify/dist/pnotify.js'); !!}
     {!! Html::script('vendors/pnotify/dist/pnotify.buttons.js'); !!}
     {!! Html::script('vendors/pnotify/dist/pnotify.nonblock.js'); !!}
