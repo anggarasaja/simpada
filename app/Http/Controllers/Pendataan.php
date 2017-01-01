@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\ref_jenis_pajak_retribusi;
 use App\wp_wr;
 use App\v_wp_wr;
+use App\ref_reklame_wilayah;
+use App\ref_reklame_jenis;
+use App\kode_rekening;
 use DB;
 use Datatables;
 
@@ -30,7 +33,9 @@ class Pendataan extends Controller
             return view('sptpd_restoran');
         }
         elseif ($id_pajak == 4) {
-    		return view('sptpd_reklame');
+            $wilayah = ref_reklame_wilayah::get();
+            $jenis_reklame = ref_reklame_jenis::orderBy('nid','asc')->get();
+    		return view('sptpd_reklame')->with(compact("wilayah","jenis_reklame"));
     	}
     }
 
@@ -58,11 +63,54 @@ class Pendataan extends Controller
         return $last_kohir;
     }
 
-    public function getnpwpd(){
-        $get = v_wp_wr::where('wp_wr_status_aktif','true')->orderBy('no_reg','DESC')->get();
+    public function getnpwpd($npwp = null){
+        if (is_null($npwp)) {
+            $get = v_wp_wr::get();
+            return Datatables::of($get)
+            ->make(true);
+        }else{
+            $get = v_wp_wr::where('npwprd',$npwp)->get()->toArray();
+            echo json_encode($get);
+        }
+    }    
 
-        return Datatables::of($get)
+    //upper(c.wp_wr_jenis)||'.'||c.wp_wr_gol||'.'||c.wp_wr_no_urut||'.'||d.camat_kode||'.'||e.lurah_kode as npwprd,f.ref_bulan_nama||" "||EXTRACT(YEAR FROM spt.spt_periode_jual1) as masa_pajak,
 
-        ->make(true);
+    public function gethistory($wp_wr_id){
+        ### Masih Bingung Tabel apa yang dipake ##
+        $query = DB::table("SELECT dt.nid
+                    FROM spt spt
+                    LEFT JOIN spt_detail b ON spt.spt_id=b.spt_dt_id_spt 
+                    LEFT JOIN wp_wr c ON spt.spt_idwpwr=c.wp_wr_id 
+                    LEFT JOIN kecamatan d ON c.wp_wr_kd_camat::text = d.camat_id::text 
+                    LEFT JOIN kelurahan e ON c.wp_wr_kd_lurah::text = e.lurah_id::text 
+                    LEFT JOIN ref_bulan f ON EXTRACT(MONTH FROM spt.spt_periode_jual1)=f.ref_bulan_id
+                    LEFT JOIN penetapan_pajak_retribusi h ON spt.spt_id=h.netapajrek_id_spt 
+                    LEFT JOIN setoran_pajak_retribusi g ON h.netapajrek_id=g.setorpajret_id_penetapan and g.setorpajret_jenis_ketetapan=1
+                    LEFT JOIN kode_rekening kr on kr.korek_id=spt.spt_kode_rek 
+                    LEFT JOIN spt_detailreklame dt ON spt.spt_id = dt.nid_spt
+                    LEFT JOIN ref_reklame_wilayah wil ON dt.nid_wilayah = wil.nid
+                    LEFT JOIN ref_reklame_jenis rj ON dt.nid_reklame = rj.nid
+                    where  h.netapajrek_id IS NOT NULL and 
+                    spt.spt_idwpwr =".$wp_wr_id);
+        return Datatables::queryBuilder($query)
+            ->make(true);
+        // return Datatables::queryBuilder(DB::table('spt'))->make(true);
+
+    }
+
+    public function getRekening(){
+        $jenis = $_GET['jenis'];
+        $getjenisreklame = ref_reklame_jenis::where('nid',$jenis)->get();
+        $satuan = $getjenisreklame[0]->cmeasure;
+
+        $getkorek = kode_rekening::find($getjenisreklame[0]->nid_rekening);
+        $korek_rincian = $getkorek->korek_rincian;
+        $korek_sub1 = $getkorek->korek_sub1;
+        $korek_nama = $getkorek->korek_nama;
+        $korek_persen_tarif = $getkorek->korek_persen_tarif;
+        
+        $kirim = array(compact("satuan","korek_rincian","korek_sub1","korek_nama","korek_persen_tarif"));
+        echo json_encode($kirim);
     }
 }
