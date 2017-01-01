@@ -273,6 +273,8 @@
 <?php $__env->stopSection(); ?>
 
  <?php $__env->startPush('scripts'); ?>
+ <?php echo Html::script('vendor/datatables/DataTables-1.10.12/js/jquery.dataTables.min.js');; ?>
+
     <script>
     var oTable ;
       $(document).ready(function() {
