@@ -89,6 +89,10 @@ Route::get('pendataan/rekam_data','Pendataan@rekam_data');
 Route::get('pendataan/{id_pajak}/sptpd','Pendataan@sptpd');
 Route::get('pendataan/getnoreg','Pendataan@getnoreg');
 Route::get('pendataan/getnpwpd','Pendataan@getnpwpd');
+Route::get('pendataan/getnpwpd/{npwp}','Pendataan@getnpwpd');
+Route::get('pendataan/gethistory/{id}','Pendataan@gethistory');
+Route::get('pendataan/getRekening','Pendataan@getRekening');
+Route::get('pendataan/hitungReklame','Pendataan@hitungReklame');
 
 Route::post('pendataan/store_data_reklame','Pendataan@store_data_reklame');
 

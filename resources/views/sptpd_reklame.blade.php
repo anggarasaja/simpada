@@ -53,7 +53,7 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tgl_entry">Tanggal Entry 
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                   <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="tgl_entry" name="tgl_entry" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text" value="{{ date('d/m/Y') }}">
+                   <input data-provide="datepicker" data-inputmask="'mask': '99/99/9999'" data-date-format="dd/mm/yyyy" id="tgl_entry" name="tgl_entry" class="date-picker form-control col-md-7 col-xs-12 active tanggal" required="required" type="text" value="{{ date('d/m/Y') }}">
                   </div>
                 </div>
                 <div class="item form-group">
@@ -61,7 +61,7 @@
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
                     <div class="input-group">
-                      <input type="text" id="npwpd" name="npwpd" onchange="getnpwpd()" data-inputmask="'mask': 'P.9.9999999.99.999'" required="required" class="npwpd form-control col-md-7 col-xs-12">
+                      <input type="text" id="npwpd" name="npwpd" onchange="getnpwpd()" data-inputmask="'mask': 'P.9.9999999.99.999'" required="required" class="npwpd form-control col-md-7 col-xs-12" placeholder="P._._______.__.___">
                       <span class="input-group-btn">
                         <button id="modal" class="btn btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">...</button>
                       </span>
@@ -70,36 +70,36 @@
                 </div>
                 <div class="item form-group">
                   <label for="nama_wp" class="control-label col-md-3 col-sm-3 col-xs-12">Nama WP</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input id="nama_wp" class="form-control col-md-7 col-xs-12" type="text" name="nama_wp">
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="nama_wp" class="form-control col-md-7 col-xs-12" type="text" name="nama_wp" readonly>
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="alamat">Alamat 
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                    <textarea id="alamat" required="required" name="alamat" class="form-control col-md-7 col-xs-12"></textarea>
+                    <textarea id="alamat" required="required" name="alamat" class="form-control col-md-7 col-xs-12" readonly></textarea>
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lurah">Kelurahan 
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                    <input id="lurah" type="text" name="lurah" class="optional form-control col-md-7 col-xs-12">
+                    <input id="lurah" type="text" name="lurah" class="optional form-control col-md-7 col-xs-12" readonly>
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="camat">Kecamatan 
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                    <input id="camat" type="text" name="camat" class="optional form-control col-md-7 col-xs-12">
+                    <input id="camat" type="text" name="camat" class="optional form-control col-md-7 col-xs-12" readonly>
                   </div>
                 </div>
                  <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kota">Kabupaten/Kota 
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
-                    <input id="kota" type="text" name="kota" class="optional form-control col-md-7 col-xs-12">
+                    <input id="kota" type="text" name="kota" class="optional form-control col-md-7 col-xs-12" readonly>
                   </div>
                 </div>
             </div>
@@ -110,20 +110,18 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>History Pembayaran Pajak Hotel</h2>
+            <h2>History Pembayaran Pajak Reklame</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
+              <li>
+              <button class="btn btn-primary btn-md pull-right">Detail History</button></li>
             </ul>
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
-                <table id="datatable" class="table table-striped table-bordered bulk_action">
+                <table id="tbl_hist" class="table table-striped table-bordered bulk_action">
                   <thead>
-                    <tr>
-                      <th colspan="3"><center>History Pembayaran Pajak Hotel</center></th>
-                      <th><center>Detail History WP</center></th>
-                    </tr>
                     <tr>
                       <th>Masa Pajak</th>
                       <th>Dasar Pengenaan</th>
@@ -157,79 +155,53 @@
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pajak">Masa Pajak
                   </label>
-                  <div class="col-md-3 col-sm-3 col-xs-12">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
                     <!-- <div class="controls form-inline"> -->
-                      <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="pajak_awal" name="pajak_awal" class="date-picker form-control" required="required" type="text">
+                      <input placeholder="dd/mm/yyyy" data-provide="datepicker" data-inputmask="'mask': '99/99/9999'" data-date-format="dd/mm/yyyy" id="pajak_awal" name="pajak_awal" class="date-picker form-control" required="required" type="text">
                   </div>
                   <div class="col-md-1 col-sm-1 col-xs-12">
-                    <label>S/D</label>
+                    <label class="control-label">S/D</label>
                   </div>
-                  <div class="col-md-3 col-sm-3 col-xs-12">
-                      <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="pajak_akhir" name="pajak_akhir" class="date-picker form-control" required="required" type="text">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                      <input placeholder="dd/mm/yyyy" data-provide="datepicker" data-inputmask="'mask': '99/99/9999'" data-date-format="dd/mm/yyyy" id="pajak_akhir" name="pajak_akhir" class="date-picker form-control" required="required" type="text">
                     <!-- </div> -->
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pemungutan">Wilayah
                   </label>
-                  <div class="col-md-8 col-sm-6 col-xs-12">
-                    <select name="nid_wilayah" class="form-control">
-                        <option value="1">A. Central Bisnis Distrik</option>
-                        <option value="2">B. Central Distrik</option>
-                        <option value="3">C. Campuran</option>
-                        <option value="4">D. Dalam Pusat Pertokoan/Perdagangan Pasar/Stasiun/Terminal</option>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <select id="nid_wilayah" name="nid_wilayah" class="form-control">
+                        @foreach($wilayah as $key)
+                        <option value="{{ $key->nid }}">{{ $key->cname }}</option>
+                        @endforeach
                     </select>
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pemungutan">Jenis Reklame
                   </label>
-                  <div class="col-md-8 col-sm-6 col-xs-12">
-                    <select name="nid_reklame" id="nid_reklame"  class="form-control">
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <select name="nid_reklame" id="nid_reklame"  class="form-control" onchange="changeJenis()">
                         <option value="">(Pilih Jenis Reklame)</option>
-                          <option value="1">SS (Shop Sign)</option>
-                          <option value="2">BTS</option>
-                          <option value="3">NBTS / BTS SINAR</option>
-                          <option value="4">BTN</option>
-                          <option value="5">NBTN / BTN SINAR</option>
-                          <option value="6">BERJALAN</option>
-                          <option value="7">WALL PAINTING</option>
-                          <option value="8">SPANDUK HARIAN</option>
-                          <option value="9">SPANDUK MINGGUAN</option>
-                          <option value="10">SPANDUK BULANAN</option>
-                          <option value="11">UMBUL - UMBUL HARIAN</option>
-                          <option value="12">UMBUL - UMBUL MINGGUAN</option>
-                          <option value="13">UMBUL - UMBUL BULANAN</option>
-                          <option value="14">BANER HARIAN</option>
-                          <option value="15">BANER MINGGUAN</option>
-                          <option value="16">BANER BULANAN</option>
-                          <option value="17">BALIHO HARIAN</option>
-                          <option value="18">BALIHO MINGGUAN</option>
-                          <option value="19">BALIHO BULANAN</option>
-                          <option value="20">POSTER / STICKER</option>
-                          <option value="21">SELEBARAN TIDAK BERWARNA</option>
-                          <option value="22">SELEBARAN BERWARNA</option>
-                          <option value="23">UDARA MINGGUAN</option>
-                          <option value="24">UDARA BULANAN</option>
-                          <option value="25">FILM</option>
-                          <option value="26">LAYAR TOKO / WARUNG / SUN SCREEN</option>
-                          <option value="27">FLAG CHAIN</option>
-                          <option value="28">BANDO</option>
-                  </select>
+                        @foreach($jenis_reklame as $key)
+                        <option value="{{ $key->nid }}">{{ $key->cname }}</option>
+                        @endforeach
+                      </select>
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Kode Rekening
                   </label>
                   <div class="col-md-3 col-sm-3 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="" id="kd_rek" readonly>
+                      <input type="text" class=" form-control" placeholder="" id="kd_rek" value="41417" readonly>
                   </div>
                   <div class="col-md-3 col-sm-3 col-xs-12">
-                        <input type="text" placeholder="Nomor" class=" form-control" id="jenis">
+                        <input type="text" placeholder="Nomor" class="form-control" id="korek_rincian" name="korek_rincian">
                   </div>
                   <div class="col-md-3 col-sm-3 col-xs-12">
                       <div class="input-group">
-                        <input type="text" class=" form-control" placeholder="Klas" id="klas">
+                        <input type="text" class="form-control" placeholder="Klas" id="korek_sub1" name="korek_sub1">
                         <span class="input-group-btn">
                           <button id="modal" class="btn btn-info" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">...</button>
                         </span>
@@ -237,54 +209,64 @@
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Rekening</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input id="nama_rek" class="form-control col-md-7 col-xs-12" type="text" name="nama_rek">
+                  <label for="korek_nama" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Rekening</label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="korek_nama" class="form-control col-md-7 col-xs-12" type="text" name="korek_nama">
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Naskah</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input id="nama_rek" class="form-control col-md-7 col-xs-12" type="text" name="nama_rek">
+                  <label for="nama_naskah" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Naskah</label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input id="nama_naskah" class="form-control col-md-7 col-xs-12" type="text" name="nama_naskah">
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <textarea id="nama_rek" class="form-control col-md-7 col-xs-12" type="text" name="nama_rek"></textarea>
+                  <label for="lokasi" class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi</label>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <textarea id="lokasi" class="form-control col-md-7 col-xs-12" type="text" name="lokasi"></textarea>
                   </div>
                 </div>
+
+                <!-- BIAYA -->
+                <input type="hidden" id="biaya_dasar" name="biaya_dasar">
+
                 <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Hitungan
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Panjang
                   </label>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="Panjang" id="kd_rek">
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                      <input type="text" class=" form-control" placeholder="Panjang" id="panjang" name="panjang">
                   </div>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                        <input type="text" placeholder="Lebar" class=" form-control" id="jenis">
+                  <div class="col-md-2 col-sm-2 col-xs-12">
+                    <label class="control-label pull-right">Lebar</label>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                        <input type="text" placeholder="Lebar" class=" form-control" id="lebar" name="lebar">
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Muka
                   </label>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="Muka" id="kd_rek">
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                      <input type="text" class=" form-control" placeholder="Muka" id="muka" name="muka">
                   </div>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                        <input type="text" placeholder="Jumlah" class=" form-control" id="jenis">
+                  <div class="col-md-2 col-sm-2 col-xs-12">
+                    <label class="control-label pull-right">Jumlah</label>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                        <input type="text" placeholder="Jumlah" class=" form-control" id="jumlah" name="jumlah">
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Jangka Waktu
                   </label>
                   <div class="col-md-4 col-sm-4 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="" id="kd_rek">
+                      <input type="text" class=" form-control" placeholder="Jangka Waktu" id="jangka_waktu" name="jangka_waktu">
                   </div>
                   <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="input-group">
-                        <input type="text" readonly placeholder="" class=" form-control" id="jenis">
+                        <input type="text" readonly placeholder="" class="form-control" id="satuan" name="satuan">
                         <span class="input-group-btn">
-                          <button id="modal" class="btn btn-success" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">Hitung</button>
+                          <button id="hitung" class="btn btn-success" type="button" data-target=".bs-example-modal-lg">Hitung</button>
                         </span>
                     </div>
                   </div>
@@ -293,31 +275,36 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">NSR
                   </label>
                   <div class="col-md-4 col-sm-4 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="" id="kd_rek">
+                      <input type="text" class="form-control uang" placeholder="NSR" id="nsr" name="nsr">
                   </div>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                        <input type="text" readonly placeholder="Persen Tarif %" class="form-control" id="jenis">
+                  <div class="col-md-5 col-sm-5 col-xs-12">
+                      <div class="input-group">
+                        <input type="text" placeholder="Persen Tarif %" class="form-control" id="korek_persen_tarif" name="korek_persen_tarif">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default">%</button>
+                        </span>
                     </div>
+                  </div>
                   </div>
                 </div>
 
 
                 <div class="item form-group">
                   <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Pajak Terhutang</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input class="form-control" type="text" readonly>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <input class="form-control uang" type="text" readonly id="pajak_terhutang">
                   </div>
                 </div>
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Tanggal Penetapan 
                   </label>
-                  <div class="col-md-8 col-sm-6 col-xs-12">
+                  <div class="col-md-8 col-sm-8 col-xs-12">
                    <input data-provide="datepicker" data-date-format="dd/mm/yyyy" id="tgl-daftar" name="tgl-daftar" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text" value="{{ date('d/m/Y') }}">
                   </div>
                 </div>
                 <div class="item form-group">
                   <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Keterangan</label>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div class="col-md-8 col-sm-8 col-xs-12">
                     <textarea id="nama_rek" class="form-control col-md-7 col-xs-12" type="text" name="nama_rek"></textarea>
                   </div>
                 </div>
@@ -361,6 +348,7 @@
                   <th>Kelurahan</th>
                   <th>Kecamatan</th>
                   <th>Kabupaten</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody data-dismiss="modal"></tbody>
@@ -376,10 +364,15 @@
  {!! Html::script('vendor/datatables/DataTables-1.10.12/js/jquery.dataTables.min.js'); !!}
     <script>
     var oTable ;
+    var oTable2 ;
       $(document).ready(function() {
         $(":input").inputmask();
-        // $(".npwpd").mask('P.9.9999999.99.9');
+        // $('.uang').mask("#.##0,00", {reverse: true});
+        $('.uang').mask('000.000.000.000.000', {reverse: false});
         noreg();
+        oTable2 = $('#tbl_hist').DataTable({
+          bFilter: false,
+        });
       });
 
       $(document).on('click','#tbl-noreg', function(){
@@ -396,12 +389,27 @@
       }
 
       function getnpwpd(){
+        var npwpd = $('#npwpd').val();
         $.ajax({
           type: "GET",
-          url: "{{url('pendataan/getnoreg')}}",
+          url: "{{url('pendataan/getnpwpd')}}/"+npwpd,
           data: {}
         }).success(function(e){
-          $('#noreg').val(e);
+          var obj = JSON.parse(e);
+          var nama_wp = obj[0].wp_wr_nama;
+          var alamat = obj[0].wp_wr_almt;
+          var lurah = obj[0].wp_wr_lurah;
+          var camat = obj[0].wp_wr_camat;
+          var kota = obj[0].wp_wr_kabupaten;
+          var id = obj[0].wp_wr_id;
+
+          $('#nama_wp').val(nama_wp);
+          $('#alamat').val(alamat);
+          $('#lurah').val(lurah);
+          $('#camat').val(camat);
+          $('#kota').val(kota);
+
+          gethistory(id);
         });
       }
 
@@ -416,12 +424,12 @@
           processing: true,
           serverSide: true,    
           ajax: {
-            url: "{{ URL::to('pendataan/getnpwpd') }}",
+            url: "{{ URL::to('pendataan/getnpwpd/') }}",
             type: "GET",
             data: {  },
           },
           columns: [
-              { data: 'wp_wr_no_form', name: 'wp_wr_no_form' },
+              { data: 'no_reg', name: 'no_reg' },
               { data: 'npwprd', name: 'npwprd' },
               { data: 'wp_wr_no_kartu', name: 'wp_wr_no_kartu' },
               { data: 'wp_wr_nama', name: 'wp_wr_nama' },
@@ -429,8 +437,9 @@
               { data: 'wp_wr_lurah', name: 'wp_wr_lurah' },
               { data: 'wp_wr_camat', name: 'wp_wr_camat' },
               { data: 'wp_wr_kabupaten', name: 'wp_wr_kabupaten' },
+              { data: 'wp_wr_id', visible:false, name: 'wp_wr_id' },
           ],
-          // order: [[ 1, "asc" ]]
+          order: [[ 0, "desc" ]]
         });
       }
 
@@ -445,6 +454,8 @@
           var camat = $(this).closest("tr").children("td").eq(6).html();
           var kota = $(this).closest("tr").children("td").eq(7).html();
 
+          var id = sData.wp_wr_id;
+
 
           $('#npwpd').val(npwpd);
           $('#nama_wp').val(nama_wp);
@@ -452,7 +463,77 @@
           $('#lurah').val(lurah);
           $('#camat').val(camat);
           $('#kota').val(kota);
+
+          gethistory(id);
           // return false; 
         } );
+
+      function gethistory(id){
+        // Masih Bingung tabel apa yang dipake //
+        oTable2.destroy();
+        oTable2 = $('#tbl_hist').DataTable({
+          // processing: true,
+          // serverSide: true, 
+          bFilter: false,   
+          // ajax: {
+          //   url: "{{ URL::to('pendataan/gethistory') }}/"+id,
+          //   type: "GET",
+          //   data: {  },
+          // },
+          // columns: [
+          //     { data: 'spt_id', name: 'spt_id' },
+          // ],
+          // order: [[ 0, "desc" ]]
+        });
+      }
+
+      function changeJenis(){
+        var jenis = $('#nid_reklame').val();
+        var wilayah = $('#nid_wilayah').val();
+        $.ajax({
+          type: "GET",
+          url: "{{url('pendataan/getRekening')}}",
+          data: {'jenis' : jenis, 'wilayah': wilayah}
+        }).success(function(e){
+          var obj = JSON.parse(e);
+          console.log(obj);
+          $('#korek_nama').val(obj[0].korek_nama);
+          $('#satuan').val(obj[0].satuan);
+          $('#korek_rincian').val(obj[0].korek_rincian);
+          $('#korek_sub1').val(obj[0].korek_sub1);
+          $('#korek_persen_tarif').val(obj[0].korek_persen_tarif);
+          $('#biaya_dasar').val(obj[0].biaya_dasar);
+        });
+      }
+
+      $(document).on("click", "#hitung", function () {
+        var panjang = $('#panjang').val();
+        var lebar = $('#lebar').val();
+        var muka = $('#muka').val();
+        var jumlah = $('#jumlah').val();
+        var jangka_waktu = $('#jangka_waktu').val();
+        var korek_persen_tarif = $('#korek_persen_tarif').val();
+        var biaya_dasar = $('#biaya_dasar').val();
+
+        $.ajax({
+          type: "GET",
+          url: "{{url('pendataan/hitungReklame')}}",
+          data: {'panjang' : panjang, 
+                'lebar': lebar,
+                'muka': muka,
+                'jumlah': jumlah,
+                'jangka_waktu': jangka_waktu,
+                'korek_persen_tarif': korek_persen_tarif,
+                'biaya_dasar': biaya_dasar,
+                }
+        }).success(function(e){
+          var obj = JSON.parse(e);
+          console.log(obj);
+          $('#pajak_terhutang').val(obj[0].pajak_terhutang);
+          $('#nsr').val(obj[0].nsr);
+        $('.uang').mask('000.000.000.000.000', {reverse: false});
+        });
+      });
+
     </script>
 @endpush

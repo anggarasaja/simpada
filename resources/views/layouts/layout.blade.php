@@ -187,11 +187,12 @@
     <script src="{{ URL::asset('vendors/jquery/dist/jquery.min.js') }}"></script>
     <!-- jquery.inputmask -->
     <script src="{{ asset('vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/query.mask.min.js') }}"></script>
 
         <!-- bootstrap-daterangepicker -->
     <script src="{{ URL::asset('js/moment/moment.min.js') }}"></script>
     <script src="{{ URL::asset('js/datepicker/bootstrap-datepicker.min.js') }}"></script>
-    <!-- <script src="js/datepicker/daterangepicker.js"></script> -->
+    <script src="{{ URL::asset('js/datepicker/daterangepicker.js') }}"></script>
      <!-- Bootstrap -->
     <script src="{{ URL::asset('vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick -->
