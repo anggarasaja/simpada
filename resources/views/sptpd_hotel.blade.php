@@ -243,6 +243,7 @@
 @stop
 
 @push('scripts')
+{!! Html::script('vendor/datatables/DataTables-1.10.12/js/jquery.dataTables.min.js'); !!}
     <script>
       $(document).ready(function() {
         noreg();
