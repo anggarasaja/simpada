@@ -10,6 +10,7 @@ use App\wp_wr;
 use App\v_wp_wr;
 use App\ref_reklame_wilayah;
 use App\ref_reklame_jenis;
+use App\ref_reklame_biaya;
 use App\kode_rekening;
 use DB;
 use Datatables;
@@ -101,6 +102,7 @@ class Pendataan extends Controller
 
     public function getRekening(){
         $jenis = $_GET['jenis'];
+        $wilayah = $_GET['wilayah'];
         $getjenisreklame = ref_reklame_jenis::where('nid',$jenis)->get();
         $satuan = $getjenisreklame[0]->cmeasure;
 
@@ -109,8 +111,30 @@ class Pendataan extends Controller
         $korek_sub1 = $getkorek->korek_sub1;
         $korek_nama = $getkorek->korek_nama;
         $korek_persen_tarif = $getkorek->korek_persen_tarif;
-        
-        $kirim = array(compact("satuan","korek_rincian","korek_sub1","korek_nama","korek_persen_tarif"));
+
+        $getbiaya = ref_reklame_biaya::where('nid_wilayah',$wilayah)->where('nid_jenis',$jenis)->get();
+        $biaya_dasar = $getbiaya[0]->nbiaya;
+
+        $kirim = array(compact("satuan","korek_rincian","korek_sub1","korek_nama","korek_persen_tarif","biaya_dasar"));
+        echo json_encode($kirim);
+    }
+
+    public function hitungReklame(){
+        $panjang = $_GET['panjang'];
+        $lebar = $_GET['lebar'];
+        $muka = $_GET['muka'];
+        $jumlah = $_GET['jumlah'];
+        $jangka_waktu = $_GET['jangka_waktu'];
+        $korek_persen_tarif = $_GET['korek_persen_tarif'];
+        $biaya_dasar = $_GET['biaya_dasar'];
+
+        $pajak_terhutang = ($panjang * $lebar * $muka * $jumlah * $jangka_waktu) * $biaya_dasar;
+        $nsr = ($pajak_terhutang * 100)/$korek_persen_tarif;
+
+        $pajak_terhutang = number_format($pajak_terhutang, 2, ",", ".");
+        $nsr = number_format($nsr, 2, ",", ".");
+
+        $kirim = array(compact("pajak_terhutang","nsr"));
         echo json_encode($kirim);
     }
 }
