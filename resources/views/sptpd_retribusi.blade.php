@@ -3,7 +3,7 @@
 <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Isian SPTPD Pajak Reklame: <span class="label label-success">[ Baru ]</span></h3>
+        <h3>Isian SPTPD Retribusi Kekayaan Daerah: <span class="label label-success">[ Baru ]</span></h3>
       </div>
 
       <div class="title_right">
@@ -110,12 +110,12 @@
       <div class="col-md-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>History Pembayaran Pajak Reklame</h2>
+            <h2>History Pembayaran Retribusi Kekayaan Daerah</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
               <li>
-              <button class="btn btn-primary btn-md pull-right">Detail History</button></li>
+              <!-- <button class="btn btn-primary btn-md pull-right">Detail History</button></li> -->
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -125,14 +125,9 @@
                     <tr>
                       <!-- <th>No</th> -->
                       <th>No SPT</th>
-                      <th>Masa Pajak</th>
-                      <th>Dasar Pengenaan</th>
-                      <th>Ketetapan</th>
-                      <th>Pembayaran</th>
+                      <th>Masa Retribusi</th>
+                      <th>Retribusi Terhutang</th>
                       <th>Tanggal Setor</th>
-                      <th>Jenis</th>
-                      <th>Wilayah</th>
-                      <th>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -150,7 +145,7 @@
                   </label>
                   <div class="col-md-8 col-sm-6 col-xs-12">
                     <select name="pemungutan" class="form-control">
-                      <option value="1">Self Assessment</option>
+                      <option value="2">Official Assessment</option>
                     </select>
                   </div>
                 </div>
@@ -170,36 +165,13 @@
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pemungutan">Wilayah
-                  </label>
-                  <div class="col-md-8 col-sm-8 col-xs-12">
-                    <select id="nid_wilayah" name="nid_wilayah" class="form-control">
-                        @foreach($wilayah as $key)
-                        <option value="{{ $key->nid }}">{{ $key->cname }}</option>
-                        @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pemungutan">Jenis Reklame
-                  </label>
-                  <div class="col-md-8 col-sm-8 col-xs-12">
-                    <select name="nid_reklame" id="nid_reklame"  class="form-control" onchange="changeJenis()">
-                        <option value="">(Pilih Jenis Reklame)</option>
-                        @foreach($jenis_reklame as $key)
-                        <option value="{{ $key->nid }}">{{ $key->cname }}</option>
-                        @endforeach
-                      </select>
-                  </div>
-                </div>
-                <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Kode Rekening
                   </label>
                   <div class="col-md-3 col-sm-3 col-xs-12">
-                      <input type="text" class="form-control" placeholder="" id="kd_rek" name="kd_rek" value="41417" readonly>
+                      <input type="text" class="form-control" placeholder="" id="kd_rek" name="kd_rek" value="41202" readonly>
                   </div>
                   <div class="col-md-3 col-sm-3 col-xs-12">
-                        <input type="text" placeholder="Nomor" class="form-control" id="korek_rincian" name="korek_rincian">
+                        <input type="text" placeholder="Jenis" class="form-control" id="korek_rincian" name="korek_rincian">
                   </div>
                   <div class="col-md-3 col-sm-3 col-xs-12">
                       <div class="input-group">
@@ -218,82 +190,14 @@
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label for="nama_naskah" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Naskah</label>
+                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Keterangan</label>
                   <div class="col-md-8 col-sm-8 col-xs-12">
-                    <input id="nama_naskah" class="form-control col-md-7 col-xs-12" type="text" name="nama_naskah">
-                  </div>
-                </div>
-                <div class="item form-group">
-                  <label for="lokasi" class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi</label>
-                  <div class="col-md-8 col-sm-8 col-xs-12">
-                    <textarea id="lokasi" class="form-control col-md-7 col-xs-12" type="text" name="lokasi"></textarea>
+                    <textarea id="keterangan" class="form-control col-md-7 col-xs-12" type="text" name="keterangan"></textarea>
                   </div>
                 </div>
 
-                <!-- BIAYA -->
-                <input type="hidden" id="biaya_dasar" name="biaya_dasar">
-
                 <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Panjang
-                  </label>
-                  <div class="col-md-3 col-sm-3 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="Panjang" id="panjang" name="panjang">
-                  </div>
-                  <div class="col-md-2 col-sm-2 col-xs-12">
-                    <label class="control-label pull-right">Lebar</label>
-                  </div>
-                  <div class="col-md-3 col-sm-3 col-xs-12">
-                        <input type="text" placeholder="Lebar" class=" form-control" id="lebar" name="lebar">
-                  </div>
-                </div>
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Muka
-                  </label>
-                  <div class="col-md-3 col-sm-3 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="Muka" id="muka" name="muka">
-                  </div>
-                  <div class="col-md-2 col-sm-2 col-xs-12">
-                    <label class="control-label pull-right">Jumlah</label>
-                  </div>
-                  <div class="col-md-3 col-sm-3 col-xs-12">
-                        <input type="text" placeholder="Jumlah" class=" form-control" id="jumlah" name="jumlah">
-                  </div>
-                </div>
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Jangka Waktu
-                  </label>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                      <input type="text" class=" form-control" placeholder="Jangka Waktu" id="jangka_waktu" name="jangka_waktu">
-                  </div>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="input-group">
-                        <input type="text" readonly placeholder="" class="form-control" id="satuan" name="satuan">
-                        <span class="input-group-btn">
-                          <button id="hitung" class="btn btn-success" type="button" data-target=".bs-example-modal-lg">Hitung</button>
-                        </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">NSR
-                  </label>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                      <input type="text" class="form-control uang" placeholder="NSR" id="nsr" name="nsr">
-                  </div>
-                  <div class="col-md-5 col-sm-5 col-xs-12">
-                      <div class="input-group">
-                        <input type="text" placeholder="Persen Tarif %" class="form-control" id="korek_persen_tarif" name="korek_persen_tarif">
-                        <span class="input-group-btn">
-                          <button class="btn btn-default">%</button>
-                        </span>
-                    </div>
-                  </div>
-                  </div>
-                <!-- </div> -->
-
-
-                <div class="item form-group">
-                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Pajak Terhutang</label>
+                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Retribusi</label>
                   <div class="col-md-8 col-sm-8 col-xs-12">
                     <input class="form-control uang" type="text" readonly id="pajak_terhutang" name="pajak_terhutang">
                   </div>
@@ -306,9 +210,13 @@
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Keterangan</label>
-                  <div class="col-md-8 col-sm-8 col-xs-12">
-                    <textarea id="keterangan" class="form-control col-md-7 col-xs-12" type="text" name="keterangan"></textarea>
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pemungutan">Jenis Ketetapan 
+                  </label>
+                  <div class="col-md-8 col-sm-6 col-xs-12">
+                    <select name="pemungutan" class="form-control">
+                      <option value="9">SKRD</option>
+                      <option value="5">SKRDKB</option>
+                    </select>
                   </div>
                 </div>
 

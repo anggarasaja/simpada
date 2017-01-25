@@ -33,7 +33,7 @@
                     @foreach($getpajak as $key)
                     <tr>
                       <td>{{ $x }}</td>
-                      <td><a href="{{ url('pendataan/'.$key->ref_jenparet_id.'/sptpd') }}"> {{ $key->ref_jenparet_ket }}</a></td>
+                      <td><a href="{{ url('pendataan/sptpd/'.$key->ref_jenparet_id) }}"> {{ $key->ref_jenparet_ket }}</a></td>
                     </tr>
                     <?php $x++; ?>
                     @endforeach

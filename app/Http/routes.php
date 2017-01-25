@@ -86,15 +86,21 @@ Route::get('cetak-npwpd-pdf/{wpwrid}','Pendaftaran@cetakNpwpd');
 
 //Pendataan
 Route::get('pendataan/rekam_data','Pendataan@rekam_data');
-Route::get('pendataan/{id_pajak}/sptpd','Pendataan@sptpd');
+// Route::get('pendataan/{id_pajak}/sptpd','Pendataan@sptpd');
+Route::get('pendataan/sptpd/{id_pajak}/{status?}','Pendataan@sptpd')->name('sptpd');
+Route::get('pendataan/sptpd/edit/{id_spt}/{id_pajak}/{status?}','Pendataan@editsptpd')->name('editSptpd');
 Route::get('pendataan/getnoreg','Pendataan@getnoreg');
 Route::get('pendataan/getnpwpd','Pendataan@getnpwpd');
 Route::get('pendataan/getnpwpd/{npwp}','Pendataan@getnpwpd');
-Route::get('pendataan/gethistory/{id}','Pendataan@gethistory');
+Route::get('pendataan/gethistory/hotel/{id}','Pendataan@gethistory_hotel');
+Route::get('pendataan/gethistory/reklame/{id}','Pendataan@gethistory_reklame');
 Route::get('pendataan/getRekening','Pendataan@getRekening');
 Route::get('pendataan/hitungReklame','Pendataan@hitungReklame');
+Route::get('pendataan/gantiRek','Pendataan@gantiRek');
 
+Route::post('pendataan/store_data_hotel','Pendataan@store_data_hotel');
 Route::post('pendataan/store_data_reklame','Pendataan@store_data_reklame');
+Route::post('pendataan/store_data_resto','Pendataan@store_data_resto');
 
 //BKP
 Route::get('datatables/self','bkpController@setoranSelfDt');
