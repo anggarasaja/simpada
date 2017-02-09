@@ -3,7 +3,7 @@
 <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3>Isian SPTPD Pajak Parkir:
+        <h3>Isian SPTPD PPJ / Genset: 
           @if(isset($id_spt))
           <span class="label label-warning">[ Edit ]</span></h3>
           @else
@@ -13,21 +13,21 @@
 
       <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-              <a href="{{ URL::to('pendataan/sptpd/7') }}" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Baru</a>
-              <a href="{{ URL::to('pendataan/lihat_data_parkir') }}" class="btn btn-primary"><i class="fa fa-list"></i> Lihat Data</a>
+              <a href="{{ URL::to('pendataan/sptpd/5') }}" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Baru</a>
+              <a href="{{ URL::to('pendataan/lihat_data_jalan') }}" class="btn btn-primary"><i class="fa fa-list"></i> Lihat Data</a>
         </div>
       </div>
     </div>
     <div class="clearfix"></div>
 
     @if(!isset($id_spt))
-    <form action="{{url('pendataan/store_data_parkir')}}" class="form-horizontal form-label-left" method="POST">
+    <form action="{{url('pendataan/store_data_jalan')}}" class="form-horizontal form-label-left" method="POST">
     @else
       @if(!$spr)
-        <form action="{{url('pendataan/edit_data_parkir/'.$id_spt)}}" class="form-horizontal form-label-left" method="POST">
+        <form action="{{url('pendataan/edit_data_jalan/'.$id_spt)}}" class="form-horizontal form-label-left" method="POST">
       @else
         <form class="form-horizontal form-label-left" >
-      @endif
+      @endif    
     @endif
     <div class="row">
       <div class="col-md-12 col-xs-12">
@@ -119,11 +119,12 @@
       <div class="col-md-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>History Pembayaran Pajak Parkir</h2>
+            <h2>History Pembayaran Pajak Hotel</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
               <li>
+              <!-- <button class="btn btn-primary btn-md pull-right">Detail History</button></li> -->
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -136,7 +137,6 @@
                       <th>Masa Pajak</th>
                       <th>Dasar Pengenaan</th>
                       <th>Pajak Terhutang</th>
-                      <!-- <th>Pembayaran</th> -->
                       <th>Tanggal Setor</th>
                     </tr>
                   </thead>
@@ -160,7 +160,7 @@
                   </div>
                 </div>
                 <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pajak">Masa Pajak
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pajak">Periode Pemakaian
                   </label>
                   <div class="col-md-2 col-sm-2 col-xs-12">
                     <!-- <div class="controls form-inline"> -->
@@ -174,51 +174,103 @@
                     <!-- </div> -->
                   </div>
                 </div>
-
                 <div class="item form-group">
-                  <table id="tbl_detail" class="table table-striped table-bordered">
-                    <tr>
-                      <th rowspan="2" style="text-align: center">Kode Rekening</th>
-                      <th style="text-align: center">Dasar Pengenaan</th>
-                      <th style="text-align: center">Persen Tarif</th>
-                      <th style="text-align: center">Pajak</th>
-                      <th rowspan="2"></th>
-                    </tr>
-                    <tr>
-                      <th style="text-align: center">(a)</th>
-                      <th style="text-align: center">(b)</th>
-                      <th style="text-align: center">(axb)</th>
-                    </tr>
-                    <input type='hidden' id="no" value='{{ (isset($id_spt) ? count($spt) : 0)}}'>
-                    @if(isset($id_spt))
-
-                      @for($x = 0 ; $x < count($spt) ; $x++)
-                      <tr id="row{{$x}}">
-                        <td><select class="form-control" id="korek.{{$x}}" name="korek[]" onchange="gantikorek(this.id,this.value)">
-                          @foreach($korek as $k)
-                            <option value="{{ $k->korek_id }};{{ $k->korek_persen_tarif}}">({{ $k->korek_tipe.'.'.$k->korek_kelompok.'.'.$k->korek_jenis.'.'.$k->korek_objek.'.'.$k->korek_rincian.'.'.$k->korek_sub1}}) {{  $k->korek_nama}}</option>
-                          @endforeach
-                        </select></td>
-                        <td><input type="number" class="form-control" id="dasar_pengenaan{{$x}}" name="dasar_pengenaan[]" onchange="gantipajak(this.id,this.value)" value="{{ $dasar }}"></td>
-                        <td><input type="number" class="form-control" id="persen{{$x}}" name="persen[]" value="{{ $korek[0]->korek_persen_tarif }}"></td>
-                        <td><input type="number" class="form-control" id="pajak{{$x}}" name="pajak[]" value="{{ $spt->spt_pajak }}" readonly></td>
-                        <td><a id="hapus.{{$x}}" onclick="hapus(this.id)"><i class="fa fa-trash"></i>&nbsp; HAPUS</a></td>
-                      </tr>
-
-                      @endfor
-                    @endif
-                    <!-- <div id="tambah"></div> -->
-                  </table>
-                  <a id="btn_detail" class="btn btn-warning">Tambah Detail</a>
-                </div>
-                <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pajak">Total
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Kode Rekening
                   </label>
                   <div class="col-md-2 col-sm-2 col-xs-12">
-                      <input id="total_pajak" name="total_pajak" class="form-control" readonly type="number" value="{{ (isset($id_spt)) ? $spt->spt_pajak : '' }}">
+                      <input type="text" class=" form-control" placeholder="" id="kd_rek"  name="kd_rek" value="41105" readonly>
+                  </div>
+                  <div class="col-md-1 col-sm-1 col-xs-1">
+                    <label class="control-label">Jenis</label>
+                  </div>
+                  <div class="col-md-1 col-sm-1 col-xs-12">
+                        <input type="text" placeholder="Jenis" class="form-control" id="korek_rincian" name="korek_rincian" onchange="gantiRek()" value="{{ (isset($id_spt)) ? $korek[0]->korek_rincian : '' }}">
+                  </div>
+                  <div class="col-md-1 col-sm-1 col-xs-1">
+                    <label class="control-label">Klas</label>
+                  </div>
+                  <div class="col-md-2 col-sm-2 col-xs-12">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Klas" id="korek_sub1" name="korek_sub1" onchange="gantiRek()" value="{{ (isset($id_spt)) ? $korek[0]->korek_sub1 : '' }}" >
+                        <span class="input-group-btn">
+                          <button id="modal2" class="btn btn-info" type="button" data-toggle="modal" data-target=".mdl2">...</button>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" id="id_korek" name="id_korek" value="{{ (isset($id_spt)) ? $korek[0]->korek_id : '' }}">
+                <div class="item form-group">
+                  <label for="korek_nama" class="control-label col-md-3 col-sm-3 col-xs-12">Nama Rekening</label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="korek_nama" class="form-control col-md-7 col-xs-12" type="text" name="korek_nama" value="{{ (isset($id_spt)) ? $korek[0]->korek_nama : '' }}">
                   </div>
                 </div>
 
+                <div id="divtambah" style="display:none">
+                  <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="penggunaan">Penggunaan
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <select name="penggunaan" id="penggunaan"  class="form-control" onchange="changeJenis()">
+                          <option value="">(Pilih Penggunaan)</option>
+                          @foreach($listrik as $key)
+                            @if(isset($id_spt))
+                              @if($key->nid == $spt_listrik[0]->nid_listrik_keperluan)
+                              <option value="{{ $key->nid }};{{ $key->npercent }}" selected>{{ $key->cname }}</option>
+                              @else
+                              <option value="{{ $key->nid }};{{ $key->npercent }}">{{ $key->cname }}</option>
+                              @endif
+                            @else
+                            <option value="{{ $key->nid }};{{ $key->npercent }}">{{ $key->cname }}</option>
+                            @endif
+                          @endforeach
+                        </select>
+                    </div>
+                  </div>
+
+                  <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Daya Listrik
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" class="form-control" placeholder="Daya Listrik" id="daya_listrik" name="daya_listrik" value="{{ (isset($id_spt)) ? $spt_listrik[0]->ndaya : '' }}">
+                    </div>
+                  </div>
+
+                  <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Jam Pemakaian
+                    </label>
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <input type="text" class=" form-control" placeholder="Jangka Waktu" id="jangka_waktu" name="jangka_waktu" value="{{ (isset($id_spt)) ? $spt_listrik[0]->njam : '' }}">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                            <button id="hitung" class="btn btn-success" type="button" data-target=".bs-example-modal-lg">Hitung</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="item form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Dasar Pengenaan
+                  </label>
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                      <input type="text" class="form-control" placeholder="Dasar Pengenaan" id="dasar_pengenaan" name="dasar_pengenaan" onChange="gantiPajak()" value="{{ (isset($id_spt)) ? $spt_detail[0]->spt_dt_jumlah : '' }}">
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                      <div class="input-group">
+                        <input type="text" placeholder="Persen Tarif %" class="form-control" id="korek_persen_tarif" name="korek_persen_tarif" value="{{ (isset($id_spt)) ? $spt_detail[0]->spt_dt_persen_tarif : '' }}">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default">%</button>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="item form-group">
+                  <label for="nama_rek" class="control-label col-md-3 col-sm-3 col-xs-12">Pajak Terhutang</label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input class="form-control" type="text" readonly id="pajak_terhutang" name="pajak_terhutang" value="{{ (isset($id_spt)) ? $spt->spt_pajak : '' }}">
+                  </div>
+                </div>
 
                 <div class="ln_solid"></div>
                 <div class="item form-group">
@@ -249,7 +301,7 @@
             </div>
             <div class="modal-body" style="overflow-x: auto;white-space: nowrap;">
               <input type="hidden" id="a" onload="gettable()">
-            <table id="table-npwpd" class="table table-striped table-bordered" >
+            <table id="table-npwpd" class="table table-striped table-bordered hover" >
               <thead>
                 <tr>
                   <!-- <th>No</th> -->
@@ -272,6 +324,35 @@
         </div>
       </div>
 
+  <div class="modal fade bs-example-modal-lg mdl2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Tabel Kode Rekening</h4>
+            </div>
+            <div class="modal-body" style="overflow-x: auto;white-space: nowrap;">
+              <input type="hidden" id="a" onload="gettable()">
+            <table id="table-rek" class="table table-striped table-bordered hover" >
+              <thead>
+                <tr>
+                  <!-- <th>No</th> -->
+                  <th>Kode Rekening</th>
+                  <th>Nama Rekening</th>
+                  <th>Tarif Dasar</th>
+                  <th>Persen Dasar</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody data-dismiss="modal"></tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+  </div>
 @stop
 
  @push('scripts')
@@ -281,28 +362,40 @@
     var oTable2 ;
     var status = '{{$status or ''}}';
     var id_spt = '{{$id_spt or ''}}';
-      $(document).ready(function() {
-        if(status=='1'){
-          berhasil();
-        }else if(status == '2'){
-          editBerhasil();
-        }
+    $(document).ready(function() {
+      if(status=='1'){
+        berhasil();
+      }else if(status == '2'){
+        editBerhasil();
+      }
+      id_korek = $('#id_korek').val();
+      if (id_korek == 24) {
+        $('#divtambah').show();
+      }else{
+        $('#divtambah').hide();
+      };
 
-        $(":input").inputmask();
-
-        if (id_spt == '') {
-          noreg();
-        };
-
-        oTable2 = $('#tbl_hist').DataTable({
-          bFilter: false,
-        });
-
-        var cek_id_wpwr = $('#id_wpwr').val();
-        if (cek_id_wpwr != "") {
-          gethistory(cek_id_wpwr);
-        };
+      $(":input").inputmask();
+      $('.uang').mask('000.000.000.000.000', {reverse: false});
+      if (id_spt == '') {
+        noreg();
+      };
+      oTable2 = $('#tbl_hist').DataTable({
+        bFilter: false,
       });
+      $('#example tbody')
+      .on( 'mouseenter', 'td', function () {
+          var colIdx = table.cell(this).index().column;
+
+          $( table.cells().nodes() ).removeClass( 'highlight' );
+          $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
+      });
+      var cek_id_wpwr = $('#id_wpwr').val();
+      if (cek_id_wpwr != "") {
+        gethistory(cek_id_wpwr);
+      };
+
+    });
 
       $(document).on('click','#tbl-noreg', function(){
         noreg();
@@ -367,6 +460,59 @@
            gettablenpwpd();
       });
 
+      $(document).on("click", "#modal2", function () {
+        // alert('tes');
+        oTable3 = $('#table-rek').DataTable();
+           gettablerek();
+      });
+
+      function gettablerek(){
+        var kd_rek = $('#kd_rek').val();
+        oTable3.destroy();
+         oTable3 = $('#table-rek').DataTable({
+          processing: true,
+          serverSide: true,    
+          ajax: {
+            url: "{{ URL::to('pendataan/getrek') }}",
+            type: "GET",
+            data: {  'kd_rek':kd_rek },
+          },
+          columns: [
+              { data: 'kodereken', name: 'kodereken' },
+              { data: 'korek_nama', name: 'korek_nama' },
+              { data: 'korek_tarif_dsr', name: 'korek_tarif_dsr' },
+              { data: 'korek_persen_tarif', name: 'korek_persen_tarif' },
+              { data: 'korek_id',visible:false, name: 'korek_id' },
+          ],
+          order: [[4,'desc']]
+        });
+      }
+
+      $('#table-rek tbody').on("click", "tr td", function () {
+          var sData = oTable3.row( this ).data();
+          var koderek = $(this).closest("tr").children("td").eq(0).html();
+          var korek_nama = $(this).closest("tr").children("td").eq(1).html();
+          var korek_persen_tarif = $(this).closest("tr").children("td").eq(3).html();
+          var korek_tarif_dsr = $(this).closest("tr").children("td").eq(2).html();
+
+          var id = sData.korek_id;
+          var korek_rincian = sData.korek_rincian;
+          var korek_sub1 = sData.korek_sub1;
+
+          $('#id_korek').val(id);
+          $('#korek_nama').val(korek_nama);
+          $('#korek_persen_tarif').val(korek_persen_tarif);
+          $('#korek_rincian').val(korek_rincian);
+          $('#korek_sub1').val(korek_sub1);
+
+          if (korek_rincian == '02') {
+            $('#divtambah').show();
+          }else{
+            $('#divtambah').hide();
+          };
+          
+        } );
+
       function gettablenpwpd(){
         oTable.destroy();
          oTable = $('#table-npwpd').DataTable({
@@ -414,7 +560,6 @@
           $('#kota').val(kota);
 
           gethistory(id);
-          // return false; 
         } );
 
       function gethistory(wp_wr_id){
@@ -424,16 +569,16 @@
           serverSide: true, 
           bFilter: false,   
           ajax: {
-            url: "{{ URL::to('pendataan/gethistory/parkir') }}/"+wp_wr_id,
+            url: "{{ URL::to('pendataan/gethistory/jalan') }}/"+wp_wr_id,
             type: "GET",
             data: { 'wp_wr_id':wp_wr_id  },
           },
           columns: [
               { data: 'spt_nomor', name: 'spt_nomor' },
               { data: 'spt_periode_jual1', name: 'spt_periode_jual1' },
-              { data: 'spt_dt_jumlah', name: 'spt_dt_jumlah' },
+              { data: 'dasar', name: 'dasar' },
               { data: 'spt_pajak', name: 'spt_pajak' },
-              { data: 'setorpajret_tgl_bayar', name: 'setorpajret_tgl_bayar' },
+              { data: 'setorpajret_tgl_bayar', name: 'setorpajret_tgl_bayar' }, 
           ],
           order: [[ 0, "desc" ]]
         });
@@ -465,12 +610,20 @@
         });
       }
 
-      function gantipajak(id,value){
-        nomor = id.substr(id.length - 1);
-        var persen = $('#persen'+nomor).val();
-        var pajak = (value*persen)/100;
-        $('#pajak'+nomor).val(pajak);
-        totalpajak();
+      function gantiPajak(){
+        var dasar = $('#dasar_pengenaan').val();
+        var persen = $('#korek_persen_tarif').val();
+        dasar = dasar.replace('.','');
+        var pajak = (dasar*persen)/100;
+        // alert(pajak);
+        $('#pajak_terhutang').val(pajak);
+      }
+
+      function changeJenis(){
+        var jenis = $('#penggunaan').val();
+        var pecah = jenis.split(';');
+        var persen = pecah[1];
+        $('#korek_persen_tarif').val(persen);
       }
 
       function tanggal(){
@@ -487,79 +640,5 @@
         var tgl_akhir = akhir.getDate()+'/'+bulan_akhir+'/'+akhir.getFullYear();
         $('#pajak_akhir').val(tgl_akhir);
       }
-
-      function gantikorek(id,value){
-        pecah_id = id.split('.');
-        nomor = pecah_id[1];
-        pecah_val = value.split(';');
-        persen = pecah_val[1];
-        $('#persen'+nomor).val(persen);
-
-        dp = $('#dasar_pengenaan'+nomor).val();
-        if (dp != "" || dp != "NaN") {
-          jumlah = (dp * persen ) / 100;
-          $('#pajak'+nomor).val(jumlah);
-          totalpajak();
-        };
-      }
-
-      $(document).on("click", "#btn_detail", function () {
-        nomor = $('#no').val();
-        $('#tbl_detail').append('<tr id="row'+nomor+'">'
-                            +'<td><select class="form-control" id="korek.'+nomor+'" name="korek[]" onchange="gantikorek(this.id,this.value)">'
-                                +'<option>== PILIH KODE REKENING ==</option>'
-                                @foreach($korek as $k)
-                                  +'<option value="{{ $k->korek_id }};{{ $k->korek_persen_tarif}}">({{ $k->korek_tipe.".".$k->korek_kelompok.".".$k->korek_jenis.".".$k->korek_objek.".".$k->korek_rincian.".".$k->korek_sub1}}) {{  $k->korek_nama}}</option>'
-                                @endforeach
-                              +'</select></td>'
-                              +'<td><input type="number" class="form-control" id="dasar_pengenaan'+nomor+'" name="dasar_pengenaan[]" onchange="gantipajak(this.id,this.value)"></td>'
-                              +'<td><input type="number" class="form-control" id="persen'+nomor+'" name="persen[]"></td>'
-                              +'<td><input type="number" class="form-control" id="pajak'+nomor+'" name="pajak[]" readonly></td>'
-                              +'<td><a id="hapus.'+nomor+'" onclick="hapus(this.id)"><i class="fa fa-trash"></i>&nbsp; HAPUS</a></td>'
-                            +'</tr>'
-                            );
-        nomor = parseInt(nomor)+1;
-        $('#no').val(nomor);
-      });
-
-      function totalpajak(){
-        var total = 0;
-        nomor = $('#no').val();
-        for (var i = 0; i < nomor ; i++) {
-          nilaipajak = $('#pajak'+i).val();
-          if (nilaipajak != "" && nilaipajak != "NaN" && nilaipajak != null) {
-            total = parseInt(total)+parseInt(nilaipajak);
-          };
-        };
-        $('#total_pajak').val(total);
-      }
-
-      function hapus(id){
-        swal({
-          title: "Apakah Anda Yakin?",
-          text: "Anda akan menghapus salah satu baris!",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#DD6B55",
-          confirmButtonText: "Ya, Hapuskan!",
-          cancelButtonText: "Tidak, Batalkan!",
-          closeOnConfirm: false,
-          closeOnCancel: false
-        },
-        function(isConfirm){
-          if (isConfirm) {
-             swal("Deleted!", "Baris Berhasil Dihapus", "success");
-             setTimeout(function() {
-                   pecah_id = id.split('.');
-                    nomor = pecah_id[1];
-                    $('#row'+nomor).remove();
-                    totalpajak();
-                }, 500);
-          } else {
-            swal("Batal", "Proses Telah Dibatalkan", "error");
-          }
-        });
-      }
-
     </script>
 @endpush
