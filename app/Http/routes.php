@@ -180,25 +180,48 @@ Route::delete('pendataan/sptpd/delete/{id_spt}','Pendataan@delete_spt');
 ##### END PENDATAAN ######
 
 
-//BKP
+########################
+####### BKP ############
+Route::get('penyetoran','bkpController@penyetoran');
+
+//table self assessment
 Route::get('datatables/self','bkpController@setoranSelfDt');
 Route::get('bkp/daftar-self','bkpController@daftarSetoranSelf');
+//table official assessment
 Route::get('datatables/official','bkpController@setoranOfficialDt');
 Route::get('bkp/daftar-official','bkpController@daftarSetoranOfficial');
 
-Route::get('penyetoran','bkpController@penyetoran');
-Route::get('penyetoran/menu1','bkpController@menu1');
-Route::get('penyetoran/editmenu1/{id}','bkpController@editmenu1');
-Route::post('penyetoran/store_menu1','bkpController@store_menu1');
-Route::post('penyetoran/update_menu1','bkpController@update_menu1');
+//ga pake
+// Route::get('bkp/table_setorpajret_official/{status?}','bkpController@table_setorpajret_official');
+// Route::get('bkp/getdata_setorpajret','bkpController@getdata_setorpajret');
 
-Route::get('penyetoran/menu2','bkpController@menu2');
-Route::get('penyetoran/menu3','bkpController@menu3');
-Route::get('penyetoran/menu4','bkpController@menu4');
-Route::get('penyetoran/menu5','bkpController@menu5');
-Route::get('penyetoran/menu6','bkpController@menu6');
-Route::get('penyetoran/menu7','bkpController@menu7');
+//menu 1
+Route::get('bkp/menu1','bkpController@menu1');
+Route::get('bkp/editmenu1/{id}','bkpController@editmenu1');
+Route::post('bkp/store_menu1','bkpController@store_menu1');
+Route::post('bkp/update_menu1','bkpController@update_menu1');
+
+
+//menu2
+Route::get('bkp/menu2','bkpController@menu2');
+Route::get('bkp/editmenu2/{id}','bkpController@editmenu2');
+Route::post('bkp/store_menu2','bkpController@store_menu2');
+Route::post('bkp/update_menu2','bkpController@update_menu2');
+
+Route::get('bkp/menu3','bkpController@menu3');
+Route::get('bkp/menu4','bkpController@menu4');
+Route::get('bkp/menu5','bkpController@menu5');
+Route::get('bkp/menu6','bkpController@menu6');
+Route::get('bkp/menu7','bkpController@menu7');
+
+//delete setorpajret
+Route::delete('bkp/setorpajret/delete/{id}','bkpController@delete_setorpajret');
 
 Route::get('getkohir','bkpController@getkohir');
+Route::get('getkohir2','bkpController@getkohir2');
+Route::get('bkp/getpajak','bkpController@getpajak');
+
+####### End BKP ########
+########################
 
 

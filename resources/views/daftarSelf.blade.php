@@ -5,6 +5,14 @@
         <div class="x_panel">
         <h2>Tabel Daftar Setor Self Assesment </h2>
         <hr>
+        <a href="{{ url('bkp/menu2') }}" class="btn btn-lg btn-primary"><i class="fa fa-plus"></i> Baru</a>
+        @if (session()->has('flash_notification.message'))
+                  <div class="alert alert-{{ session('flash_notification.level') }}">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                      {!! session('flash_notification.message') !!}
+                  </div>
+              @endif
         <table class="table stripe" id="rml-table">
             <thead>
                 <tr>
@@ -63,5 +71,32 @@
         rmlTable.on( 'draw.dt', function () {
         });
       });
+
+ $(document).on("click", ".btn-delete", function (e){
+            e.preventDefault();
+            var self = $(this);
+            swal({
+              title: "Apakah Anda Yakin?",
+              text: "Anda akan menghapus salah satu data Setor Official Assessment!",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Ya, Hapuskan!",
+              cancelButtonText: "Tidak, Batalkan!",
+              closeOnConfirm: false,
+              closeOnCancel: false
+            },
+            function(isConfirm){
+              if (isConfirm) {
+                 // $(this).parents("form").submit();
+                 swal("Deleted!", "Data Setor Berhasil Dihapus", "success");
+                 setTimeout(function() {
+                        self.parents("form").submit();
+                    }, 2000);
+              } else {
+                swal("Batal", "Proses Telah Dibatalkan", "error");
+              }
+            });
+          });
     </script>
 @endpush
