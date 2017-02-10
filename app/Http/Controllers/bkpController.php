@@ -186,7 +186,47 @@ class bkpController extends Controller
     }
 
     public function menu3(){
-        return view('menu3');
+        $getket = DB::select('select * from keterangan_spt');
+        foreach ($getket as $key) {
+            $ket[$key->ketspt_singkat] = '['.$key->ketspt_kode.'] '.$key->ketspt_ket;
+        }
+        $getbayar = DB::select('select * from ref_via_bayar_pajak_retribusi');
+        foreach ($getbayar as $key) {
+            $viabayar[$key->ref_viabaypajret_id] = $key->ref_viabaypajret_ket;
+        }
+        return view('menu3')->with(compact('ket','viabayar'));
+    }
+
+    public function store_menu3(Request $request){
+        $this->validate($request, [
+            'period_spt' => 'required|max:4',
+            'objek_pajak' => 'required',
+            'no_spt' => 'required',
+            'tgl_setor' => 'required',
+            'via_bayar' => 'required',
+            'kode_sptpd' => 'required',
+        ]);
+
+        $getnobukti = kohir::where('kohir_thn','=',date('Y'))->get();
+        $nobukti = $getnobukti[0]->kohir_no_bukti;
+        $nobukti++;
+        DB::table('kohir')->where('kohir_thn',date("Y"))->update(['kohir_no_bukti'=>$nobukti]);
+
+        $tgl_setor = explode("/", $request->input('tgl_setor'));
+
+        $get_kdtetap = DB::select('select ketspt_id from keterangan_spt where ketspt_singkat = ?',[$request->input('kd_tetap')]);
+
+        // $insert = new setoran_pajak_retribusi;
+        // $insert->setorpajret_id_penetapan = $request->input('spt_id');
+        // $insert->setorpajret_no_bukti = $nobukti;
+        // $insert->setorpajret_tgl_bayar = $tgl_setor[2].'-'.$tgl_setor[1].'-'.$tgl_setor[0];
+        // $insert->setorpajret_jlh_bayar = $request->input('pajak');
+        // $insert->setorpajret_via_bayar = $request->input('via_bayar');
+        // $insert->setorpajret_jenis_ketetapan = $request->kode_sptpd;
+        // $insert->save();
+
+        flash('Data Berhasil Ditambahkan !', 'success');
+        return redirect('bkp/editmenu2/'.$insert->setorpajret_id);
     }
 
     public function menu4(){
@@ -293,6 +333,29 @@ class bkpController extends Controller
     }
 
     public function getkohir2(){
+        $tahun = $_GET['period_spt'];
+        $objek_pajak = $_GET['objek_pajak'];
+        $get = spt::join('v_wp_wr','v_wp_wr.wp_wr_id','=','spt.spt_idwpwr')
+                    ->join('kode_rekening','kode_rekening.korek_id','=','spt.spt_kode_rek')
+                    ->where('spt.spt_jenis_pajakretribusi',$objek_pajak) 
+                    ->where('spt.spt_periode',$tahun) 
+                    ->whereRaw('spt.spt_id NOT IN ( SELECT setoran_pajak_retribusi.setorpajret_id_penetapan
+                                   FROM setoran_pajak_retribusi
+                                  WHERE setoran_pajak_retribusi.setorpajret_id_penetapan IS NOT NULL AND setoran_pajak_retribusi.setorpajret_jenis_ketetapan = 8::smallint)') 
+                    ->orderBy('spt_id','DESC')
+                    ->get();
+
+        return Datatables::of($get)
+        ->edit_column('spt_pajak','@if($spt_pajak == "") 0
+                                            @else {{ $spt_pajak }}
+                                            @endif
+                                            ')
+        ->addColumn('korek','{{ $korek_tipe . $korek_kelompok . $korek_jenis . $korek_objek }}')
+        ->add_column('masa_pajak','{{ $spt_periode_jual1 }} s/d {{ $spt_periode_jual2 }}')
+        ->make(true);
+    }
+
+    public function getkohir3(){
         $tahun = $_GET['period_spt'];
         $objek_pajak = $_GET['objek_pajak'];
         $get = spt::join('v_wp_wr','v_wp_wr.wp_wr_id','=','spt.spt_idwpwr')

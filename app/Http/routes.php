@@ -190,6 +190,9 @@ Route::get('bkp/daftar-self','bkpController@daftarSetoranSelf');
 //table official assessment
 Route::get('datatables/official','bkpController@setoranOfficialDt');
 Route::get('bkp/daftar-official','bkpController@daftarSetoranOfficial');
+//table lhp
+Route::get('datatables/getlhp','bkpController@getlhp');
+Route::get('bkp/daftar-lhp','bkpController@daftar_lhp');
 
 //ga pake
 // Route::get('bkp/table_setorpajret_official/{status?}','bkpController@table_setorpajret_official');
@@ -219,6 +222,7 @@ Route::delete('bkp/setorpajret/delete/{id}','bkpController@delete_setorpajret');
 
 Route::get('getkohir','bkpController@getkohir');
 Route::get('getkohir2','bkpController@getkohir2');
+Route::get('getkohir3','bkpController@getkohir3');
 Route::get('bkp/getpajak','bkpController@getpajak');
 
 ####### End BKP ########
