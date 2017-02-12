@@ -25,11 +25,11 @@
             <ul class="nav child_menu">
               <li class="sub_menu"><a href="{{ url('pendataan/rekam_data') }}">Rekam Data Objek Pajak dan Retribusi</a>
               </li>
-              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Self Assessment</a>
+              <li><a href="#">Rekam LHP - Self Assessment</a>
               </li>
-              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Retribusi</a>
+              <li><a href="#">Rekam LHP - Retribusi</a>
               </li>
-              <li><a href="#">Rekam Laporan Hasil Pemeriksaan (LHP) -- Reklame</a>
+              <li><a href="#">Rekam LHP - Reklame</a>
               </li>
               <hr>
               <li><a href="#">Cetak Kartu Data</a>
@@ -40,23 +40,23 @@
           </li>
           <li><a>Dokumentasi dan Pengolahan Data<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="level2.html">Cetak Daftar Induk WP/WR</a>
+              <li class="sub_menu"><a href="#">Cetak Daftar Induk WP/WR</a>
               </li>
-              <li><a href="#level2_1">Cetak Daftar Perkembangan WP/WR</a>
+              <li><a href="#">Cetak Daftar Perkembangan WP/WR</a>
               </li>
-              <li><a href="#level2_1">Cetak Daftar List Perkembangan WP/WR</a>
+              <li><a href="#">Cetak Daftar List Perkembangan WP/WR</a>
               </li>
             </ul>
           </li>
-          <li><a href="index2.html">Penutupan WP/WR</a></li>
-          <li><a href="index3.html">Pembukaan kembali WP/WR</a></li>
+          <li><a href="#">Penutupan WP/WR</a></li>
+          <li><a href="#">Pembukaan kembali WP/WR</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-check-square-o"></i> Penetapan <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="index.html">Cetak Surat Ketetapan</a></li>
+          <li><a href="#">Cetak Surat Ketetapan</a></li>
           <li><a href="{{ URL::to('penetapan/table') }}">Daftar Penetapan Pajak</a></li>
-          <li><a href="index3.html">Cetak Daftar Surat Ketetapan</a></li>
+          <li><a href="#">Cetak Daftar Surat Ketetapan</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-suitcase"></i> BKP <span class="fa fa-chevron-down"></span></a>
