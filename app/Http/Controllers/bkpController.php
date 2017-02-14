@@ -12,6 +12,7 @@ use App\setoran_pajak_retribusi;
 use App\kohir;
 use App\spt;
 use App\spt_detail;
+use App\wp_wr;
 use App\v_wp_wr;
 use Datatables;
 use DB;
@@ -245,6 +246,15 @@ class bkpController extends Controller
         return view('menu7');
     }
 
+    public function cetak_data_pajak($id_pajak){
+        $getpajak = DB::table('ref_jenis_pajak_retribusi')->where('ref_jenparet_id',$id_pajak)->get();
+        $pejabat = DB::table('pejabat_daerah')
+                        ->join('ref_jabatan_pejabat_daerah','ref_jabatan_pejabat_daerah.ref_japeda_id','=','pejabat_daerah.pejda_jabatan')
+                        ->orderBy('pejabat_daerah.pejda_gol_ruang','ASC')
+                        ->get();
+        return view('cetak_data_pajak')->with(compact('id_pajak','getpajak','pejabat'));
+    }
+
     ###############
     #### tabel ####
     public function table_setorpajret_official($status=""){
@@ -437,4 +447,20 @@ class bkpController extends Controller
         })   
         ->make(true);
     }
+
+    public function getnpwpd($npwp = null){
+        $id_pajak = $_GET['id_pajak'];
+        $tahun = $_GET['tahun'];
+        if (is_null($npwp)) {
+            $get = v_wp_wr::join('spt','spt.spt_idwpwr','=','v_wp_wr.wp_wr_id')
+                            ->where('spt.spt_periode',$tahun)
+                            ->where('spt.spt_jenis_pajakretribusi',$id_pajak)
+                            ->get();
+            return Datatables::of($get)
+            ->make(true);
+        }else{
+            $get = v_wp_wr::where('npwprd',$npwp)->get()->toArray();
+            echo json_encode($get);
+        }
+    }    
 }

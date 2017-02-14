@@ -178,6 +178,16 @@ Route::delete('pendataan/sptpd/delete/{id_spt}','Pendataan@delete_spt');
 //end delete spt
 
 ##### END PENDATAAN ######
+##########################
+
+
+###########
+### LHP ###
+Route::get('lhp/self/table','lhpController@table_lhp_self');
+Route::get('lhp/self/getself','lhpController@getself');
+Route::get('lhp/self/create','lhpController@create_self');
+### END LHP ###
+###############
 
 
 ########################
@@ -211,11 +221,17 @@ Route::get('bkp/editmenu2/{id}','bkpController@editmenu2');
 Route::post('bkp/store_menu2','bkpController@store_menu2');
 Route::post('bkp/update_menu2','bkpController@update_menu2');
 
+//menu3
 Route::get('bkp/menu3','bkpController@menu3');
+
+//menu4
 Route::get('bkp/menu4','bkpController@menu4');
+
+// menu 5, 6, & 7
 Route::get('bkp/menu5','bkpController@menu5');
 Route::get('bkp/menu6','bkpController@menu6');
 Route::get('bkp/menu7','bkpController@menu7');
+Route::get('bkp/cetak_data_pajak/{id_pajak}','bkpController@cetak_data_pajak');
 
 //delete setorpajret
 Route::delete('bkp/setorpajret/delete/{id}','bkpController@delete_setorpajret');
@@ -224,8 +240,18 @@ Route::get('getkohir','bkpController@getkohir');
 Route::get('getkohir2','bkpController@getkohir2');
 Route::get('getkohir3','bkpController@getkohir3');
 Route::get('bkp/getpajak','bkpController@getpajak');
+Route::get('bkp/getnpwpd/{npwp?}','bkpController@getnpwpd');
 
 ####### End BKP ########
 ########################
 
-
+###############
+### REPORT ####
+Route::get('generate_pdf','reportDaftarController@generate_pdf');
+Route::get('pendataan/cetak_daftar_list','Pendataan@cetak_daftar_list');
+Route::get('pendataan/cetak_daftar','Pendataan@cetak_daftar');
+Route::get('pendataan/cetak_daftar_reklame','Pendataan@cetak_daftar_reklame');
+Route::post('report/cetak_daftar_pendataan','reportDaftarController@cetak_daftar_pendataan');
+Route::post('report/cetak_daftar_reklame','reportDaftarController@cetak_daftar_reklame');
+### END REPORT ####
+###################

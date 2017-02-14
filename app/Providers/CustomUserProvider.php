@@ -25,12 +25,14 @@ public function retrieveById($identifier)
 
     if($qry->count() >0)
     {
-        $user = $qry->select('opr_id', 'opr_user', 'opr_passwd')->first();
+        $user = $qry->select()->first();
 
         $attributes = array(
             'id' => $user->opr_id,
             'opr_user' => $user->opr_user,
             'opr_passwd' => $user->opr_passwd,
+            'opr_nama' => $user->opr_nama,
+            'opr_jabatan' => $user->opr_jabatan,
         );
 
         return $user;
@@ -52,12 +54,14 @@ public function retrieveByToken($identifier, $token)
 
     if($qry->count() >0)
     {
-        $user = $qry->select('opr_id', 'opr_user', 'opr_passwd')->first();
+        $user = $qry->select()->first();
 
         $attributes = array(
             'id' => $user->opr_id,
             'opr_user' => $user->opr_user,
             'opr_passwd' => $user->opr_passwd,
+            'opr_jabatan' => $user->opr_jabatan,
+            'opr_nama' => $user->opr_nama,
         );
 
         return $user;
@@ -97,7 +101,7 @@ public function retrieveByCredentials(array $credentials)
     $qry = User::where('opr_user','=',$credentials['opr_user'])->where('opr_status','=','true');
     if($qry->count() > 0)
     {
-        $user = $qry->select('opr_id','opr_user','opr_passwd')->first();
+        $user = $qry->select()->first();
 
         return $user;
     }

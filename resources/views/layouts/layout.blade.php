@@ -54,8 +54,8 @@
                 <img src="{{ URL::asset('images/img.jpg') }}" alt="profile" class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Admin</span>
-                <h2>BPK</h2>
+                <span>{{ Auth::user()->opr_nama }}</span>
+                <h2></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -78,7 +78,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ URL::asset('images/img.jpg') }}" alt="">BPK
+                    <img src="{{ URL::asset('images/img.jpg') }}" alt="">{{Auth::user()->opr_nama}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

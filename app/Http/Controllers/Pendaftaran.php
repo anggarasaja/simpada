@@ -14,6 +14,7 @@ use App\Libraries\tbs_class;
 use App\Libraries\tbs_plugin_opentbs;
 class Pendaftaran extends Controller
 {
+    
     public function __construct(){
     	$this->middleware('auth');
     }

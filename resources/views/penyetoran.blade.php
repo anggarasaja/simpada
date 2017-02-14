@@ -64,7 +64,7 @@
                       @foreach($data_pajak as $key)
                       <tr>
                         <td>{{ $key->ref_jenparet_id }}</td>
-                        <td><a href="{{ url('cetak_data_pajak/'.$key->ref_jenparet_id) }}">{{ $key->ref_jenparet_ket }}</a></td>
+                        <td><a href="{{ url('bkp/cetak_data_pajak/'.$key->ref_jenparet_id) }}">{{ $key->ref_jenparet_ket }}</a></td>
                       </tr>
                       @endforeach
                     </tbody>

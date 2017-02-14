@@ -34,7 +34,7 @@
               <hr>
               <li><a href="#">Cetak Kartu Data</a>
               </li>
-              <li><a href="#">Cetak Daftar Kartu Data</a>
+              <li><a href="{{ URL::to('pendataan/cetak_daftar_list') }}">Cetak Daftar Kartu Data</a>
               </li>
             </ul>
           </li>

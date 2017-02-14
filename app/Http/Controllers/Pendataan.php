@@ -2268,6 +2268,37 @@ class Pendataan extends Controller
     ## DELETE SPT ##
     ################
 
+    ### REPORT ###
+
+    function cetak_daftar_list(){
+        return view('cetak_daftar_list');
+    }
+
+    public function cetak_daftar(){
+        $korek = kode_rekening::where('korek_rincian','00')->where('korek_objek','!=','')->orderBy('korek_id')->get();
+        $getpejda = DB::select('select * from v_pejabat_daerah');
+        foreach ($getpejda as $key) {
+            $pejda[$key->pejda_id] = $key->ref_japeda_nama.' - '.$key->pejda_nama;
+        }
+        $getjabatan = DB::table('ref_jabatan')->get();
+        foreach ($getjabatan as $key) {
+            $jabatan[$key->ref_jab_id] = $key->ref_jab_nama;
+        }
+        return view('cetak_daftar_pendataan')->with(compact('korek','pejda','jabatan'));
+    }
+
+    public function cetak_daftar_reklame(){
+        $getpejda = DB::select('select * from v_pejabat_daerah');
+        foreach ($getpejda as $key) {
+            $pejda[$key->pejda_id] = $key->ref_japeda_nama.' - '.$key->pejda_nama;
+        }
+        $getjabatan = DB::table('ref_jabatan')->get();
+        foreach ($getjabatan as $key) {
+            $jabatan[$key->ref_jab_id] = $key->ref_jab_nama;
+        }
+        return view('cetak_daftar_reklame')->with(compact('korek','pejda','jabatan'));
+    }
+    ### END REPORT ###
 
 
     ###################
