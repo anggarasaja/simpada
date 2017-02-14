@@ -2298,6 +2298,39 @@ class Pendataan extends Controller
         }
         return view('cetak_daftar_reklame')->with(compact('korek','pejda','jabatan'));
     }
+
+    //DOKUMENTASI dan PENGELOLAAN DATA
+
+    public function cetak_induk_wpwr(){
+        $jenis = DB::table('ref_kode_usaha')->orderBy('ref_kodus_id')->get();
+        $kecamatan = DB::table('kecamatan')->get();
+        $getpejda = DB::select('select * from v_pejabat_daerah');
+        foreach ($getpejda as $key) {
+            $pejda[$key->pejda_id] = $key->ref_japeda_nama.' - '.$key->pejda_nama;
+        }
+
+        return view('cetak_induk_wpwr')->with(compact('jenis','kecamatan','pejda'));
+    }
+
+    public function cetak_kembang_wpwr(){
+        $getpejda = DB::select('select * from v_pejabat_daerah');
+        foreach ($getpejda as $key) {
+            $pejda[$key->pejda_id] = $key->ref_japeda_nama.' - '.$key->pejda_nama;
+        }
+
+        return view('cetak_kembang_wpwr')->with(compact('pejda'));
+    }
+    
+    public function cetak_list_kembang_wpwr(){
+        $jenis = DB::table('ref_kode_usaha')->orderBy('ref_kodus_id')->get();
+        $kecamatan = DB::table('kecamatan')->get();
+        $getpejda = DB::select('select * from v_pejabat_daerah');
+        foreach ($getpejda as $key) {
+            $pejda[$key->pejda_id] = $key->ref_japeda_nama.' - '.$key->pejda_nama;
+        }
+
+        return view('cetak_list_kembang_wpwr')->with(compact('jenis','kecamatan','pejda'));
+    }
     ### END REPORT ###
 
 
@@ -2329,6 +2362,18 @@ class Pendataan extends Controller
             ->make(true);
         }else{
             $get = v_wp_wr::where('npwprd',$npwp)->get()->toArray();
+            echo json_encode($get);
+        }
+    }   
+
+    //get npwpd yang non aktif
+    public function getnpwpd_tutup($npwp = null){
+        if (is_null($npwp)) {
+            $get = wp_wr::where('wp_wr_tgl_tutup','!=',null)->orderBy('wp_wr_id','DESC')->get();
+            return Datatables::of($get)
+            ->make(true);
+        }else{
+            $get = v_wp_wr::where('wp_wr_status_aktif',false)->where('npwprd',$npwp)->get()->toArray();
             echo json_encode($get);
         }
     }    
@@ -2478,6 +2523,12 @@ class Pendataan extends Controller
 
         $kirim = array(compact('harga_dasar',"jumlah"));
         echo json_encode($kirim);
+    }
+
+    public function getlurah(){
+        $camat_id = $_GET['camat_id'];
+        $lurah = DB::table('kelurahan')->where('lurah_kecamatan',$camat_id)->get();
+        echo json_encode($lurah);
     }
     ## END GET CANGKUNEK ##
     #######################

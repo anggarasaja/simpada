@@ -10,6 +10,7 @@ use Fpdf;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\bank;
+use App\wp_wr;
 use App\Libraries\tbs_class;
 use App\Libraries\tbs_plugin_opentbs;
 class Pendaftaran extends Controller
@@ -991,5 +992,44 @@ class Pendaftaran extends Controller
         $pdf->tbOuputData();
         $pdf->Output();
         exit;
+    }
+
+    public function tutup(){
+        return view('tutup');
+    }
+
+    public function proses_tutup(Request $request){
+        $this->validate($request, [
+
+        ]);
+        $pecah = explode("/", $request->tgl_entry);
+        $tgl = $pecah[2].'-'.$pecah[1].'-'.$pecah[0];
+        $wp_wr = wp_wr::find($request->id_wpwr);
+        $wp_wr->wp_wr_status_aktif = false;
+        $wp_wr->wp_wr_tgl_tutup = $tgl;
+        $wp_wr->save();
+
+        flash('Data Berhasil Ditutup !', 'success');
+        return redirect('daftar/tutup_wpwr/');
+    }
+
+    public function buka(){
+        return view('buka');
+    }
+
+    public function proses_buka(Request $request){
+        $this->validate($request, [
+
+        ]);
+        $pecah = explode("/", $request->tgl_entry);
+        $tgl = $pecah[2].'-'.$pecah[1].'-'.$pecah[0];
+        $wp_wr = wp_wr::find($request->id_wpwr);
+        $wp_wr->wp_wr_status_aktif = true;
+        $wp_wr->wp_wr_tgl_tutup = null;
+        $wp_wr->wp_wr_tgl_form_kembali = $tgl;
+        $wp_wr->save();
+
+        flash('Data Berhasil Dibuka !', 'success');
+        return redirect('daftar/buka_wpwr/');
     }
 }

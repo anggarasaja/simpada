@@ -84,6 +84,11 @@ Route::get('cetak-npwpd-pdf/{wpwrid}','Pendaftaran@cetakNpwpd');
 
 // Route::get('cetak_npwpd','Pendaftaran@cetak_npwpd');
 
+Route::get('daftar/tutup_wpwr','Pendaftaran@tutup');
+Route::post('daftar/proses_tutup_wpwr','Pendaftaran@proses_tutup');
+Route::get('daftar/buka_wpwr','Pendaftaran@buka');
+Route::post('daftar/proses_buka_wpwr','Pendaftaran@proses_buka');
+
 ##### PENDATAAN ######
 
 //form pendataan baru dan edit
@@ -108,11 +113,14 @@ Route::get('pendataan/gethistory/retribusi/{id}','Pendataan@gethistory_retribusi
 Route::get('pendataan/getnoreg','Pendataan@getnoreg');
 Route::get('pendataan/getnpwpd','Pendataan@getnpwpd');
 Route::get('pendataan/getnpwpd/{npwp}','Pendataan@getnpwpd');
+// Route::get('pendataan/getnpwpd_tutup','Pendataan@getnpwpd_tutup');
+Route::get('pendataan/getnpwpd_tutup/{npwp?}','Pendataan@getnpwpd_tutup');
 Route::get('pendataan/getRekening','Pendataan@getRekening');
 Route::get('pendataan/hitungReklame','Pendataan@hitungReklame');
 Route::get('pendataan/gantiRek','Pendataan@gantiRek');
 Route::get('pendataan/getrek','Pendataan@getrek');
 Route::get('pendataan/hitungAirTanah','Pendataan@hitungAirTanah');
+Route::get('pendataan/getlurah','Pendataan@getlurah');
 //end get cangkunek di pendataan
 
 //simpan dan edit pendataaan spt
@@ -248,10 +256,20 @@ Route::get('bkp/getnpwpd/{npwp?}','bkpController@getnpwpd');
 ###############
 ### REPORT ####
 Route::get('generate_pdf','reportDaftarController@generate_pdf');
+
 Route::get('pendataan/cetak_daftar_list','Pendataan@cetak_daftar_list');
 Route::get('pendataan/cetak_daftar','Pendataan@cetak_daftar');
 Route::get('pendataan/cetak_daftar_reklame','Pendataan@cetak_daftar_reklame');
+
 Route::post('report/cetak_daftar_pendataan','reportDaftarController@cetak_daftar_pendataan');
 Route::post('report/cetak_daftar_reklame','reportDaftarController@cetak_daftar_reklame');
+
+Route::get('pendataan/cetak_induk_wpwr','Pendataan@cetak_induk_wpwr');
+Route::get('pendataan/cetak_kembang_wpwr','Pendataan@cetak_kembang_wpwr');
+Route::get('pendataan/cetak_list_kembang_wpwr','Pendataan@cetak_list_kembang_wpwr');
+
+Route::post('report/cetak_induk_wpwr','reportDaftarController@cetak_induk_wpwr');
+Route::post('report/cetak_kembang_wpwr','reportDaftarController@cetak_kembang_wpwr');
+Route::post('report/cetak_list_kembang_wpwr','reportDaftarController@cetak_list_kembang_wpwr');
 ### END REPORT ####
 ###################

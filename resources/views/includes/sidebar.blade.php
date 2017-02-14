@@ -40,16 +40,16 @@
           </li>
           <li><a>Dokumentasi dan Pengolahan Data<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li class="sub_menu"><a href="#">Cetak Daftar Induk WP/WR</a>
+              <li class="sub_menu"><a href="{{URL::to('pendataan/cetak_induk_wpwr')}}">Cetak Daftar Induk WP/WR</a>
               </li>
-              <li><a href="#">Cetak Daftar Perkembangan WP/WR</a>
+              <li><a href="{{URL::to('pendataan/cetak_kembang_wpwr')}}">Cetak Daftar Perkembangan WP/WR</a>
               </li>
-              <li><a href="#">Cetak Daftar List Perkembangan WP/WR</a>
+              <li><a href="{{URL::to('pendataan/cetak_list_kembang_wpwr')}}">Cetak Daftar List Perkembangan WP/WR</a>
               </li>
             </ul>
           </li>
-          <li><a href="#">Penutupan WP/WR</a></li>
-          <li><a href="#">Pembukaan kembali WP/WR</a></li>
+          <li><a href="{{URL::to('daftar/tutup_wpwr')}}">Penutupan WP/WR</a></li>
+          <li><a href="{{URL::to('daftar/buka_wpwr')}}">Pembukaan kembali WP/WR</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-check-square-o"></i> Penetapan <span class="fa fa-chevron-down"></span></a>
