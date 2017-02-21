@@ -21,7 +21,7 @@ class reportDaftarController extends Controller
         $mpdf = new \Mpdf();
         $mpdf->WriteHTML('<h1>Hello world!</h1>');
         $mpdf->Output();
-	}
+	   }
 
     #### PENDATAAN  ######
 
@@ -180,6 +180,7 @@ class reportDaftarController extends Controller
                 <td style="text-align: left;"></td>
               </tr>
               </table>';
+              // echo "<pagebreak />";
 
         $html = ob_get_contents(); 
         ob_end_clean();

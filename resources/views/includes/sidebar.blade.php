@@ -54,7 +54,7 @@
       </li>
       <li><a><i class="fa fa-check-square-o"></i> Penetapan <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="#">Cetak Surat Ketetapan</a></li>
+          <li><a href="{{ URL::to('ketetapan') }}">Cetak Surat Ketetapan</a></li>
           <li><a href="{{ URL::to('penetapan/table') }}">Daftar Penetapan Pajak</a></li>
           <li><a href="#">Cetak Daftar Surat Ketetapan</a></li>
         </ul>

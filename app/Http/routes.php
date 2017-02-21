@@ -197,6 +197,27 @@ Route::get('lhp/self/create','lhpController@create_self');
 ### END LHP ###
 ###############
 
+###############
+## PENETAPAN ##
+Route::get('ketetapan','Penetapan@ketetapan');
+Route::get('ketetapan/skpd','Penetapan@skpd');
+Route::get('ketetapan/skrd','Penetapan@skrd');
+Route::get('ketetapan/skpdkb','Penetapan@skpdkb');
+Route::get('ketetapan/skrdkb','Penetapan@skrdkb');
+Route::get('ketetapan/skpdlb','Penetapan@skpdlb');
+Route::get('ketetapan/skpdt','Penetapan@skpdt');
+Route::get('ketetapan/skrdt','Penetapan@skrdt');
+
+Route::get('ketetapan/getkohir','Penetapan@getkohir');
+Route::post('skpd/cetak','Penetapan@cetak_skpd');
+Route::post('skrd/cetak','Penetapan@cetak_skrd');
+Route::post('skpdkb/cetak','Penetapan@cetak_skpdkb');
+Route::post('skprkb/cetak','Penetapan@cetak_skprkb');
+Route::post('skpdlb/cetak','Penetapan@cetak_skpdlb');
+Route::post('skpdt/cetak','Penetapan@cetak_skpdt');
+Route::post('skrdt/cetak','Penetapan@cetak_skrdt');
+## END PENETAPAN ##
+###################
 
 ########################
 ####### BKP ############

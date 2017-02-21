@@ -8,7 +8,7 @@
 
       <div class="title_right">
         <div class="form-group pull-right top_search">
-              <a href="{{ URL::to('bkp/table_setorpajret_official') }}" class="btn btn-primary"><i class="fa fa-list"></i> Lihat Data</a>
+              <a href="{{ URL::to('bkp/daftar-official') }}" class="btn btn-primary"><i class="fa fa-list"></i> Lihat Data</a>
         </div>
       </div>
     </div>
