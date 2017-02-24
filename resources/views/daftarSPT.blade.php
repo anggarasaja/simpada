@@ -5,7 +5,7 @@
         <div class="x_panel">
         <h2>Tabel Daftar SPT yang sudah ditetapkan </h2>
         <hr>
-        <table class="table stripe" id="rml-table">
+        <table class="table stripe dataTable" id="rml-table">
             <thead>
                 <tr>
                     <th>Kohir</th>
@@ -31,6 +31,7 @@
     <script>
 
       $(document).ready(function() {
+        $('.dataTable th').addClass('bg-blue');
         var rmlTable = $('#rml-table').DataTable({
             "scrollX": true,
             processing: true,

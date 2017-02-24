@@ -191,6 +191,7 @@ Route::delete('pendataan/sptpd/delete/{id_spt}','Pendataan@delete_spt');
 
 ###########
 ### LHP ###
+Route::get('lhp','lhpController@index');
 Route::get('lhp/self/table','lhpController@table_lhp_self');
 Route::get('lhp/self/getself','lhpController@getself');
 Route::get('lhp/self/create','lhpController@create_self');
@@ -270,6 +271,10 @@ Route::get('getkohir2','bkpController@getkohir2');
 Route::get('getkohir3','bkpController@getkohir3');
 Route::get('bkp/getpajak','bkpController@getpajak');
 Route::get('bkp/getnpwpd/{npwp?}','bkpController@getnpwpd');
+
+// report
+Route::post('bkp/cetak_sspd/official','reportBkpController@cetak_sspd_official');
+Route::post('bkp/cetak_sspd/self','reportBkpController@cetak_sspd_self');
 
 ####### End BKP ########
 ########################

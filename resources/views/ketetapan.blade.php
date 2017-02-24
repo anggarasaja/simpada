@@ -10,7 +10,7 @@
     <div class="clearfix"></div>
 
     <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="col-md-8 col-sm-8 col-xs-12">
         <div class="x_panel">
           <div class="x_content">
                 <table id="datatable" class="table table-striped table-bordered bulk_action">

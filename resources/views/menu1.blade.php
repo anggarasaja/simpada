@@ -17,7 +17,7 @@
     @if(!isset($post))
     <form id="form_simpan" action="{{url('bkp/store_menu1')}}" class="form-horizontal form-label-left" method="POST">
     @else
-    <form action="{{url('bkp/update_menu1/'.$post->setorpajret_id)}}" class="form-horizontal form-label-left" method="POST">
+    <form action="{{url('bkp/cetak_sspd/official')}}" class="form-horizontal form-label-left" method="POST">
     @endif
     <div class="row">
       <div class=" col-md-6 col-xs-12">
@@ -35,7 +35,8 @@
             <div class="x_content">
               <br>
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" id="setorpajret_id_penetapan" name="setorpajret_id_penetapan" >
+              <input type="hidden" id="setorpajret_id_penetapan" name="setorpajret_id_penetapan">
+              <input type="hidden" id="setorpajret_id" name="setorpajret_id" value="{{ (isset($post)) ? $post->setorpajret_id : '' }}">
               @if (session()->has('flash_notification.message'))
                   <div class="alert alert-{{ session('flash_notification.level') }}">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -158,7 +159,7 @@
                 <div class="form-group">
                   <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                     @if(isset($post))
-                      <a href="#" class="btn btn-info btn-lg"><i class="fa fa-print"></i> CETAK SSPD</a>
+                      <button type="submit" class="btn btn-info btn-lg"><i class="fa fa-print"></i> CETAK SSPD</button>
                     @else
                       <a id="save" class="btn btn-success btn-lg"><i class="fa fa-save"></i> Lakukan Penyetoran</a>
                     @endif

@@ -12,6 +12,10 @@ class lhpController extends Controller
     	$this->middleware('auth');
     }
 
+    public function index(){
+        return view('pilih_lhp');
+    }
+
     public function table_lhp_self(){
     	return view('table_lhp_self');
     }

@@ -10,7 +10,7 @@
     <div class="clearfix"></div>
 
     <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="x_panel">
           <!-- <div class="x_title">
             <h2>Daftar Wajib Pajak</h2>
@@ -88,12 +88,12 @@
  {!! Html::script('vendor/datatables/DataTables-1.10.12/js/jquery.dataTables.min.js'); !!}
     <script>
       $(document).ready(function() {
-        var $datatable = $('#datatable');
+        // var $datatable = $('#datatable');
 
-        $datatable.dataTable({
-          'order': [[ 0, 'asc' ]],
+        // $datatable.dataTable({
+        //   'order': [[ 0, 'asc' ]],
 
-        });
+        // });
       });
     </script>
 @endpush

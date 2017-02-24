@@ -3,9 +3,9 @@
   <div class="row">
 
         <div class="x_panel">
-        <h2>Daftar Setor Official Assesment </h2>
+        <h2>Daftar Setor Official Assesment 
+        <a href="{{ url('bkp/menu1') }}" class="btn btn-lg btn-primary pull-right"><i class="fa fa-plus"></i> Baru</a></h2>
         <hr>
-        <a href="{{ url('bkp/menu1') }}" class="btn btn-lg btn-primary"><i class="fa fa-plus"></i> Baru</a>
         @if (session()->has('flash_notification.message'))
                   <div class="alert alert-{{ session('flash_notification.level') }}">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -13,7 +13,7 @@
                       {!! session('flash_notification.message') !!}
                   </div>
               @endif
-        <table class="table table-stripe" id="rml-table">
+        <table class="table table-stripe table-bordered" id="rml-table">
             <thead>
                 <tr>
                     <th>Kohir</th>
@@ -44,6 +44,7 @@
   return n.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
 }
       $(document).ready(function() {
+        // $('.table th').addClass('bg-green');
         rmlTable = $('#rml-table').DataTable({
             "language": {
                 "decimal": ",",
@@ -60,6 +61,7 @@
                 { data: 'korek_nama', name: 'korek_nama' },
                 { data: 'npwprd', name: 'npwprd' },
                 { data: 'wp_wr_nama', name: 'wp_wr_nama' },
+                { data: 'setorpajret_jlh_bayar', name: 'setorpajret_jlh_bayar' },
                 { data: 'ref_viabaypajret_ket', name: 'ref_viabaypajret_ket' },
                 { data: 'action', name: 'action' },
             ]

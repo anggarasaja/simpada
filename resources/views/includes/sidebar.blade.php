@@ -25,11 +25,7 @@
             <ul class="nav child_menu">
               <li class="sub_menu"><a href="{{ url('pendataan/rekam_data') }}">Rekam Data Objek Pajak dan Retribusi</a>
               </li>
-              <li><a href="#">Rekam LHP - Self Assessment</a>
-              </li>
-              <li><a href="#">Rekam LHP - Retribusi</a>
-              </li>
-              <li><a href="#">Rekam LHP - Reklame</a>
+              <li><a href="{{ URL::to('lhp') }}">Rekam LHP</a>
               </li>
               <hr>
               <li><a href="#">Cetak Kartu Data</a>
