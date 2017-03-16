@@ -189,6 +189,8 @@
           <li><a href="#">Import Kecamatan & Kelurahan Data</a></li>
         </ul>
       </li>
+      <li><a href="{{ url('user') }}" ><i class="fa fa-users"></i> Manajemen Operator </a>
+      </li>
     </ul>
   </div>
   <!-- <div class="menu_section">

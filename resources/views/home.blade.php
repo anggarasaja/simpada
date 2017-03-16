@@ -139,7 +139,7 @@
                     <h2>Jatuh Tempo</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <!-- <div class="x_content">
                     @foreach($getnetapajrek as $key)
                     <article class="media event">
                       <a class="pull-left date">
@@ -156,7 +156,7 @@
                     <div class="pull-right">
                       <button class="btn btn-md btn-primary">See more...</button>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -165,7 +165,7 @@
                     <h2>3 Bulan Transaksi Terakhir</h2>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <!-- <div class="x_content">
                     @foreach($getnetapajrek as $key)
                     <article class="media event">
                       <a class="pull-left date">
@@ -182,7 +182,7 @@
                     <div class="pull-right">
                       <button class="btn btn-md btn-primary">See more...</button>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
           </div>

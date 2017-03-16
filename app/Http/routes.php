@@ -299,3 +299,8 @@ Route::post('report/cetak_kembang_wpwr','reportDaftarController@cetak_kembang_wp
 Route::post('report/cetak_list_kembang_wpwr','reportDaftarController@cetak_list_kembang_wpwr');
 ### END REPORT ####
 ###################
+
+### User ###
+Route::resource('user','userController');
+Route::get('getdatauser','userController@getdatauser');
+### END User ###
