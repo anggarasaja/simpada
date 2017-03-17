@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>Simpada </title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <!-- Bootstrap -->
     <link href="{{ URL::asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -78,7 +79,7 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-plus-circle"></i> SIMPATDA - PLUS</h1>
+                  <h1><img src="{{ URL::asset('images/img.jpg') }}" class="img-circle" alt="LOGO" style="width:10%;height:10%"> SIMPADA</h1>
                   <p>©2016 All Rights Reserved</p>
                 </div>
               </div>

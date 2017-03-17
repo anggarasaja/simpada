@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Simpatda </title>
+    <title>Simpada </title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     {!! Html::style('vendors/bootstrap/dist/css/bootstrap.min.css'); !!}
@@ -43,7 +43,7 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{ URL::to('/') }}" class="site_title"><i class="fa fa-plus-circle"></i> <span>SIMPADA-PLUS</span></a>
+              <a href="{{ URL::to('/') }}" class="site_title"><i class="fa fa-home"></i> <span>SIMPADA-PLUS</span></a>
             </div>
 
             <div class="clearfix"></div>

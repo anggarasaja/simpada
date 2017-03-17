@@ -58,12 +58,28 @@ class HomeController extends Controller
         $BANK = DB::table($tablesBANK)
             ->count();
         //LHP
+
+        // jatuh tempo
+        $now = date('Y-m-d', strtotime(' +7 day'));
+
+        $getnetapajrek = DB::table('penetapan_pajak_retribusi')
+                            ->join('spt','spt.spt_id','=','penetapan_pajak_retribusi.netapajrek_id_spt')
+                            ->join('v_wp_wr','v_wp_wr.wp_wr_id','=','spt.spt_idwpwr')
+                            ->join('spt_detail','spt_detail.spt_dt_id_spt','=','spt.spt_id')
+                            ->leftjoin('spt_detailreklame','spt_detailreklame.nid_spt','=','spt.spt_id')
+                            ->where('netapajrek_tgl_jatuh_tempo','<=',$now)
+                            ->whereRaw('netapajrek_id NOT IN (select setorpajret_id_penetapan from setoran_pajak_retribusi)')
+                            ->limit(5)
+                            ->orderBy('netapajrek_tgl_jatuh_tempo','DESC')
+                            ->get(array('netapajrek_id','spt_id','netapajrek_tgl_jatuh_tempo','wp_wr_nama','npwprd','cnaskah','clokasi','spt_dt_lokasi'));
+
         return view('home',[
             'pribadi'=>$pribadi,
             'bu' => $bu,
             'spt' => $SPT,
             'lhp' => $LHP,
             'bank' =>$BANK,
+            'getnetapajrek' => $getnetapajrek
             ]);
     }
 }

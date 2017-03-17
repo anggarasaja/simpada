@@ -14,6 +14,7 @@ use App\spt;
 use App\spt_detail;
 use App\wp_wr;
 use App\v_wp_wr;
+use App\setoran_pajak_retribusi_self_detail;
 use Datatables;
 use DB;
 use URL;
@@ -142,11 +143,16 @@ class bkpController extends Controller
             'via_bayar' => 'required',
             'kode_sptpd' => 'required',
         ]);
+        // dd($request);
 
-        $getnobukti = kohir::where('kohir_thn','=',date('Y'))->get();
+        $getspt = spt::find($request->spt_id);
+        $getspt_dt = spt_detail::where('spt_dt_id_spt',$request->spt_id)->get();
+        $tahun  = $getspt->spt_periode;
+
+        $getnobukti = kohir::where('kohir_thn','=',$tahun)->get();
         $nobukti = $getnobukti[0]->kohir_no_bukti;
         $nobukti++;
-        DB::table('kohir')->where('kohir_thn',date("Y"))->update(['kohir_no_bukti'=>$nobukti]);
+        DB::table('kohir')->where('kohir_thn',$tahun)->update(['kohir_no_bukti'=>$nobukti]);
 
         $tgl_setor = explode("/", $request->input('tgl_setor'));
 
@@ -160,6 +166,21 @@ class bkpController extends Controller
         $insert->setorpajret_via_bayar = $request->input('via_bayar');
         $insert->setorpajret_jenis_ketetapan = $request->kode_sptpd;
         $insert->save();
+
+        $getid = setoran_pajak_retribusi_self_detail::orderBy('sprsd_id','DESC')->first();
+        $sprsd_id = $getid->sprsd_id + 1;
+
+        $setorself = new setoran_pajak_retribusi_self_detail;
+        $setorself->sprsd_id = $sprsd_id;
+        $setorself->sprsd_id_setor = $insert->setorpajret_id;
+        $setorself->sprsd_idwpwr = $getspt->spt_idwpwr;
+        $setorself->sprsd_kode_rek = $getspt->spt_kode_rek;
+        $setorself->sprsd_omzet = $getspt_dt[0]->spt_dt_jumlah;
+        $setorself->sprsd_periode_jual1 = $getspt->spt_periode_jual1;
+        $setorself->sprsd_periode_jual2 = $getspt->spt_periode_jual2;
+        $setorself->sprsd_thn = $getspt->spt_periode;
+        $setorself->sprsd_id_spt = $request->spt_id;
+        $setorself->save();
 
         flash('Data Berhasil Ditambahkan !', 'success');
         return redirect('bkp/editmenu2/'.$insert->setorpajret_id);
@@ -179,11 +200,12 @@ class bkpController extends Controller
             $viabayar[$key->ref_viabaypajret_id] = $key->ref_viabaypajret_ket;
         }
         $post = setoran_pajak_retribusi::find($id);
+        $getsetorself = setoran_pajak_retribusi_self_detail::where('sprsd_id_setor',$id)->get();
         $spt = spt::where('spt_id',$post->setorpajret_id_penetapan)->get();
 
         $v_wp_wr = v_wp_wr::find($spt[0]->spt_idwpwr);
 
-        return view('menu2')->with(compact('post','v_wp_wr','spt','ket','pejda','viabayar'));
+        return view('menu2')->with(compact('post','v_wp_wr','spt','ket','pejda','viabayar','getsetorself'));
     }
 
     public function menu3(){
@@ -409,7 +431,9 @@ class bkpController extends Controller
     public function setoranSelfDt(){
         $records = DB::table('v_setoran_khusus_self')
                     ->select(DB::raw('DISTINCT setorpajret_no_bukti,sprsd_thn,setorpajret_id,spt_nomor,setorpajret_tgl_bayar,koderek,korek_rincian,korek_sub1,korek_nama,npwprd_format,wp_wr_nama,ref_viabaypajret_ket, sprsd_periode_jual1,setorpajret_jlh_bayar'))
-                    ->orderBy('setorpajret_no_bukti','desc');
+                    ->orderBy('sprsd_thn','desc');
+                    // ->orderBy('spt_nomor','desc')
+                    // ->orderBy('setorpajret_no_bukti','desc');
         return Datatables::of($records)
         ->editColumn('sprsd_periode_jual1',function($row){
             return date('M',strtotime($row->sprsd_periode_jual1))."-".$row->sprsd_thn;
@@ -429,11 +453,12 @@ class bkpController extends Controller
     }
 
     public function setoranOfficialDt(){
-        $records = DB::table('v_pembantu_harian');
+        $records = DB::table('v_pembantu_harian')->orderBy('periode_tap','DESC');
                     // ->orderBy('periode_tap','DESC')
                     // ->orderBy('setorpajret_tgl_bayar','DESC')
                     // ->orderBy('netapajrek_kohir','DESC');
         return Datatables::of($records)
+        ->editColumn('setorpajret_tgl_bayar','{{ date("d/m/Y",strtotime($setorpajret_tgl_bayar))}}')
         ->addColumn('action', function ($row) {
             $button = "<div class='btn-group-vertical'>";
                 $button .= "<a type='button' class='btn btn-primary btn-xs' href='". URL::to('bkp/editmenu1/'.$row->setorpajret_id) ."'><i class='fa fa-list'></i>&nbsp; VIEW</a>";

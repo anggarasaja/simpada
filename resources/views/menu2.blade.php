@@ -29,16 +29,17 @@
               @if(!isset($post))
               <form id="form_simpan" action="{{url('bkp/store_menu2')}}" class="form-horizontal form-label-left" method="POST">
               @else
-              <form action="{{url('bkp/update_menu2/'.$post->setorpajret_id)}}" class="form-horizontal form-label-left" method="POST">
+              <form action="{{url('bkp/cetak_sspd/self/')}}" class="form-horizontal form-label-left" method="POST">
               @endif
 
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <input type="hidden" id="spt_id" name="spt_id" >
+              <input type="hidden" id="spt_id" name="spt_id" value="{{ isset($post) ? $spt[0]->spt_id : '' }}">
+              <input type="hidden" id="setorpajret_id" name="setorpajret_id" value="{{ isset($post) ? $post->setorpajret_id : '' }}">
                   <div class="item form-group{{ $errors->has('period_spt') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="period_spt">Period SPT
                     </label>
                     <div class="col-md-2 col-sm-6 col-xs-12">
-                      <input id="period_spt" data-inputmask="'mask': '9999'"  class="form-control col-md-7 col-xs-12" type="text" name="period_spt" value="{{ (isset($post)) ? date('Y',strtotime($post->setorpajret_tgl_bayar)) : date('Y')}}">
+                      <input id="period_spt" data-inputmask="'mask': '9999'"  class="form-control col-md-7 col-xs-12" type="text" name="period_spt" value="{{ (isset($post)) ? $getsetorself[0]->sprsd_thn : date('Y')}}">
                      @if ($errors->has('period_spt'))
                           <span class="help-block">
                               <strong>{{ $errors->first('period_spt') }}</strong>
@@ -195,7 +196,7 @@
                   <div class="form-group">
                     <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                       @if(isset($post))
-                        <a href="#" class="btn btn-info btn-lg"><i class="fa fa-print"></i> CETAK SSPD</a>
+                        <button type="submit" class="btn btn-info btn-lg"><i class="fa fa-print"></i> CETAK SSPD</button>
                       @else
                         <a id="save" type="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i> Lakukan Penyetoran</a>
                       @endif

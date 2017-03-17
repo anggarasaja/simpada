@@ -192,6 +192,7 @@ Route::delete('pendataan/sptpd/delete/{id_spt}','Pendataan@delete_spt');
 
 ###########
 ### LHP ###
+Route::get('lhp','lhpController@index');
 Route::get('lhp/self/table','lhpController@table_lhp_self');
 Route::get('lhp/self/getself','lhpController@getself');
 Route::get('lhp/self/create','lhpController@create_self');
@@ -275,6 +276,13 @@ Route::get('getkohir3','bkpController@getkohir3');
 Route::get('bkp/getpajak','bkpController@getpajak');
 Route::get('bkp/getnpwpd/{npwp?}','bkpController@getnpwpd');
 
+// report
+Route::post('bkp/cetak_sspd/official','reportBkpController@cetak_sspd_official');
+Route::post('bkp/cetak_sspd/self','reportBkpController@cetak_sspd_self');
+
+Route::get('bkp/bpps','reportBkpController@bpps');
+Route::post('bkp/cetak_bpps_rek','reportBkpController@cetak_bpps_rek');
+
 ####### End BKP ########
 ########################
 
@@ -298,3 +306,8 @@ Route::post('report/cetak_kembang_wpwr','reportDaftarController@cetak_kembang_wp
 Route::post('report/cetak_list_kembang_wpwr','reportDaftarController@cetak_list_kembang_wpwr');
 ### END REPORT ####
 ###################
+
+### User ###
+Route::resource('user','userController');
+Route::get('getdatauser','userController@getdatauser');
+### END User ###

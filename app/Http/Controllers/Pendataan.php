@@ -191,7 +191,7 @@ class Pendataan extends Controller
     ##  PENYIMPANAN DAN PENGUBAHAN DATA SPT ###
     public function store_data_hotel(Request $request){
         $this->validate($request, [
-
+            
         ]);
         $noreg = $this->getnoreg();
 

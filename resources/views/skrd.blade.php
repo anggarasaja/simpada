@@ -16,8 +16,8 @@
     <form action="{{url('skrd/cetak')}}" class="form-horizontal form-label-left" method="POST">
 
     <div class="row">
-      <div class=" col-md-6 col-xs-12">
-        <!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
+      <!-- <div class=" col-md-6 col-xs-12"> -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="x_panel">
           
             <div class="x_content">
@@ -34,7 +34,7 @@
                   <div class="item form-group{{ $errors->has('tahun') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tahun">Tahun Penetapan
                     </label>
-                    <div class="col-md-8 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                       <input id="tahun" data-inputmask="'mask': '9999'"  class="form-control col-md-7 col-xs-12" type="text" name="tahun" value="{{ date('Y') }}">
                      @if ($errors->has('tahun'))
                           <span class="help-block">
@@ -46,7 +46,7 @@
                   <div class="item form-group{{ $errors->has('objek_pajak') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="objek_pajak">Objek Pajak
                     </label>
-                    <div class="col-md-8 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                       <select id="objek_pajak" name="objek_pajak" class="form-control col-md-7 col-xs-12">
                             <option value="">-- Pilih Objek Pajak --</option>
                             @foreach($jenis as $key => $value)
@@ -63,7 +63,7 @@
                   <div class="item form-group{{ $errors->has('tgl_tetap') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tgl_tetap">Tanggal Penetapan 
                     </label>
-                    <div class="col-md-8 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                      <input data-provide="datepicker" data-inputmask="'mask': '99/99/9999'" data-date-format="dd/mm/yyyy" id="tgl_tetap" name="tgl_tetap" class="date-picker form-control col-md-7 col-xs-12 active" required="required" type="text" value="{{ (isset($post)) ? date('d/m/Y',strtotime($post-> setorpajret_tgl_bayar)) : date('d/m/Y')}}">
                       
                       @if ($errors->has('tgl_tetap'))
@@ -77,7 +77,7 @@
                   <div class="form-group{{ $errors->has('no_kohir1') ? ' has-error' : '' }}">
                         <label class="col-sm-3 control-label">Nomor Kohir</label>
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-2">
                           <div class="input-group">
                             <input id="no_kohir1" class="form-control" type="text" name="no_kohir1" value="">
                             <span class="input-group-btn">
@@ -88,7 +88,7 @@
                         <div class="col-sm-1">
                           <label>S/D</label>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2">
                           <div class="input-group">
                             <input id="no_kohir2" class="form-control" type="text" name="no_kohir2" value="">
                             <span class="input-group-btn">
@@ -101,7 +101,7 @@
                   <div class="item form-group{{ $errors->has('pejabat') ? ' has-error' : '' }}">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pejabat">Pejabat 
                     </label>
-                    <div class="col-md-8 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
                       <select id="pejabat" name="pejabat" class="form-control col-md-7 col-xs-12">
                         <option value="">--</option>
                           @foreach($pejda as $key => $value)
