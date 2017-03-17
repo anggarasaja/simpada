@@ -51,7 +51,7 @@ class Datatables
      */
     public static function of($builder)
     {
-        $datatables          = app(\Yajra\Datatables\Datatables::class);
+        $datatables          = app(static::class);
         $datatables->builder = $builder;
 
         if ($builder instanceof QueryBuilder) {
@@ -59,8 +59,7 @@ class Datatables
         } else {
             $ins = $builder instanceof Collection ? $datatables->usingCollection($builder) : $datatables->usingEloquent($builder);
         }
-        // print_r($ins);
-        // echo "tes";
+
         return $ins;
     }
 

@@ -17,11 +17,11 @@ Route::get('/', 'HomeController@index');
 // Route::get('pendaftaran-wpwr-pribadi', 'pendaftaranPribadiController@index'	);
 Route::get('tes', 'tes@index');
 
-// Route::get('getpass',function(){
-// 	$p = Hash::make('admin');
-// 	echo "Pass: ".$p;
-// 	// copy hasilnya ke field opr_passwd di tabel operator.
-// });
+Route::get('getpass',function(){
+	$p = Hash::make('bepeka');
+	echo "Pass: ".$p;
+	// copy hasilnya ke field opr_passwd di tabel operator.
+});
 
 //demo
 Route::get('demo-datatables', 'DatatablesController@index');
@@ -61,6 +61,7 @@ Route::get('daftar-pribadi/table','Pendaftaran@tableWpPribadi');
 Route::get('daftar-bu/table','Pendaftaran@tableWpBu');
 
 Route::get('penetapan/table','Penetapan@daftarSPT');
+Route::get('penetapan/cetak-daftar','Penetapan@cetak_daftarSPT');
 
 Route::post('daftar-pribadi/store','Pendaftaran@savePribadi');
 Route::post('daftar-bu/store','Pendaftaran@saveBU');
@@ -216,6 +217,9 @@ Route::post('skprkb/cetak','Penetapan@cetak_skprkb');
 Route::post('skpdlb/cetak','Penetapan@cetak_skpdlb');
 Route::post('skpdt/cetak','Penetapan@cetak_skpdt');
 Route::post('skrdt/cetak','Penetapan@cetak_skrdt');
+
+
+Route::post('spt/cetak','Penetapan@cetak_daftar_spt_pdf');
 ## END PENETAPAN ##
 ###################
 

@@ -56,7 +56,7 @@
         <ul class="nav child_menu">
           <li><a href="{{ URL::to('ketetapan') }}">Cetak Surat Ketetapan</a></li>
           <li><a href="{{ URL::to('penetapan/table') }}">Daftar Penetapan Pajak</a></li>
-          <li><a href="#">Cetak Daftar Surat Ketetapan</a></li>
+          <li><a href="{{ URL::to('penetapan/cetak-daftar') }}">Cetak Daftar Surat Ketetapan</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-suitcase"></i> BKP <span class="fa fa-chevron-down"></span></a>

@@ -173,6 +173,9 @@ return [
         //flash
         Laracasts\Flash\FlashServiceProvider::class,
 
+        //laravel-excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -228,6 +231,9 @@ return [
 
         //fpdf
         'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
+
+        //laravel excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

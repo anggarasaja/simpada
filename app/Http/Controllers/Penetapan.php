@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Universal;
+
 use Illuminate\Http\Request;
 use Setting;
 use Datatables;
@@ -10,6 +12,7 @@ use App\Http\Requests;
 use App\spt;
 require(base_path('vendor/mpdf/mpdf/')."mpdf.php");
 use Auth;
+use Excel;
 
 class Penetapan extends Controller
 {
@@ -20,6 +23,22 @@ class Penetapan extends Controller
 	public function daftarSPT(){
 		return view('daftarSPT');
 	}
+
+    public function cetak_daftarSPT(Request $request){
+        $jenis = DB::table('ref_kode_usaha')->orderBy('ref_kodus_id')->get();
+        $ketetapan = DB::table('keterangan_spt')->where("ketspt_id","!=","8")->get();
+        $kecamatan = DB::table('kecamatan')->get();
+        $getpejda = DB::select('select * from v_pejabat_daerah');
+        foreach ($getpejda as $key) {
+            $pejda[$key->pejda_id] = $key->ref_japeda_nama.' - '.$key->pejda_nama;
+        }
+
+
+        // return view('cetak_list_kembang_wpwr')3
+        // dd($request->session()->all());
+        $session_user = $request->session()->get('user');
+        return view('cetak_daftar_spt')->with(compact('jenis','kecamatan','pejda','ketetapan','session_user'));
+    }
 
 	public function sptDt(){
 		$tables = 'v_penetapan_pajak_retribusi AS a';
@@ -183,6 +202,91 @@ class Penetapan extends Controller
         ->add_column('periode','<center>{{ date("Y",strtotime($netapajrek_tgl)) }}</center>')
         ->add_column('masa_pajak','{{ $spt_periode_jual1 }} s/d {{ $spt_periode_jual2 }}')
         ->make(true);
+    }
+
+    public function cetak_daftar_spt_pdf(Request $request){
+        // dd($request);
+        $jenis_ketetapan = $request->jenis_ketetapan;
+        $objek_pajak = $request->objek_pajak;
+        $tgl_awal = $request->tgl_awal;
+        $tgl_awal_arr = explode("/",$tgl_awal);
+        $tgl_awal_conv = $tgl_awal_arr[2]."-".$tgl_awal_arr[1]."-".$tgl_awal_arr[0];
+
+        $tgl_akhir = $request->tgl_akhir;
+        $tgl_akhir_arr = explode("/",$tgl_akhir);
+        $tgl_akhir_conv = $tgl_akhir_arr[2]."-".$tgl_akhir_arr[1]."-".$tgl_akhir_arr[0];
+
+        $tgl_cetak = $request->tgl_cetak;
+        $tgl_cetak_arr = explode("/",$tgl_cetak);
+        $tgl_cetak_conv = $tgl_cetak_arr[2]."-".$tgl_cetak_arr[1]."-".$tgl_cetak_arr[0];
+
+        $periode_spt = $request->periode_spt;
+        $mengetahui = $request->mengetahui;
+        $diperiksa = $request->diperiksa;
+        $button_val = $request->button_val;
+        $operator = $request->operator;
+        $jabatan = $request->jabatan;
+        // dd($button_val);
+        // echo $tgl_akhir_conv;
+        // exit;
+        $mengetahui = DB::select(DB::raw("SELECT * FROM v_pejabat_daerah WHERE pejda_id='$mengetahui'"));
+        $pemeriksa = DB::select(DB::raw("SELECT * FROM v_pejabat_daerah WHERE pejda_id='$diperiksa'"));
+        $ar_objek_pajak = DB::select(DB::raw("SELECT * FROM ref_jenis_pajak_retribusi WHERE ref_jenparet_id='".$objek_pajak."'")); 
+        $arr_jenis_ketetapan = DB::select(DB::raw("SELECT * FROM keterangan_spt WHERE ketspt_id='".$jenis_ketetapan."'"));
+        // dd($ar_objek_pajak);
+        // print_r($ar_objek_pajak);
+        // exit
+        $sql = "SELECT aaa.netapajrek_tgl,aaa.netapajrek_kohir,aaa.netapajrek_besaran as denda, aaa.netapajrek_jenis_ketetapan,
+                       ccc.wp_wr_nama,ccc.wp_wr_almt,ccc.npwprd,
+                       bbb.spt_pajak,bbb.spt_periode_jual1, bbb.spt_periode_jual2, bbb.spt_jenis_pajakretribusi, bbb.spt_id,
+                       kr.korek_nama, dt.*,wil.cname as reklame_wilayah, rj.cname as reklame_jenis
+                FROM penetapan_pajak_retribusi aaa 
+                LEFT JOIN spt bbb ON aaa.netapajrek_id_spt=bbb.spt_id
+                LEFT JOIN v_wp_wr ccc ON bbb.spt_idwpwr=ccc.wp_wr_id
+                LEFT JOIN kode_rekening as kr on kr.korek_id=bbb.spt_kode_rek
+                LEFT JOIN spt_detailreklame as dt ON bbb.spt_id = dt.nid_spt
+                LEFT JOIN ref_reklame_wilayah wil ON dt.nid_wilayah = wil.nid
+                LEFT JOIN ref_reklame_jenis rj ON dt.nid_reklame = rj.nid
+                WHERE aaa.netapajrek_jenis_ketetapan='".$jenis_ketetapan."' AND 
+                      bbb.spt_jenis_pajakretribusi='".$objek_pajak."' AND 
+                      aaa.netapajrek_tgl BETWEEN '".$tgl_awal_conv."' AND '".$tgl_akhir_conv."'";
+
+        if($periode_spt != '') $sql.=" and bbb.spt_periode=".$periode_spt;
+        $sql.=" ORDER BY bbb.spt_periode,aaa.netapajrek_kohir";          
+        $rs = DB::select(DB::raw($sql));
+        // dd($rs);     
+        $universal = new Universal();
+        $pemda = $universal->getPEMDA();
+        if($button_val == "excel"){
+            
+            // print_r($pemda[0]->dapemda_id);
+            // dd($pemda);
+            // exit;
+            
+            Excel::create('New file', function($excel) use($rs,$pemda,$mengetahui,$pemeriksa,$ar_objek_pajak,$arr_jenis_ketetapan,$tgl_awal_conv,$tgl_akhir_conv,$tgl_cetak_conv, $operator, $jabatan,$button_val) {
+
+                $excel->sheet('New sheet', function($sheet) use($rs,$pemda,$mengetahui,$pemeriksa,$ar_objek_pajak,$arr_jenis_ketetapan,$tgl_awal_conv,$tgl_akhir_conv,$tgl_cetak_conv, $operator, $jabatan,$button_val) {
+                    // dd($rs);
+                    $sheet->loadView('daftar_spt_excel')->with(compact('rs','pemda','mengetahui','pemeriksa','ar_objek_pajak','arr_jenis_ketetapan','tgl_awal_conv','tgl_akhir_conv','tgl_cetak_conv','operator', 'jabatan','button_val'));
+
+                });
+
+            })->download('xls');
+
+            // return view('daftar_spt_excel')->with(compact('rs'));
+        } else if($button_val == "pdf"){
+            echo "pdf nanti";
+
+            $html = view('daftar_spt_excel')->with(compact('rs','pemda','mengetahui','pemeriksa','ar_objek_pajak','arr_jenis_ketetapan','tgl_awal_conv','tgl_akhir_conv','tgl_cetak_conv','operator', 'jabatan','button_val'));
+
+            $mpdf=new \Mpdf('utf-8', 'Legal-L');
+            $mpdf->setFooter('{PAGENO} / {nb}');
+            $mpdf->WriteHTML(utf8_encode($html));
+
+            $mpdf->Output("cetak_daftar_spt.pdf" ,'I');
+        } else {
+            abort(404);
+        }
     }
 
     public function cetak_skpd(Request $request){
@@ -440,7 +544,7 @@ class Penetapan extends Controller
         
         $html = ob_get_contents(); 
         ob_end_clean();
-        $mpdf=new \Mpdf('utf-8', 'A4-P');
+        $mpdf=new \Mpdf('utf-8', 'A4-L');
         $mpdf->WriteHTML(utf8_encode($html));
         $mpdf->Output("cetak_skpd.pdf" ,'I');
     }
