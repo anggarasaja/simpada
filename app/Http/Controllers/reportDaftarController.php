@@ -408,14 +408,26 @@ class reportDaftarController extends Controller
 
         ob_start();
 
+        echo '<table>';
+        echo '<tr>';
+        echo '<td width="5%">';
         echo '<img src="'.public_path('logo_baru_pekalongan.jpg').'" style="width:70px; heigth:70px;">';
-        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:8px;">PEMERINTAH KOTA '.strtoupper($data_pemerintah[0]->dapemda_ibu_kota).'</p>';
-        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:8px;">'.strtoupper($data_pemerintah[0]->nama_dinas).'</p>';
-        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:8px;">'.$data_pemerintah[0]->dapemda_lokasi.' - '.$data_pemerintah[0]->dapemda_ibu_kota.'</p>';
-        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:8px;">Telp. '.$data_pemerintah[0]->dapemda_no_telp.'</p>';
+        echo '</td>';
+        echo '<td width="25%">';
+        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:10px;">PEMERINTAH KOTA '.strtoupper($data_pemerintah[0]->dapemda_ibu_kota).'</p>';
+        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:10px;">'.strtoupper($data_pemerintah[0]->nama_dinas).'</p>';
+        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:10px;">'.$data_pemerintah[0]->dapemda_lokasi.' - '.$data_pemerintah[0]->dapemda_ibu_kota.'</p>';
+        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:10px;">Telp. '.$data_pemerintah[0]->dapemda_no_telp.'</p>';
+        echo '</td>';
+        echo '<td  width="40%" align="center">';
         echo '<p align="center" style="margin:0px; padding:0px; font-weight:bold; font-size:16px;">DAFTAR INDUK WAJIB '.$gol[$request->golongan].' '.strtoupper($getusaha[0]->ref_kodus_nama).'</p>';
         echo "<br>";
         echo '<p align="center" style="margin:0px; padding:0px; font-weight:bold; font-size:12px">Keadaan s/d tanggal '.$this->format_tanggal($pecah[0],$pecah[1],$pecah[2]).'</p>';
+        echo '</td>';
+        echo '<td  width="30%"></td>';
+        echo '</tr>';
+        echo '</table>';
+
         echo "<br>";
         echo '<p style="margin:0px; padding:0px; font-size:11px">Kecamatan : '.$kecamatan[0]->camat_nama.' &nbsp;&nbsp;&nbsp;&nbsp; Kelurahan : '.$kelurahan[0]->lurah_nama.'</p>';
         

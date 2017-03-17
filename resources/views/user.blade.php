@@ -12,7 +12,7 @@
                   {!! session('flash_notification.message') !!}
               </div>
           @endif
-        <table class="table stripe dataTable" id="table1">
+        <table class="table stripe table-bordered dataTable" id="table1">
             <thead>
                 <tr>
                     <th>Nama</th>
@@ -36,7 +36,7 @@
     <script>
 
       $(document).ready(function() {
-        $('.dataTable th').addClass('bg-green');
+        $('.dataTable th').addClass('bg-blue');
         rmlTable = $('#table1').DataTable({
             "language": {
                 "decimal": ",",

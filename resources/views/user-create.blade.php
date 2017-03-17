@@ -12,14 +12,81 @@
                   {!! session('flash_notification.message') !!}
               </div>
           @endif
-        {{ Form::open(['url' => 'user']) }}
-        {{ Form::token() }}
-        {{ Form::label('username', 'Username') }}
-        {{ Form::text('username','Username',['class' => 'form-control col-md-3']) }}
-        {{ Form::label('password', 'Password') }}
-        {{ Form::text('password','Password',['class' => 'form-control col-md-3']) }}
-        {{ Form::close() }}
+        <div class="x_title">
+          <h2>Form Rekam</h2>
+          <ul class="nav navbar-right panel_toolbox">
+            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
         </div>
+        
+        <div class="x_content">
+          {{ Form::open(['url' => 'user']) }}
+          {{ Form::token() }}
+          <div class="item form-group{{ $errors->has('nama') ? ' has-error' : '' }}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama">Nama
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="nama"  class="form-control col-md-7 col-xs-12" type="text" name="nama" value="">
+             @if ($errors->has('nama'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('nama') }}</strong>
+                  </span>
+              @endif
+            </div>
+          </div>
+          <div class="item form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Username
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="username"  class="form-control col-md-7 col-xs-12" type="text" name="username" value="">
+             @if ($errors->has('username'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('username') }}</strong>
+                  </span>
+              @endif
+            </div>
+          </div>
+          <div class="item form-group{{ $errors->has('pass1') ? ' has-error' : '' }}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pass1">Password
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="pass1"  class="form-control col-md-7 col-xs-12" type="text" name="pass1" value="">
+             @if ($errors->has('pass1'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('pass1') }}</strong>
+                  </span>
+              @endif
+            </div>
+          </div>
+          <div class="item form-group{{ $errors->has('pass2') ? ' has-error' : '' }}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pass2">Confirm Password
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="pass2"  class="form-control col-md-7 col-xs-12" type="text" name="pass2" value="">
+             @if ($errors->has('pass2'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('pass2') }}</strong>
+                  </span>
+              @endif
+            </div>
+          </div>
+          <div class="item form-group{{ $errors->has('jabatan') ? ' has-error' : '' }}">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="jabatan">Jabatan
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="jabatan"  class="form-control col-md-7 col-xs-12" type="text" name="jabatan" value="">
+             @if ($errors->has('jabatan'))
+                  <span class="help-block">
+                      <strong>{{ $errors->first('jabatan') }}</strong>
+                  </span>
+              @endif
+            </div>
+          </div>
+          {{ Form::close() }}
+          </div>
+          </div>
         
   
   </div>

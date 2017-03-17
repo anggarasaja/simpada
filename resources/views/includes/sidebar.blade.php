@@ -67,7 +67,7 @@
               <li><a href="{{ URL::to('bkp/daftar-self') }}">Daftar Setoran Self Assesment</a>
               </li>
               <hr>
-              <li><a href="#">Cetak Buku Pembantu Penerimaan Sejenis (BPPS) via</a>
+              <li><a href="{{ URL::to('bkp/bpps') }}">Cetak Buku Pembantu Penerimaan Sejenis (BPPS) via</a>
               </li>
               <li><a href="#">Cetak Rekapitulasi Daftar Ketetapan dan Setoran</a>
               </li>

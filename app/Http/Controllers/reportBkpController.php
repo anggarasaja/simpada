@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\setoran_pajak_retribusi;
 use App\setoran_pajak_retribusi_self_detail;
+use App\kode_rekening;
 use DB;
 use Auth;
 require(base_path('vendor/mpdf/mpdf/')."mpdf.php");
@@ -583,6 +584,67 @@ class reportBkpController extends Controller
         $mpdf=new \Mpdf('utf-8', 'A4-P','','asdads');
         $mpdf->WriteHTML(utf8_encode($html));
         $mpdf->Output("cetak_skpd.pdf" ,'I');
+    }
+
+    public function bpps(){
+        $korek = kode_rekening::where('korek_rincian','00')->where('korek_objek','!=','')->orderBy('korek_id')->get();
+        return view('bpps')->with(compact('korek'));
+    }
+
+    public function cetak_bpps_rek(Request $request){
+        // dd($request);
+        $data_pemerintah = DB::table('data_pemerintah_daerah')->get();
+
+        ob_start();
+
+        echo '<table>';
+        echo '<tr>';
+        echo '<td width="5%">';
+        echo '<img src="'.public_path('logo_baru_pekalongan.jpg').'" style="width:70px; heigth:70px;">';
+        echo '</td>';
+        echo '<td width="95%">';
+        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:16px;">PEMERINTAH KOTA '.strtoupper($data_pemerintah[0]->dapemda_ibu_kota).'</p>';
+        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:16px;">'.$data_pemerintah[0]->dapemda_lokasi.' - '.$data_pemerintah[0]->dapemda_ibu_kota.'</p>';
+        echo '<p align="left" style="margin:0px; margin-bottom:5px; padding:0px; font-size:16px;">Telp. '.$data_pemerintah[0]->dapemda_no_telp.'</p>';
+        echo '</td>';
+        echo '</tr>';
+        echo '</table>';
+        echo '<p align="center" style="margin:0px; padding:0px; font-weight:bold; font-size:16px;">BUKU PEMBANTU PENERIMAAN SEJENIS VIA BENDAHARA PENERIMAAN</p>';
+        echo '<p align="center" style="margin:0px; padding:0px; font-weight:bold; font-size:16px;">TAHUN ANGGARAN '.'</p>';
+        echo '<p align="center" style="margin:0px; padding:0px; font-weight:bold; font-size:14px;">Periode tanggal '.' s/d '.'</p>';
+        echo "<br>";
+
+        echo '<table style="font-size:13px;text-align: center;border-collapse: collapse;width: 100%;" border="1">';
+        echo '<tr>';
+        echo '<td>NO</td>';
+        echo '<td>TGL</td>';
+        echo '<td>REKENING</td>';
+        echo '<td>NO. SPTPD</td>';
+        echo '<td>DITERIMA DARI</td>';
+        echo '<td>N.P.W.P.D</td>';
+        echo '<td>MASA PAJAK</td>';
+        echo '<td>JUMLAH</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td colspan="8" style="text-align:left">NAMA REKENING : </td>';
+        echo '</tr>';
+
+
+        echo '<tr>';
+        echo '<td style="text-align:right" colspan="7">JUMLAH '.'</td>';
+        echo '<td>Rp</td>';
+        echo '</tr>';
+        echo '<tr>';
+        echo '<td style="text-align:center" colspan="7"><b>JUMLAH</b></td>';
+        echo '<td>Rp</td>';
+        echo '</tr>';
+        echo '</table>';
+
+        $html = ob_get_contents(); 
+        ob_end_clean();
+        $mpdf=new \Mpdf('utf-8', 'A3-L');
+        $mpdf->WriteHTML(utf8_encode($html));
+        $mpdf->Output("cetak_daftar_reklame.pdf" ,'I');
     }
 
     function terbilang($x, $style=1) {

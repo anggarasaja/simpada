@@ -276,6 +276,9 @@ Route::get('bkp/getnpwpd/{npwp?}','bkpController@getnpwpd');
 Route::post('bkp/cetak_sspd/official','reportBkpController@cetak_sspd_official');
 Route::post('bkp/cetak_sspd/self','reportBkpController@cetak_sspd_self');
 
+Route::get('bkp/bpps','reportBkpController@bpps');
+Route::post('bkp/cetak_bpps_rek','reportBkpController@cetak_bpps_rek');
+
 ####### End BKP ########
 ########################
 
