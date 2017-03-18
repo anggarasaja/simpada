@@ -41,6 +41,11 @@
                         <option value="4">Pajak Reklame</option>
                         <option value="8">Pajak Air Tanah</option>
                       </select>
+                      @if ($errors->has('objek_pajak'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('objek_pajak') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
 
@@ -54,6 +59,11 @@
                           <option value="{{ $value->ketspt_id}}">{{ "[".$value->ketspt_singkat."]: ".$value->ketspt_ket }}</option>
                         @endforeach
                       </select>
+                      @if ($errors->has('jenis_ketetapan'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('jenis_ketetapan') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
 
@@ -148,14 +158,24 @@
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usaha">Nama Petugas 
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input id="operator" name="operator" type="text" class="form-control col-md-7 col-xs-12" value="{{$session_user['staff_user']}}" readonly></input>
+                      <input id="operator" name="operator" type="text" class="form-control col-md-7 col-xs-12" value="{{$nama_opr}}" readonly></input>
+                      @if ($errors->has('operator'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('operator') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usaha">Jabatan 
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input id="jabatan" name="jabatan" type="text" class="form-control col-md-7 col-xs-12" value="{{$session_user['staff_name']}}" readonly></input>
+                      <input id="jabatan" name="jabatan" type="text" class="form-control col-md-7 col-xs-12" value="{{$jabatan_opr->ref_jab_nama}}" readonly></input>
+                      @if ($errors->has('jabatan'))
+                          <span class="help-block">
+                              <strong>{{ $errors->first('jabatan') }}</strong>
+                          </span>
+                      @endif
                     </div>
                   </div>
                   <div class="ln_solid"></div>

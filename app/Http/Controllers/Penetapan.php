@@ -36,8 +36,16 @@ class Penetapan extends Controller
 
         // return view('cetak_list_kembang_wpwr')3
         // dd($request->session()->all());
-        $session_user = $request->session()->get('user');
-        return view('cetak_daftar_spt')->with(compact('jenis','kecamatan','pejda','ketetapan','session_user'));
+        // $session_user = $request->session()->get('user');
+        $nama_opr = Auth::user()->opr_nama;
+        
+        $jabatan_opr = DB::table('ref_jabatan')->where("ref_jab_id",Auth::user()->opr_jabatan)->first();;
+        // $jabatan_opr = ;
+        // echo $jabatan_opr->ref_jab_nama;
+        // exit;
+
+
+        return view('cetak_daftar_spt')->with(compact('jenis','kecamatan','pejda','ketetapan','session_user', 'nama_opr','jabatan_opr'));
     }
 
 	public function sptDt(){
@@ -206,6 +214,19 @@ class Penetapan extends Controller
 
     public function cetak_daftar_spt_pdf(Request $request){
         // dd($request);
+        $this->validate($request,[
+                'jenis_ketetapan' => 'required',
+                'objek_pajak' => 'required',
+                'tgl_awal' => 'required',
+                'tgl_akhir' => 'required',
+                'tgl_cetak' => 'required',
+                'periode_spt' => 'required',
+                'mengetahui' => 'required',
+                'diperiksa' => 'required',
+                'button_val' => 'required',
+                'operator' => 'required',
+                'jabatan' => 'required',
+            ]);
         $jenis_ketetapan = $request->jenis_ketetapan;
         $objek_pajak = $request->objek_pajak;
         $tgl_awal = $request->tgl_awal;
